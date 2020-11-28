@@ -101,12 +101,12 @@ require_once "./mvc/views/html/Header.html";
                             <div class="form-group">
                                 <label>Nếu bạn đã có tài khoản, đăng nhập ở đây</label>
                                 <label for="email">Email:</label>
-                                <input type="email" class="form-control" id="email" placeholder="Enter email"
+                                <input type="email" class="form-control" id="email" placeholder="Email"
                                     name="email">
                             </div>
                             <div class="form-group">
                                 <label for="pwd">Mật khẩu:</label>
-                                <input type="password" class="form-control" id="pwd" placeholder="Enter password"
+                                <input type="password" class="form-control" id="pwd" placeholder="Password"
                                     name="pswd">
                             </div>
                             <button type="submit" class="btn1">Đăng Nhập</button>
@@ -135,9 +135,9 @@ require_once "./mvc/views/html/Header.html";
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                     <div class="form">
                         <div class="form-group">
-                            <label>Bạn quên mật khẩu? Nhập địa chỉ Email để láy lại mật khẩu trong Email</label>
+                            <label>Bạn quên mật khẩu? Nhập địa chỉ Email để lấy lại mật khẩu.</label><br>
                             <label for="email">Email:</label>
-                            <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+                            <input type="email" class="form-control" id="email" placeholder="Email" name="email">
                             <button type="submit" class="btn1 mt-3">Lấy lại mật khẩu</button>
                         </div>
                     </div>
