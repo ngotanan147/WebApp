@@ -1,0 +1,102 @@
+.Content_Register {
+    background-image: url(./mvc/views/html/img_doan/bg_all.png);
+    background-repeat: repeat;
+    padding-top: 20px;
+
+}
+
+.page_login {
+    margin-top: 0px;
+    border: 1px solid #ebebeb;
+    background-color: #fff;
+    border-radius: 5px;
+    margin: 0% 15%;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+/* @media screen (min-width: 1200px) {
+    .form {
+        width: 100%;
+    }
+} */
+
+.login {
+    padding: 25px 25px 10px 25px;
+}
+
+.login input {
+    height: 40px;
+    padding: 0 20px;
+    color: #333;
+    border: 1px solid #ebebeb;
+    border-radius: 5px;
+    background-color: #f8f8f8;
+}
+
+.btn_login {
+    background-color: #ef7147;
+    color: #fff;
+    padding: 0 20px;
+    text-align: center;
+    white-space: nowrap;
+    outline: none !important;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    height: 40px;
+    font-size: 13px;
+}
+
+.btn_login:hover {
+    background-color: #fff;
+    color: #ef7147;
+    border: 1px solid #ef7147;
+
+}
+
+.register_ex {
+    border-top: 1px solid #ebebeb;
+}
+
+label {
+    font-size: 13px;
+
+}
+
+.trangchu {
+    font-size: 13px;
+    color: #ef7147;
+    margin-left: 15%;
+
+}
+
+.trangchu a {
+    color: #000;
+    text-decoration: none;
+
+}
+
+.trangchu a:hover {
+    color: #ef7147;
+}
+
+.register_account {
+    color: #000;
+    font-size: 16px;
+    margin-left: 15%;
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+
+.login_here {
+    font-size: 13px;
+}
+
+.icon_login {
+    padding-bottom: 25px;
+}
+
+.img_facebook {
+    margin-bottom: 20px;
+}
