@@ -1,12 +1,5 @@
 <?php
     require_once "./mvc/views/html/Header.html";
-
-    $status = session_status();
-    if($status == PHP_SESSION_NONE){
-        //There is no active session
-        session_start();
-    }
-
 ?>
 
 <html>
@@ -101,8 +94,6 @@
                     <h3>Đăng nhập tài khoản</h3>
                 </div>
             </div>
-
-            
 
             <div class="row mt-3">
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">

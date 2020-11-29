@@ -4,8 +4,13 @@
             Header("location:http://localhost:8080/Doanweb/Login");
         }
         function SayHi(){   
-            $this->getView("Login",[
-            ]);
+            if (isset($_SESSION["email"])){
+                Header("Location:http://localhost:8080/Doanweb/");
+            }
+            else{
+                $this->getView("Login");
+            }
+            
         }
     
         function log(){
@@ -29,6 +34,8 @@
             } else{
                 Header("Location:http://localhost:8080/Doanweb/");
             }
+            
+
         }
     }
 ?>
