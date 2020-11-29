@@ -15,23 +15,25 @@
     position: relative;
 }
 
-/* @media screen (min-width: 1200px) {
-    .form {
-        width: 100%;
-    }
-} */
-
 .login {
     padding: 25px 25px 10px 25px;
 }
 
+
+
 .login input {
     height: 40px;
-    padding: 0 20px;
+    padding: 10px 20px;
     color: #333;
     border: 1px solid #ebebeb;
     border-radius: 5px;
     background-color: #f8f8f8;
+    font-size: 20px;
+}
+
+.login input::placeholder {
+    font-size: 16px;
+    vertical-align: center;
 }
 
 .btn_login {

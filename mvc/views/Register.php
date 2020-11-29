@@ -29,40 +29,40 @@ require_once "./mvc/views/html/Header.html";
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form">
                 <div class="page_login">
                     <div class="login">
-                        <p style="font-size: 14px;">Nếu chưa có tài khoản vui lòng đăng ký tại đây</p>
-                        <form action="">
+                        <form action="http://localhost:8080/Doanweb/Register/register" method="POST">
                             <div class="row">
                                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                                     <label>Họ:</label><br>
-                                    <input type="text" class="form-control form-control-lg">
+                                    <input name="ho" type="text" class="form-control form-control-lg" placeholder="Họ">
                                 </div>
 
-                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">       
                                     <label>Tên:</label><br>
-                                    <input type="text" class="form-control form-control-lg">
+                                    <input name="ten" type="text" class="form-control form-control-lg" placeholder="Tên">
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                                     <label>Email:</label><br>
-                                    <input type="text" class="form-control form-control-lg">
+                                    <input name="email" type="text" class="form-control form-control-lg" placeholder="Email">
                                 </div>
-                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                                    <label>Số điện thoại:</label><br>
-                                    <input type="text" class="form-control form-control-lg">
-                                </div>
-                            </div>
-                            <div class="row">
                                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                                     <label>Mật Khẩu:</label><br>
-                                    <input type="text" class="form-control form-control-lg">
+                                    <input name="password" type="password" class="form-control form-control-lg" placeholder="Mật khẩu">
                                 </div>
                             </div>
-
                             <div class="row">
+                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                    
+                                </div>
+                            </div>
+                            <button name="register" class="btn_login mb-3 mt-3" type="submit" value="Đăng ký" >Đăng ký</button>
+                           
+                        </form>
+                        <div class="row">
                                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12  mt-4 ">
-                                    <button class="btn_login mb-3" type="submit" value="Đăng ký">Đăng ký</button>
+                                   
                                     <div class="register_ex">
                                         <p class="login_here mt-2">Bạn đã có tài khoản, hãy Đăng nhập <a href=""
                                                 style="color:#ef7147; text-decoration: none;">tại đây</a></p>
@@ -82,7 +82,6 @@ require_once "./mvc/views/html/Header.html";
                                     </div>
                                 </div>
                             </div>
-                        </form>
                     </div>
                 </div>
             </div>

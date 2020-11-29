@@ -1,8 +1,9 @@
 <?php
     require_once "./mvc/views/html/Header.html";
 ?>
-<a href="http://localhost:8080/Doanweb/Logout">Log out</a>
-<?php echo $_SESSION['email'] ?>
+
+
+
 <html>
 
 <head>
@@ -26,6 +27,12 @@
 </head>
 
 <body>
+    <div class="text-center">
+        <h4>Test</h4>
+        <h4>Xin chào User: <?php echo $_SESSION['email'] ?> </h4>   
+        <a style="font-size: 20px" href="http://localhost:8080/Doanweb/Logout">Log out</a>
+    </div>
+
     <!-- Slider carousel -->
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
