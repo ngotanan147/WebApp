@@ -25,17 +25,14 @@
             }
             $login = $model->login($email, $password);
             
-            
             if (empty($login)){
                 $this->getView("Login", [
                     "success" => 'block',
                 ]);
-
             } else{
                 Header("Location:http://localhost:8080/Doanweb/");
             }
             
-
         }
     }
 ?>
