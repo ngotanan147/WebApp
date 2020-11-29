@@ -39,5 +39,16 @@
             
         }
 
+        public function login($email, $password){
+            $qr = "Select * from user where user_email = '$email' and user_password = '$password'";
+            $result = mysqli_query($this->con,$qr);
+            if (!$result) {
+                printf("Error: %s\n", mysqli_error($this->con));
+                exit();
+            }
+            $row = mysqli_fetch_array($result);
+            return $row;
+        }
+
     }
 ?>  

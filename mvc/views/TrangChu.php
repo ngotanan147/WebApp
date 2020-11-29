@@ -1,6 +1,5 @@
 <?php
     require_once "./mvc/views/html/Header.html";
-    define('CSS_PATH', './mvc/views/html/TrangChu.css'); //define CSS path 
 ?>
 
 <html>
@@ -23,7 +22,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="./mvc/views/html/TrangChu.css">
-</head>
 </head>
 
 <body>

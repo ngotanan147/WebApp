@@ -1,5 +1,5 @@
 .login {
-    background: url(./mvc/views/html/img_doan/bg_all.png);
+    background: url('./mvc/views/html/img_doan/bg_all.png');
     background-repeat: repeat;
     padding: 20px;
     width: 100%;

@@ -1,6 +1,8 @@
 <?php
-require_once "./mvc/views/html/Header.html";
+    require_once "./mvc/views/html/Header.html";
+    // session_start();
 ?>
+
 <html>
 
 <head>
@@ -21,7 +23,7 @@ require_once "./mvc/views/html/Header.html";
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <style>
         .login {
-            background: url(./mvc/views/html/img_doan/bg_all.png);
+            background: url('./mvc/views/html/img_doan/bg_all.png');
             background-repeat: repeat;
             padding: 20px;
             width: 100%;
@@ -96,20 +98,20 @@ require_once "./mvc/views/html/Header.html";
 
             <div class="row mt-3">
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                    <div class="form">
-                        <form action="/action_page.php">
+                    <div class="form" >
+                        <form action="http://localhost:8080/Doanweb/Login/log" method="POST">
                             <div class="form-group">
-                                <label>Nếu bạn đã có tài khoản, đăng nhập ở đây</label>
+                                <label>Nếu bạn đã có tài khoản, đăng nhập ở đây</label><br>
                                 <label for="email">Email:</label>
-                                <input type="email" class="form-control" id="email" placeholder="Email"
+                                <input type="email" class="form-control" id="email" placeholder="Username"
                                     name="email">
                             </div>
                             <div class="form-group">
                                 <label for="pwd">Mật khẩu:</label>
                                 <input type="password" class="form-control" id="pwd" placeholder="Password"
-                                    name="pswd">
+                                    name="password">
                             </div>
-                            <button type="submit" class="btn1">Đăng Nhập</button>
+                            <button type="submit" name="login" class="btn1">Đăng Nhập</button>
                         </form>
 
                         <div class="register">
@@ -150,5 +152,5 @@ require_once "./mvc/views/html/Header.html";
 </html>
 
 <?php
-require_once "./mvc/views/html/Footer.html";
+    require_once "html/Footer.html";
 ?>

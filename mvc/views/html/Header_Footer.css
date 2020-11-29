@@ -40,6 +40,17 @@
     line-height: 45px;
 }
 
+.rangcua {
+    float: left;
+    background-image: url('img_doan/rang-cua.png');
+    background-repeat: repeat-x;
+    height: 7px;
+    width: 100%;
+    display: block;
+    position: absolute;
+    z-index: 3;
+}
+
 .header_search form input {
     padding: 0 35px 0 15px;
     background: #eeeeee;

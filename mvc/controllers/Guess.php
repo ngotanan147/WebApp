@@ -3,7 +3,7 @@ class Guess extends Controller {
     function SayHi(){
         $product = $this->getModel("ProductModel");
 
-        $this->getView("Cart",[
+        $this->getView("TrangChu",[
         ]);
     }
 
