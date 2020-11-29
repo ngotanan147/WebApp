@@ -1,7 +1,8 @@
 <?php
     require_once "./mvc/views/html/Header.html";
 ?>
-
+<a href="http://localhost:8080/Doanweb/Logout">Log out</a>
+<?php echo $_SESSION['email'] ?>
 <html>
 
 <head>
@@ -996,3 +997,4 @@
 <?php
 require_once "./mvc/views/html/Footer.html";
 ?>
+

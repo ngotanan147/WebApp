@@ -1,6 +1,12 @@
 <?php
     require_once "./mvc/views/html/Header.html";
-    // session_start();
+
+    $status = session_status();
+    if($status == PHP_SESSION_NONE){
+        //There is no active session
+        session_start();
+    }
+
 ?>
 
 <html>
@@ -96,6 +102,8 @@
                 </div>
             </div>
 
+            
+
             <div class="row mt-3">
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                     <div class="form" >
@@ -111,11 +119,15 @@
                                 <input type="password" class="form-control" id="pwd" placeholder="Password"
                                     name="password">
                             </div>
-                            <button type="submit" name="login" class="btn1">Đăng Nhập</button>
+                            <button type="submit" name="login" class="btn1">Đăng Nhập</button>                         
+                            <label class="pt-2" for="" 
+                            style="display: none; display: <?php echo $data['success'] ?> !important; color: red;">
+                                Đăng nhập thất bại, xin vui lòng kiểm tra lại thông tin!
+                            </label>
                         </form>
-
+                        
                         <div class="register">
-                            <label for="">Bạn chưa có tài khoản, hãy Đăng ký <span style="color:#ef7147;">tại
+                            <label  for="">Bạn chưa có tài khoản, hãy Đăng ký <span style="color:#ef7147;">tại
                                     đây</span> </label>
                         </div>
 

@@ -16,16 +16,16 @@
             if (isset($_POST["login"])){
                 $email = $_POST["email"];
                 $password  = $_POST["password"];
+                $_SESSION['email'] = $_POST["email"];
             }
             $login = $model->login($email, $password);
-            print_r($login);
             
-            //Xử lí logina
-            $isSuccess = false;
+            
             if (empty($login)){
                 $this->getView("Login", [
-                    "isSuccess" => $isSuccess
+                    "success" => 'block',
                 ]);
+
             } else{
                 Header("Location:http://localhost:8080/Doanweb/");
             }

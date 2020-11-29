@@ -15,6 +15,5 @@
             $qr = "INSERT INTO product VALUES (NULL,'$name','$image','$price', '$description', '$category_id', '$category_name')";
             return mysqli_query($this->con, $qr);  
         }
-
     }
 ?>  
