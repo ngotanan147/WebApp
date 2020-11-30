@@ -118,8 +118,8 @@
                         </form>
                         
                         <div class="register">
-                            <label  for="">Bạn chưa có tài khoản, hãy Đăng ký <span style="color:#ef7147;">tại
-                                    đây</span> </label>
+                            <label  for="">Bạn chưa có tài khoản, hãy Đăng ký <a href="http://localhost:8080/Doanweb/Register" style="color:#ef7147;">tại
+                                    đây</a> </label>
                         </div>
 
                         <div class="social-network">

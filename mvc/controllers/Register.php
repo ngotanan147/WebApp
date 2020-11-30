@@ -29,14 +29,13 @@
                 }
                 else{
                     $model->addUser($name, $email, $password, 'User');
-                    session_start();
-                    $_SESSION['email'] = $email;
-                    Header("Location:http://localhost:8080/Doanweb/");
+                    // session_start();
+                    // $_SESSION['email'] = $email;
+                    // Header("Location:http://localhost:8080/Doanweb/");
+                    Header("Location:http://localhost:8080/Doanweb/Login");
                 }
             }
         }
-
-
 
     }
 ?>

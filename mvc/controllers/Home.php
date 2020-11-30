@@ -1,9 +1,9 @@
 <?php
-class Guess extends Controller {
+class Home extends Controller {
     function SayHi(){
         $product = $this->getModel("ProductModel");
 
-        $this->getView("TrangChu",[
+        $this->getView("Header",[
         ]);
     }
 

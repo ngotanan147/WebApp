@@ -1,7 +1,7 @@
 <?php
 class App{
 
-    protected $controller="Guess";
+    protected $controller="Home";
     protected $action="SayHi";
     protected $params=[];
 

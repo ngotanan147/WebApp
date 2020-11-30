@@ -2,8 +2,6 @@
     require_once "./mvc/views/html/Header.html";
 ?>
 
-
-
 <html>
 
 <head>
