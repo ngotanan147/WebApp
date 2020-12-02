@@ -7,7 +7,7 @@
         }
 
         public function addUser($name, $email, $password, $role){
-            $qr = "INSERT INTO user(user_id,user_name, user_email, user_password, user_role) VALUES (NULL,'$name','$email','$password', '$role')";
+            $qr = "INSERT INTO user(user_id, user_name, user_email, user_password, user_role) VALUES (NULL,'$name','$email','$password', '$role')";
             return mysqli_query($this->con, $qr);   
         }
 
