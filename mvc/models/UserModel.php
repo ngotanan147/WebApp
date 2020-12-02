@@ -36,7 +36,6 @@
             }
             $row = mysqli_fetch_array($result);
             return $row;
-            
         }
 
         public function getUserByEmail($email){

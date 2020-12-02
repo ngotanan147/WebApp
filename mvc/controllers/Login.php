@@ -1,11 +1,11 @@
 <?php
     class Login extends Controller {
         function default(){
-            Header("location:http://localhost:8080/Doanweb/Login");
+            Header("location:http://localhost/Doanweb/Login");
         }
         function SayHi(){   
             if (isset($_SESSION["email"])){
-                Header("Location:http://localhost:8080/Doanweb/");
+                Header("Location:http://localhost/Doanweb/");
             }
             else{
                 $this->getView("Login");
@@ -30,9 +30,10 @@
                     "success" => 'block',
                 ]);
             } else{
-                Header("Location:http://localhost:8080/Doanweb/");
+                // $user = $model->getUserByEmail($email);
+                // if ($user['role'] == 1){}
+                Header("Location:http://localhost/Doanweb/");
             }
             
         }
     }
-?>

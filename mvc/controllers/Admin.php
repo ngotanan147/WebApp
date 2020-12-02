@@ -2,7 +2,7 @@
 class Admin extends Controller {
 
     function defaultUser(){
-        Header("location:http://localhost:8080/Doanweb/Admin");
+        Header("location:http://localhost/Doanweb/Admin");
     }
 
     function SayHi(){
@@ -12,12 +12,7 @@ class Admin extends Controller {
             "user" => $user->getUser()
         ]);
 
-        // $this->getViewAdmin("UserEdit", [
-        //     "user" => $user->getUser()
-        // ]);
     }
-
-    // User ------------------------------------------------------------------------------------------------
 
     function deleteUser($id){
         $this->defaultUser();
@@ -37,7 +32,11 @@ class Admin extends Controller {
             $name = $_POST["name"];
             $email = $_POST["email"];
             $password = $_POST["password"];
-            $role = $_POST["role"];
+            if ($_POST["role"] == "Admin"){
+                $role = 0;
+            } else {
+                $role = 1;
+            }
             $user->addUser($name, $email, $password, $role);
         }   
 
@@ -66,7 +65,11 @@ class Admin extends Controller {
             $name = $_POST["name"];
             $email = $_POST["email"];
             $password = $_POST["password"];
-            $role = $_POST["role"];
+            if ($_POST["role"] == "Admin"){
+                $role = 0;
+            } else {
+                $role = 1;
+            }
             $user->editUser($id ,$name, $email, $password, $role);
         }
 
@@ -77,7 +80,7 @@ class Admin extends Controller {
 
     // Product ------------------------------------------------------------------------------------------------
     function productDefault(){
-        Header("location:http://localhost:8080/Doanweb/Admin/product");
+        Header("location:http://localhost/Doanweb/Admin/product");
     }
 
     function product(){
@@ -89,7 +92,7 @@ class Admin extends Controller {
     }
 
     function deleteProduct($a ,$id){
-        $this->default();
+        $this->defaultUser();
         $product = $this->getModel("ProductModel");
         $product->deleteProduct($id);   
 
@@ -99,4 +102,3 @@ class Admin extends Controller {
     }
 
 }
-?>

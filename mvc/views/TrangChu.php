@@ -28,7 +28,7 @@
     <div class="text-center">
         <h4>Test</h4>
         <h4>Xin chào User: <?php echo $_SESSION['email'] ?> </h4>   
-        <a style="font-size: 20px" href="http://localhost:8080/Doanweb/Logout">Log out</a>
+        <a style="font-size: 20px" href="http://localhost/Doanweb/Logout">Log out</a>
     </div>
 
     <!-- Slider carousel -->
@@ -926,13 +926,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- <div class="swiper-slide"><img src="./mvc/views/html/img_doan/monannoibat (2).jpg" alt=""></div>
-                            <div class="swiper-slide"><img src="./mvc/views/html/img_doan/monannoibat (3).jpg" alt=""></div>
-                            <div class="swiper-slide"><img src="./mvc/views/html/img_doan/monannoibat (5).jpg" alt=""></div>
-                            <div class="swiper-slide"><img src="./mvc/views/html/img_doan/monannoibat (6).jpg" alt=""></div>
-                            <div class="swiper-slide"><img src="./mvc/views/html/img_doan/monannoibat (7).jpg" alt=""></div> -->
                         </div>
-
                         <!-- Add Pagination -->
                         <div class="swiper-pagination"></div>
                     </div>
@@ -983,6 +977,7 @@
         },
     });
 </script>
+
 <script>
     for (let i = 1; i <= 5; i++) {
         $(".tab-link" + i).click(function () {
@@ -995,7 +990,6 @@
                 }
             }
         })
-        console.log("tab-link" + i);
     }
 </script>
 

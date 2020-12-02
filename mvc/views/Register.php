@@ -29,7 +29,7 @@ require_once "./mvc/views/html/Header.html";
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form">
                 <div class="page_login">
                     <div class="login">
-                        <form action="http://localhost:8080/Doanweb/Register/register" method="POST">
+                        <form action="http://localhost/Doanweb/Register/register" method="POST">
                             <div class="row">
                                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                                     <label>Họ:</label><br>
@@ -57,8 +57,13 @@ require_once "./mvc/views/html/Header.html";
                                     
                                 </div>
                             </div>
-                            <button name="register" class="btn_login mb-3 mt-3" type="submit" value="Đăng ký" >Đăng ký</button>
-                           
+                            <button name="register" class="btn_login mb-2 mt-3" type="submit" value="Đăng ký" >Đăng ký</button>
+                            <br><label style="display: none; display: <?php echo $data['display']?> !important">
+                                Email đã tồn tại!
+                            </label>
+                            <br><label style="display: none; display: <?php echo $data['display']?> !important">
+                                Độ dài mật khẩu phải lớn hơn 5!
+                            </label>
                         </form>
                         <div class="row">
                                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12  mt-4 ">

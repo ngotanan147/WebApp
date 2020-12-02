@@ -11,16 +11,16 @@
     <title>Delicious admin</title>
 
     <!-- Custom fonts for this template -->
-    <link href="http://localhost:8080/DoAnWeb/mvc/assets/TableFile/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="http://localhost/DoAnWeb/mvc/assets/TableFile/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <!-- Custom styles for this template -->
-    <link href="http://localhost:8080/DoAnWeb/mvc/assets/TableFile/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="http://localhost/DoAnWeb/mvc/assets/TableFile/css/sb-admin-2.min.css" rel="stylesheet">
 
     <!-- Custom styles for this page -->
-    <link href="http://localhost:8080/DoAnWeb/mvc/assets/TableFile/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="http://localhost/DoAnWeb/mvc/assets/TableFile/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
     <style>
         .nav-link {
             padding: 5px !important;
@@ -82,7 +82,7 @@
 
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
-                <button class="rounded-circle border-0" id="sidebarToggle" ></button>
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
             </div>
 
         </ul>
@@ -101,8 +101,7 @@
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
-                        <button data-toggle="modal" data-target="#exampleModal" type="button" 
-                        class="btn btn-primary" style="width: 100%;">Add item</button>
+                        <button data-toggle="modal" data-target="#exampleModal" type="button" class="btn btn-primary" style="width: 100%;">Add item</button>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -119,32 +118,31 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    
                                         <?php
-                                            while($row = mysqli_fetch_array($data["product"])){
+                                        if (!empty($data["product"])) {
+                                            while ($row = mysqli_fetch_array($data["product"])) {
                                         ?>
-                                        <tr>
-                                            <td><?php echo $row["product_id"] ?></td>
-                                            <td><?php echo $row["product_name"] ?></td>
-                                            <td><?php echo $row["product_image"] ?></td>
-                                            <td><?php echo $row["product_price"] ?></td>
-                                            <td><?php echo $row["product_description"] ?></td>
-                                            <td><?php echo $row["categories_id"] ?></td>
-                                            <td><?php echo $row["categories_name"] ?></td>
-                                            <td class="d-flex justify-content-around">
-                                                <a href="http://localhost:8080/Doanweb/Admin/showEditData/<?php echo $row["user_id"] ?>">
-                                                    <i style="color:#999" class="fa fa-wrench fa-lg function"
-                                                        aria-hidden="true"></i> 
-                                                        
-                                                </a>
-                                                <a href="http://localhost:8080/Doanweb/AdminProduct/deleteProduct/<?php echo $row["product_id"] ?>">
-                                                    <i style="color:#999" class="fa fa-trash fa-lg function"
-                                                        aria-hidden="true"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    <?php } ?>
-                                    
+                                                <tr>
+                                                    <td><?php echo $row["product_id"] ?></td>
+                                                    <td><?php echo $row["product_name"] ?></td>
+                                                    <td><?php echo $row["product_image"] ?></td>
+                                                    <td><?php echo $row["product_price"] ?></td>
+                                                    <td><?php echo $row["product_description"] ?></td>
+                                                    <td><?php echo $row["categories_id"] ?></td>
+                                                    <td><?php echo $row["categories_name"] ?></td>
+                                                    <td class="d-flex justify-content-around">
+                                                        <a href="http://localhost/Doanweb/Admin/showEditData/<?php echo $row["user_id"] ?>">
+                                                            <i style="color:#999" class="fa fa-wrench fa-lg function" aria-hidden="true"></i>
+
+                                                        </a>
+                                                        <a href="http://localhost/Doanweb/AdminProduct/deleteProduct/<?php echo $row["product_id"] ?>">
+                                                            <i style="color:#999" class="fa fa-trash fa-lg function" aria-hidden="true"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                        <?php }
+                                        } ?>
+
                                     </tbody>
                                 </table>
                             </div>
@@ -153,13 +151,11 @@
 
                 </div>
                 <!-- /.container-fluid -->
-
             </div>
             <!-- End of Main Content -->
 
             <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -169,28 +165,28 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                        <form action="http://localhost:8080/Doanweb/AdminProduct/addProduct" method="POST">
-                            <div class="form-group">
-                                <input name="name" type="text" class="form-control" id="exampleInputEmail" placeholder="Name">
-                            </div>
-                            <div class="form-group">
-                                <input name="image" type="file" class="form-control" id="exampleInputPassword" placeholder="Image">
-                            </div>
-                            <div class="form-group">
-                                <input name="price" type="text" class="form-control" id="exampleInputPassword" placeholder="Price">
-                            </div>
-                            <div class="form-group">
-                                <input name="description" type="text" class="form-control" id="exampleInputPassword" placeholder="Description">
-                            </div>
-                            <div class="form-group">
-                                <input name="category_id" type="text" class="form-control" id="exampleInputPassword" placeholder="Category ID">
-                            </div>
-                            <div class="form-group">
-                                <input name="category_name" type="text" class="form-control" id="exampleInputPassword" placeholder="Category name">
-                            </div>
-                            <button name="addProduct" type="submit" class="btn btn-primary mt-2">Submit</button>
+                            <form action="http://localhost/Doanweb/AdminProduct/addProduct" method="POST">
+                                <div class="form-group">
+                                    <input name="name" type="text" class="form-control" id="exampleInputEmail" placeholder="Name">
+                                </div>
+                                <div class="form-group">
+                                    <input name="c_img" type="file" class="form-control" id="exampleInputPassword" placeholder="Image">
+                                </div>
+                                <div class="form-group">
+                                    <input name="price" type="text" class="form-control" id="exampleInputPassword" placeholder="Price">
+                                </div>
+                                <div class="form-group">
+                                    <input name="description" type="text" class="form-control" id="exampleInputPassword" placeholder="Description">
+                                </div>
+                                <div class="form-group">
+                                    <input name="category_id" type="text" class="form-control" id="exampleInputPassword" placeholder="Category ID">
+                                </div>
+                                <div class="form-group">
+                                    <input name="category_name" type="text" class="form-control" id="exampleInputPassword" placeholder="Category name">
+                                </div>
+                                <button name="addProduct" type="submit" class="btn btn-primary mt-2">Submit</button>
 
-                        </form>
+                            </form>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -199,7 +195,7 @@
                 </div>
             </div>
 
-                                                
+
             <!-- Footer -->
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
@@ -223,21 +219,22 @@
 
 
     <!-- Bootstrap core JavaScript-->
-    <script src="http://localhost:8080/DoAnWeb/mvc/assets/TableFile/vendor/jquery/jquery.min.js"></script>
-    <script src="http://localhost:8080/DoAnWeb/mvc/assets/TableFile/vendor/jquery/jquery.min.js"></script>
+    <script src="http://localhost/DoAnWeb/mvc/assets/TableFile/vendor/jquery/jquery.min.js"></script>
+    <script src="http://localhost/DoAnWeb/mvc/assets/TableFile/vendor/jquery/jquery.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="http://localhost:8080/DoAnWeb/mvc/assets/TableFile/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="http://localhost/DoAnWeb/mvc/assets/TableFile/vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="http://localhost:8080/DoAnWeb/mvc/assets/TableFile/js/sb-admin-2.min.js"></script>
+    <script src="http://localhost/DoAnWeb/mvc/assets/TableFile/js/sb-admin-2.min.js"></script>
 
     <!-- Page level plugins -->
-    <script src="http://localhost:8080/DoAnWeb/mvc/assets/TableFile/vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="http://localhost:8080/DoAnWeb/mvc/assets/TableFile/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="http://localhost/DoAnWeb/mvc/assets/TableFile/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="http://localhost/DoAnWeb/mvc/assets/TableFile/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
     <!-- Page level custom scripts -->
-    <script src="http://localhost:8080/DoAnWeb/mvc/assets/TableFile/js/demo/datatables-demo.js"></script>
+    <script src="http://localhost/DoAnWeb/mvc/assets/TableFile/js/demo/datatables-demo.js"></script>
 
 </body>
+
 </html>

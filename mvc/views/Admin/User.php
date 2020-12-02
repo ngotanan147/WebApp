@@ -11,16 +11,16 @@
     <title>Delicious admin</title>
 
     <!-- Custom fonts for this template -->
-    <link href="http://localhost:8080/DoAnWeb/mvc/assets/TableFile/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="http://localhost/DoAnWeb/mvc/assets/TableFile/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <!-- Custom styles for this template -->
-    <link href="http://localhost:8080/DoAnWeb/mvc/assets/TableFile/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="http://localhost/DoAnWeb/mvc/assets/TableFile/css/sb-admin-2.min.css" rel="stylesheet">
 
     <!-- Custom styles for this page -->
-    <link href="http://localhost:8080/DoAnWeb/mvc/assets/TableFile/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="http://localhost/DoAnWeb/mvc/assets/TableFile/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
     <style>
         .nav-link {
             padding: 5px !important;
@@ -60,13 +60,13 @@
             <!-- Nav Item - Tables -->
 
             <li class="nav-item active">
-                <a class="nav-link" href="http://localhost:8080/Doanweb/Admin">
+                <a class="nav-link" href="http://localhost/Doanweb/Admin">
                     <i class="fas fa-fw fa-table"></i>
                     <span>User</span></a>
             </li>
 
             <li class="nav-item active">
-                <a class="nav-link" href="http://localhost:8080/Doanweb/Admin/product">
+                <a class="nav-link" href="http://localhost/Doanweb/Admin/product">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Product</span></a>
             </li>
@@ -128,7 +128,7 @@
                                             <td><?php echo $row["user_password"] ?></td>
                                             <td><?php echo $row["user_role"] ?></td>
                                             <td class="d-flex justify-content-around">
-                                                <a href="http://localhost:8080/Doanweb/Admin/showEditData/<?php echo $row["user_id"] ?>">
+                                                <a href="http://localhost/Doanweb/Admin/showEditData/<?php echo $row["user_id"] ?>">
                                                     <i style="color:#999" class="fa fa-wrench fa-lg function"
                                                         aria-hidden="true"></i>
                                                         
@@ -165,7 +165,7 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                        <form action="http://localhost:8080/Doanweb/Admin/addUser" method="POST">
+                        <form action="http://localhost/Doanweb/Admin/addUser" method="POST">
                             <div class="form-group">
                                 <input name="name" type="text" class="form-control" id="exampleInputEmail" placeholder="Name">
                             </div>
@@ -214,21 +214,21 @@
 
 
     <!-- Bootstrap core JavaScript-->
-    <script src="http://localhost:8080/DoAnWeb/mvc/assets/TableFile/vendor/jquery/jquery.min.js"></script>
-    <script src="http://localhost:8080/DoAnWeb/mvc/assets/TableFile/vendor/jquery/jquery.min.js"></script>
+    <script src="http://localhost/DoAnWeb/mvc/assets/TableFile/vendor/jquery/jquery.min.js"></script>
+    <script src="http://localhost/DoAnWeb/mvc/assets/TableFile/vendor/jquery/jquery.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="http://localhost:8080/DoAnWeb/mvc/assets/TableFile/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="http://localhost/DoAnWeb/mvc/assets/TableFile/vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="http://localhost:8080/DoAnWeb/mvc/assets/TableFile/js/sb-admin-2.min.js"></script>
+    <script src="http://localhost/DoAnWeb/mvc/assets/TableFile/js/sb-admin-2.min.js"></script>
 
     <!-- Page level plugins -->
-    <script src="http://localhost:8080/DoAnWeb/mvc/assets/TableFile/vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="http://localhost:8080/DoAnWeb/mvc/assets/TableFile/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="http://localhost/DoAnWeb/mvc/assets/TableFile/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="http://localhost/DoAnWeb/mvc/assets/TableFile/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
     <!-- Page level custom scripts -->
-    <script src="http://localhost:8080/DoAnWeb/mvc/assets/TableFile/js/demo/datatables-demo.js"></script>
+    <script src="http://localhost/DoAnWeb/mvc/assets/TableFile/js/demo/datatables-demo.js"></script>
 
 </body>
 </html>

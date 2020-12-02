@@ -1,11 +1,11 @@
 <?php
     class Register extends Controller {
         function default(){
-            Header("location:http://localhost:8080/Doanweb/Register");
+            Header("location:http://localhost/Doanweb/Register");
         }
         function SayHi(){   
             if (isset($_SESSION["email"])){
-                Header("Location:http://localhost:8080/Doanweb/");
+                Header("Location:http://localhost/Doanweb/");
             }
             else{
                 $this->getView("Register");
@@ -23,18 +23,23 @@
                 $email = $_POST['email'];
                 $password = $_POST['password'];
                 if (!empty($model->getUserByEmail($email))){
-                    $this->getView("Register", [
-                        'display' => 'block'
-                    ]);
+                    // Header("Location:http://localhost/Doanweb/Register");
+                    $this->registerFail();
                 }
                 else{
                     $model->addUser($name, $email, $password, 'User');
                     // session_start();
                     // $_SESSION['email'] = $email;
-                    // Header("Location:http://localhost:8080/Doanweb/");
-                    Header("Location:http://localhost:8080/Doanweb/Login");
+                    // Header("Location:http://localhost/Doanweb/");
+                    Header("Location:http://localhost/Doanweb/Login");
                 }
             }
+        }
+
+        function registerFail(){
+            $this->getView("Register", [
+                'display' => 'block',
+            ]);
         }
 
     }
