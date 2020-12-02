@@ -1,3 +1,7 @@
+<?php
+
+?>
+
 <html>
 
 <head>
@@ -16,17 +20,16 @@
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <link rel="stylesheet" href="./mvc/views/html/Header_Footer.css">
     <style>
-    .rangcua {
-        float: left;
-        background-image: url('https://scontent.fsgn2-3.fna.fbcdn.net/v/t1.0-9/cp0/127278858_1774477026062519_9031826519242504429_n.jpg?_nc_cat=106&ccb=2&_nc_sid=0debeb&_nc_ohc=oS-U_9Bh4ugAX9diGNo&_nc_ht=scontent.fsgn2-3.fna&oh=1709f649e8f5b5fab84893a3287a56c1&oe=5FE9063C');
-        background-repeat: repeat-x;
-        height: 7px;
-        width: 100%;
-        display: block;
-        position: absolute;
-        z-index: 3;
-    }
-
+        .rangcua {
+            float: left;
+            background-image: url('https://scontent.fsgn2-3.fna.fbcdn.net/v/t1.0-9/cp0/127278858_1774477026062519_9031826519242504429_n.jpg?_nc_cat=106&ccb=2&_nc_sid=0debeb&_nc_ohc=oS-U_9Bh4ugAX9diGNo&_nc_ht=scontent.fsgn2-3.fna&oh=1709f649e8f5b5fab84893a3287a56c1&oe=5FE9063C');
+            background-repeat: repeat-x;
+            height: 7px;
+            width: 100%;
+            display: block;
+            position: absolute;
+            z-index: 3;
+        }
     </style>
 </head>
 
@@ -46,23 +49,42 @@
                     <div class="header_search">
                         <form action="">
                             <input type="text" placeholder="Tìm sản phẩm">
-                            <button class="btn" type="button">
+                            <button class="btn" type="button" style="top: 16px">
                                 <i class="fa fa-search"></i>
                             </button>
                         </form>
                     </div>
                 </div>
-                <div class="hidden-xs col-sm-6 col-md-2 col-lg-2">
+                <div class="hidden-xs col-sm-6 col-md-2 col-lg-2 pt-2">
                     <ul class="top_right">
-                        <li>
-                            <a href="">Đăng nhập</a>
-                        </li>
-                        <li>
-                            <a href="">&</a>
-                        </li>
-                        <li>
-                            <a href="">Đăng ký</a>
-                        </li>
+                        <?php
+                        if (!isset($_SESSION['email'])) {
+                        ?>
+                            <li>
+                                <a href="http://localhost/Doanweb/login">Đăng nhập</a>
+                            </li>
+                            <li>
+                                <a href="">&</a>
+                            </li>
+                            <li>
+                                <a href="http://localhost/Doanweb/register">Đăng ký</a>
+                            </li>
+                        <?php } else {
+                        ?>
+                            <?php
+                            ?>
+                            <li>
+                                <a href="http://localhost/Doanweb/Account">Tài khoản</a>
+                            </li>
+                            <li>
+                                <a href="">&</a>
+                            </li>
+                            <li>
+                                <a href="http://localhost/Doanweb/Logout">Đăng xuất</a>
+                            </li>
+                        <?php
+                        } ?>
+
                     </ul>
                 </div>
             </div>

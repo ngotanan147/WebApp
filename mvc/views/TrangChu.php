@@ -1,5 +1,6 @@
 <?php
-    require_once "./mvc/views/html/Header.html";
+    // require_once "./mvc/views/html/Header.html";
+    require_once "Header.php";
 ?>
 
 <html>
@@ -25,11 +26,7 @@
 </head>
 
 <body>
-    <div class="text-center">
-        <h4>Test</h4>
-        <h4>Xin chào User: <?php echo $_SESSION['email'] ?> </h4>   
-        <a style="font-size: 20px" href="http://localhost/Doanweb/Logout">Log out</a>
-    </div>
+
 
     <!-- Slider carousel -->
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">

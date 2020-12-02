@@ -3,7 +3,7 @@ class Home extends Controller
 {
     function SayHi()
     {
-        $this->getView("Cart", []);
+        $this->getView("TrangChu", []);
     }
 
     function show()
