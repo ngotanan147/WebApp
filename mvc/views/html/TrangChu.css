@@ -2,7 +2,7 @@
     width: 100%;
     float: left;
     padding-top: 60px;
-    background-image: url("./mvc/views/html/img_doan/background.png");
+    background-image: url("https://scontent.fsgn2-4.fna.fbcdn.net/v/t1.0-9/cp0/127243818_1774477089395846_1556559475064294708_n.jpg?_nc_cat=109&ccb=2&_nc_sid=0debeb&_nc_ohc=cSecq6N2ccwAX8-SQV2&_nc_ht=scontent.fsgn2-4.fna&oh=0c58f35c01385ae8ce27458b39bb289a&oe=5FEE4B84");
     background-repeat: repeat;
 }
 
@@ -27,11 +27,10 @@
     width: 100%;
     float: left;
     padding: 8px;
-    height: 61%;
 }
 
-.swiper-slide:hover{
-    box-shadow: 5px 0px 40px rgba(0,0,0, .2);
+.swiper-slide:hover {
+    box-shadow: 5px 0px 40px rgba(0, 0, 0, .2);
 }
 
 .swiper-slide img {
@@ -51,7 +50,6 @@
     float: left;
     display: flex;
     align-items: center;
-
 }
 
 .image_product:hover img {
@@ -139,7 +137,7 @@
     width: 100%;
     float: left;
     padding-top: 60px;
-    background-image: url("./mvc/views/html/img_doan/background2.png");
+    background-image: url("https://scontent.fsgn2-4.fna.fbcdn.net/v/t1.0-9/cp0/127218423_1774477042729184_7805387329735874085_n.jpg?_nc_cat=101&ccb=2&_nc_sid=0debeb&_nc_ohc=uheyKVoZiuEAX9g_TMO&_nc_ht=scontent.fsgn2-4.fna&oh=2d91fb696031735be6460ee3e2dfbf75&oe=5FEF35C2");
     background-repeat: repeat;
 }
 
@@ -148,12 +146,11 @@
     align-items: center;
     justify-content: center;
     background-color: #fff;
-    border-top-left-radius: 100%;
+    /* border-top-left-radius: 100%;
     border-bottom-left-radius: 100%;
     border-top-right-radius: 100%;
-    border-bottom-right-radius: 100%;
+    border-bottom-right-radius: 100%; */
     border: 1px solid #ebebeb;
-
 }
 
 .list_monan ul li {
@@ -162,7 +159,6 @@
     display: inline-block;
     padding: 10px 50px;
     cursor: pointer;
-
 }
 
 .list_monan ul li a {
@@ -171,7 +167,6 @@
     font-family: 'Open Sans', sans-serif;
     color: #333;
     line-height: 1.222;
-
 }
 
 .list_monan current {
@@ -225,12 +220,10 @@
     .navbar-dark .navbar-nav .nav-item {
         padding: 10px 10px;
     }
-
     .navbar-dark .navbar-nav .nav-link {
         font-size: 14px;
     }
 }
-
 
 @media only screen and (max-width: 500px) {
     .logo img {
@@ -248,20 +241,16 @@
     .navbar-dark .navbar-nav {
         padding-top: 10px
     }
-
     .navbar-dark .navbar-nav .nav-item {
         padding-top: 5px;
         padding-left: 0 !important;
     }
-
     .navbar-dark .navbar-nav .nav-link {
         font-size: 18px;
     }
-
     .cart {
         margin-right: 5px;
     }
-
 }
 
 @media only screen and (min-width: 769px) {
@@ -273,7 +262,6 @@
         top: 55%;
         left: -235px;
     }
-
     .monannoibat_title h2 a::after {
         content: "";
         width: 215px;

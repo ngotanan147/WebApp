@@ -1,6 +1,6 @@
 <?php
-    // require_once "./mvc/views/html/Header.html";
-    require_once "Header.php";
+// require_once "./mvc/views/html/Header.html";
+require_once "Header.php";
 ?>
 
 <html>
@@ -23,6 +23,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="./mvc/views/html/TrangChu.css">
+    <style>
+    </style>
 </head>
 
 <body>
@@ -70,8 +72,8 @@
             <div class="slider-sub">
                 <div class="container-fluid p-5">
                     <div class="swiper-container">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide">
+                        <div class="swiper-wrapper" style="height:auto">
+                            <div class="swiper-slide" style="max-height: 480px;">
                                 <div class="image">
                                     <a class="image_product" href="">
                                         <img src="./mvc/views/html/img_doan/monannoibat (1).jpg" alt="">
@@ -95,7 +97,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="swiper-slide">
+                            <div class="swiper-slide" style="max-height: 480px;">
                                 <div class="image">
                                     <a class="image_product" href="">
                                         <img src="./mvc/views/html/img_doan/monannoibat (2).jpg" alt="">
@@ -119,7 +121,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="swiper-slide">
+                            <div class="swiper-slide" style="max-height: 480px;">
                                 <div class="image">
                                     <a class="image_product" href="">
                                         <img src="./mvc/views/html/img_doan/monannoibat (3).jpg" alt="">
@@ -143,7 +145,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="swiper-slide">
+                            <div class="swiper-slide" style="max-height: 480px;">
                                 <div class="image">
                                     <a class="image_product" href="">
                                         <img src="./mvc/views/html/img_doan/monannoibat (5).jpg" alt="">
@@ -167,7 +169,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="swiper-slide">
+                            <div class="swiper-slide" style="max-height: 480px;">
                                 <div class="image">
                                     <a class="image_product" href="">
                                         <img src="./mvc/views/html/img_doan/monannoibat (6).jpg" alt="">
@@ -191,7 +193,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="swiper-slide">
+                            <div class="swiper-slide" style="max-height: 480px;">
                                 <div class="image">
                                     <a class="image_product" href="">
                                         <img src="./mvc/views/html/img_doan/monannoibat (7).jpg" alt="">
@@ -215,11 +217,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- <div class="swiper-slide"><img src="./mvc/views/html/img_doan/monannoibat (2).jpg" alt=""></div>
-                            <div class="swiper-slide"><img src="./mvc/views/html/img_doan/monannoibat (3).jpg" alt=""></div>
-                            <div class="swiper-slide"><img src="./mvc/views/html/img_doan/monannoibat (5).jpg" alt=""></div>
-                            <div class="swiper-slide"><img src="./mvc/views/html/img_doan/monannoibat (6).jpg" alt=""></div>
-                            <div class="swiper-slide"><img src="./mvc/views/html/img_doan/monannoibat (7).jpg" alt=""></div> -->
                         </div>
 
                         <!-- Add Pagination -->
@@ -264,8 +261,7 @@
                     <div class="col-lg-3 col-md-6 mb-5">
                         <div class="">
                             <div class="image">
-                                <a href=""><img src="./mvc/views/html/img_doan/dsmonan.jpg" alt=""
-                                        style="max-width: 100%; max-height: 100%"></a>
+                                <a href=""><img src="./mvc/views/html/img_doan/dsmonan.jpg" alt="" style="max-width: 100%; max-height: 100%"></a>
                             </div>
                             <div class="info" style="display:flex">
                                 <div class="infoLeft">
@@ -290,8 +286,7 @@
                     <div class="col-lg-3 col-md-6 mb-5">
                         <div class="">
                             <div class="image">
-                                <a href=""><img src="./mvc/views/html/img_doan/dsmonan.jpg" alt=""
-                                        style="max-width: 100%; max-height: 100%"></a>
+                                <a href=""><img src="./mvc/views/html/img_doan/dsmonan.jpg" alt="" style="max-width: 100%; max-height: 100%"></a>
                             </div>
                             <div class="info" style="display:flex">
                                 <div class="infoLeft">
@@ -316,8 +311,7 @@
                     <div class="col-lg-3 col-md-6 mb-5">
                         <div class="">
                             <div class="image">
-                                <a href=""><img src="./mvc/views/html/img_doan/dsmonan.jpg" alt=""
-                                        style="max-width: 100%; max-height: 100%"></a>
+                                <a href=""><img src="./mvc/views/html/img_doan/dsmonan.jpg" alt="" style="max-width: 100%; max-height: 100%"></a>
                             </div>
                             <div class="info" style="display:flex">
                                 <div class="infoLeft">
@@ -341,8 +335,7 @@
                     <div class="col-lg-3 col-md-6 mb-5">
                         <div class="">
                             <div class="image">
-                                <a href=""><img src="./mvc/views/html/img_doan/dsmonan.jpg" alt=""
-                                        style="max-width: 100%; max-height: 100%"></a>
+                                <a href=""><img src="./mvc/views/html/img_doan/dsmonan.jpg" alt="" style="max-width: 100%; max-height: 100%"></a>
                             </div>
                             <div class="info" style="display:flex">
                                 <div class="infoLeft">
@@ -371,8 +364,7 @@
                     <div class="col-lg-3 col-md-6 mb-5">
                         <div class="">
                             <div class="image">
-                                <a href=""><img src="./mvc/views/html/img_doan/download.jpg" alt=""
-                                        style="max-width: 100%; max-height: 100%"></a>
+                                <a href=""><img src="./mvc/views/html/img_doan/download.jpg" alt="" style="max-width: 100%; max-height: 100%"></a>
                             </div>
                             <div class="info" style="display:flex">
                                 <div class="infoLeft">
@@ -397,8 +389,7 @@
                     <div class="col-lg-3 col-md-6 mb-5">
                         <div class="">
                             <div class="image">
-                                <a href=""><img src="./mvc/views/html/img_doan/dsmonan.jpg" alt=""
-                                        style="max-width: 100%; max-height: 100%"></a>
+                                <a href=""><img src="./mvc/views/html/img_doan/dsmonan.jpg" alt="" style="max-width: 100%; max-height: 100%"></a>
                             </div>
                             <div class="info" style="display:flex">
                                 <div class="infoLeft">
@@ -423,8 +414,7 @@
                     <div class="col-lg-3 col-md-6 mb-5">
                         <div class="">
                             <div class="image">
-                                <a href=""><img src="./mvc/views/html/img_doan/dsmonan.jpg" alt=""
-                                        style="max-width: 100%; max-height: 100%"></a>
+                                <a href=""><img src="./mvc/views/html/img_doan/dsmonan.jpg" alt="" style="max-width: 100%; max-height: 100%"></a>
                             </div>
                             <div class="info" style="display:flex">
                                 <div class="infoLeft">
@@ -448,8 +438,7 @@
                     <div class="col-lg-3 col-md-6 mb-5">
                         <div class="">
                             <div class="image">
-                                <a href=""><img src="./mvc/views/html/img_doan/dsmonan.jpg" alt=""
-                                        style="max-width: 100%; max-height: 100%"></a>
+                                <a href=""><img src="./mvc/views/html/img_doan/dsmonan.jpg" alt="" style="max-width: 100%; max-height: 100%"></a>
                             </div>
                             <div class="info" style="display:flex">
                                 <div class="infoLeft">
@@ -478,8 +467,7 @@
                     <div class="col-lg-3 col-md-6 mb-5">
                         <div class="">
                             <div class="image">
-                                <a href=""><img src="./mvc/views/html/img_doan/dsmonan.jpg" alt=""
-                                        style="max-width: 100%; max-height: 100%"></a>
+                                <a href=""><img src="./mvc/views/html/img_doan/dsmonan.jpg" alt="" style="max-width: 100%; max-height: 100%"></a>
                             </div>
                             <div class="info" style="display:flex">
                                 <div class="infoLeft">
@@ -504,8 +492,7 @@
                     <div class="col-lg-3 col-md-6 mb-5">
                         <div class="">
                             <div class="image">
-                                <a href=""><img src="./mvc/views/html/img_doan/download.jpg" alt=""
-                                        style="max-width: 100%; max-height: 100%"></a>
+                                <a href=""><img src="./mvc/views/html/img_doan/download.jpg" alt="" style="max-width: 100%; max-height: 100%"></a>
                             </div>
                             <div class="info" style="display:flex">
                                 <div class="infoLeft">
@@ -530,8 +517,7 @@
                     <div class="col-lg-3 col-md-6 mb-5">
                         <div class="">
                             <div class="image">
-                                <a href=""><img src="./mvc/views/html/img_doan/dsmonan.jpg" alt=""
-                                        style="max-width: 100%; max-height: 100%"></a>
+                                <a href=""><img src="./mvc/views/html/img_doan/dsmonan.jpg" alt="" style="max-width: 100%; max-height: 100%"></a>
                             </div>
                             <div class="info" style="display:flex">
                                 <div class="infoLeft">
@@ -555,8 +541,7 @@
                     <div class="col-lg-3 col-md-6 mb-5">
                         <div class="">
                             <div class="image">
-                                <a href=""><img src="./mvc/views/html/img_doan/dsmonan.jpg" alt=""
-                                        style="max-width: 100%; max-height: 100%"></a>
+                                <a href=""><img src="./mvc/views/html/img_doan/dsmonan.jpg" alt="" style="max-width: 100%; max-height: 100%"></a>
                             </div>
                             <div class="info" style="display:flex">
                                 <div class="infoLeft">
@@ -585,8 +570,7 @@
                     <div class="col-lg-3 col-md-6 mb-5">
                         <div class="">
                             <div class="image">
-                                <a href=""><img src="./mvc/views/html/img_doan/dsmonan.jpg" alt=""
-                                        style="max-width: 100%; max-height: 100%"></a>
+                                <a href=""><img src="./mvc/views/html/img_doan/dsmonan.jpg" alt="" style="max-width: 100%; max-height: 100%"></a>
                             </div>
                             <div class="info" style="display:flex">
                                 <div class="infoLeft">
@@ -611,8 +595,7 @@
                     <div class="col-lg-3 col-md-6 mb-5">
                         <div class="">
                             <div class="image">
-                                <a href=""><img src="./mvc/views/html/img_doan/dsmonan.jpg" alt=""
-                                        style="max-width: 100%; max-height: 100%"></a>
+                                <a href=""><img src="./mvc/views/html/img_doan/dsmonan.jpg" alt="" style="max-width: 100%; max-height: 100%"></a>
                             </div>
                             <div class="info" style="display:flex">
                                 <div class="infoLeft">
@@ -637,8 +620,7 @@
                     <div class="col-lg-3 col-md-6 mb-5">
                         <div class="">
                             <div class="image">
-                                <a href=""><img src="./mvc/views/html/img_doan/download.jpg" alt=""
-                                        style="max-width: 100%; max-height: 100%"></a>
+                                <a href=""><img src="./mvc/views/html/img_doan/download.jpg" alt="" style="max-width: 100%; max-height: 100%"></a>
                             </div>
                             <div class="info" style="display:flex">
                                 <div class="infoLeft">
@@ -662,8 +644,7 @@
                     <div class="col-lg-3 col-md-6 mb-5">
                         <div class="">
                             <div class="image">
-                                <a href=""><img src="./mvc/views/html/img_doan/dsmonan.jpg" alt=""
-                                        style="max-width: 100%; max-height: 100%"></a>
+                                <a href=""><img src="./mvc/views/html/img_doan/dsmonan.jpg" alt="" style="max-width: 100%; max-height: 100%"></a>
                             </div>
                             <div class="info" style="display:flex">
                                 <div class="infoLeft">
@@ -692,8 +673,7 @@
                     <div class="col-lg-3 col-md-6 mb-5">
                         <div class="">
                             <div class="image">
-                                <a href=""><img src="./mvc/views/html/img_doan/dsmonan.jpg" alt=""
-                                        style="max-width: 100%; max-height: 100%"></a>
+                                <a href=""><img src="./mvc/views/html/img_doan/dsmonan.jpg" alt="" style="max-width: 100%; max-height: 100%"></a>
                             </div>
                             <div class="info" style="display:flex">
                                 <div class="infoLeft">
@@ -718,8 +698,7 @@
                     <div class="col-lg-3 col-md-6 mb-5">
                         <div class="">
                             <div class="image">
-                                <a href=""><img src="./mvc/views/html/img_doan/dsmonan.jpg" alt=""
-                                        style="max-width: 100%; max-height: 100%"></a>
+                                <a href=""><img src="./mvc/views/html/img_doan/dsmonan.jpg" alt="" style="max-width: 100%; max-height: 100%"></a>
                             </div>
                             <div class="info" style="display:flex">
                                 <div class="infoLeft">
@@ -744,8 +723,7 @@
                     <div class="col-lg-3 col-md-6 mb-5">
                         <div class="">
                             <div class="image">
-                                <a href=""><img src="./mvc/views/html/img_doan/download.jpg" alt=""
-                                        style="max-width: 100%; max-height: 100%"></a>
+                                <a href=""><img src="./mvc/views/html/img_doan/download.jpg" alt="" style="max-width: 100%; max-height: 100%"></a>
                             </div>
                             <div class="info" style="display:flex">
                                 <div class="infoLeft">
@@ -769,8 +747,7 @@
                     <div class="col-lg-3 col-md-6 mb-5">
                         <div class="">
                             <div class="image">
-                                <a href=""><img src="./mvc/views/html/img_doan/dsmonan.jpg" alt=""
-                                        style="max-width: 100%; max-height: 100%"></a>
+                                <a href=""><img src="./mvc/views/html/img_doan/dsmonan.jpg" alt="" style="max-width: 100%; max-height: 100%"></a>
                             </div>
                             <div class="info" style="display:flex">
                                 <div class="infoLeft">
@@ -797,141 +774,144 @@
         </div>
 
     </div>
-    <div class="monannoibat_title text-center ">
-        <div class="icon_cupcake text-center">
-            <img class="pt-5" src="./mvc/views/html/img_doan/cupcake.png" alt="" style="max-width: 100%;height: auto;">
-        </div>
-        <h2 style="display:inline-block;">
-            <a href="">Blog</a>
-        </h2>
-        <div class="slider">
-            <div class="slider-sub">
-                <div class="container-fluid p-5">
-                    <div class="swiper-container">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <div class="image">
-                                    <a class="image_product" href="">
-                                        <img src="./mvc/views/html/img_doan/monannoibat (1).jpg" alt="">
-                                    </a>
-                                </div>
-                                <div class="info">
-                                    <div class="infoLeft">
-                                        <h3 class=title>
-                                            <a href="">
-                                                Title of blog
-                                            </a>
-                                        </h3>
+    <div style="background-img: url('https://scontent.fsgn2-4.fna.fbcdn.net/v/t1.0-9/cp0/127243818_1774477089395846_1556559475064294708_n.jpg?_nc_cat=109&ccb=2&_nc_sid=0debeb&_nc_ohc=cSecq6N2ccwAX8-SQV2&_nc_ht=scontent.fsgn2-4.fna&oh=0c58f35c01385ae8ce27458b39bb289a&oe=5FEE4B84')">
+        <div class="monannoibat_title text-center ">
+            <div class="icon_cupcake text-center">
+                <img class="pt-5" src="./mvc/views/html/img_doan/cupcake.png" alt="" style="max-width: 100%;height: auto;">
+            </div>
+            <h2 style="display:inline-block;">
+                <a href="">Blog</a>
+            </h2>
+            <div class="slider" style="">
+                <div class="slider-sub">
+                    <div class="container-fluid p-5">
+                        <div class="swiper-container">
+                            <div class="swiper-wrapper" style="height:auto">
+                                <div class="swiper-slide" style="max-height: 480px;">
+                                    <div class="image">
+                                        <a class="image_product" href="">
+                                            <img src="./mvc/views/html/img_doan/monannoibat (1).jpg" alt="">
+                                        </a>
                                     </div>
-                                    <div class="infoRight">
-                                        <button>Xem chi tiết</button>
+                                    <div class="info">
+                                        <div class="infoLeft">
+                                            <h3 class=title>
+                                                <a href="">
+                                                    Title of blog
+                                                </a>
+                                            </h3>
+                                        </div>
+                                        <div class="infoRight">
+                                            <button>Xem chi tiết</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide" style="max-height: 480px;">
+                                    <div class="image">
+                                        <a class="image_product" href="">
+                                            <img src="./mvc/views/html/img_doan/monannoibat (2).jpg" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="info">
+                                        <div class="infoLeft">
+                                            <h3 class=title>
+                                                <a href="">
+                                                    Title of blog
+                                                </a>
+                                            </h3>
+                                        </div>
+                                        <div class="infoRight">
+                                            <button>Xem chi tiết</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide" style="max-height: 480px;">
+                                    <div class="image">
+                                        <a class="image_product" href="">
+                                            <img src="./mvc/views/html/img_doan/monannoibat (3).jpg" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="info">
+                                        <div class="infoLeft">
+                                            <h3 class=title>
+                                                <a href="">
+                                                    Title of blog
+                                                </a>
+                                            </h3>
+                                        </div>
+                                        <div class="infoRight">
+                                            <button>Xem chi tiết</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide" style="max-height: 480px;">
+                                    <div class="image">
+                                        <a class="image_product" href="">
+                                            <img src="./mvc/views/html/img_doan/monannoibat (5).jpg" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="info">
+                                        <div class="infoLeft">
+                                            <h3 class=title>
+                                                <a href="">
+                                                    Title of blog
+                                                </a>
+                                            </h3>
+                                        </div>
+                                        <div class="infoRight">
+                                            <button>Xem chi tiết</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide" style="max-height: 480px;">
+                                    <div class="image">
+                                        <a class="image_product" href="">
+                                            <img src="./mvc/views/html/img_doan/monannoibat (6).jpg" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="info">
+                                        <div class="infoLeft">
+                                            <h3 class=title>
+                                                <a href="">
+                                                    Title of blog
+                                                </a>
+                                            </h3>
+                                        </div>
+                                        <div class="infoRight">
+                                            <button>Xem chi tiết</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide" style="max-height: 480px;">
+                                    <div class="image">
+                                        <a class="image_product" href="">
+                                            <img src="./mvc/views/html/img_doan/monannoibat (7).jpg" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="info">
+                                        <div class="infoLeft">
+                                            <h3 class=title>
+                                                <a href="">
+                                                    Title of blog
+                                                </a>
+                                            </h3>
+                                        </div>
+                                        <div class="infoRight">
+                                            <button>Xem chi tiết</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="swiper-slide">
-                                <div class="image">
-                                    <a class="image_product" href="">
-                                        <img src="./mvc/views/html/img_doan/monannoibat (2).jpg" alt="">
-                                    </a>
-                                </div>
-                                <div class="info">
-                                    <div class="infoLeft">
-                                        <h3 class=title>
-                                            <a href="">
-                                                Title of blog
-                                            </a>
-                                        </h3>
-                                    </div>
-                                    <div class="infoRight">
-                                        <button>Xem chi tiết</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="image">
-                                    <a class="image_product" href="">
-                                        <img src="./mvc/views/html/img_doan/monannoibat (3).jpg" alt="">
-                                    </a>
-                                </div>
-                                <div class="info">
-                                    <div class="infoLeft">
-                                        <h3 class=title>
-                                            <a href="">
-                                                Title of blog
-                                            </a>
-                                        </h3>
-                                    </div>
-                                    <div class="infoRight">
-                                        <button>Xem chi tiết</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="image">
-                                    <a class="image_product" href="">
-                                        <img src="./mvc/views/html/img_doan/monannoibat (5).jpg" alt="">
-                                    </a>
-                                </div>
-                                <div class="info">
-                                    <div class="infoLeft">
-                                        <h3 class=title>
-                                            <a href="">
-                                                Title of blog
-                                            </a>
-                                        </h3>
-                                    </div>
-                                    <div class="infoRight">
-                                        <button>Xem chi tiết</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="image">
-                                    <a class="image_product" href="">
-                                        <img src="./mvc/views/html/img_doan/monannoibat (6).jpg" alt="">
-                                    </a>
-                                </div>
-                                <div class="info">
-                                    <div class="infoLeft">
-                                        <h3 class=title>
-                                            <a href="">
-                                                Title of blog
-                                            </a>
-                                        </h3>
-                                    </div>
-                                    <div class="infoRight">
-                                        <button>Xem chi tiết</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="image">
-                                    <a class="image_product" href="">
-                                        <img src="./mvc/views/html/img_doan/monannoibat (7).jpg" alt="">
-                                    </a>
-                                </div>
-                                <div class="info">
-                                    <div class="infoLeft">
-                                        <h3 class=title>
-                                            <a href="">
-                                                Title of blog
-                                            </a>
-                                        </h3>
-                                    </div>
-                                    <div class="infoRight">
-                                        <button>Xem chi tiết</button>
-                                    </div>
-                                </div>
-                            </div>
+                            <!-- Add Pagination -->
+                            <div class="swiper-pagination"></div>
                         </div>
-                        <!-- Add Pagination -->
-                        <div class="swiper-pagination"></div>
                     </div>
                 </div>
-            </div>
 
+            </div>
         </div>
     </div>
+
 </body>
 
 </html>
@@ -977,7 +957,7 @@
 
 <script>
     for (let i = 1; i <= 5; i++) {
-        $(".tab-link" + i).click(function () {
+        $(".tab-link" + i).click(function() {
             $(".tab-link" + i).addClass("current");
             $(".tab" + i).addClass("current");
             for (let j = 1; j <= 5; j++) {
@@ -993,4 +973,3 @@
 <?php
 require_once "./mvc/views/html/Footer.html";
 ?>
-
