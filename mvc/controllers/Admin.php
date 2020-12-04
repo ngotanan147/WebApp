@@ -1,50 +1,56 @@
 <?php
-class Admin extends Controller {
+class Admin extends Controller
+{
+    private $model;
 
-    function defaultUser(){
+    function __construct()
+    {
+        $this->model = $this->getModel("UserModel");
+    }
+
+    function defaultUser()
+    {
         Header("location:http://localhost/Doanweb/Admin");
     }
 
-    function SayHi(){
-        $user = $this->getModel("UserModel");
-
+    function SayHi()
+    {
         $this->getViewAdmin("User", [
-            "user" => $user->getUser()
-        ]);
-
-    }
-
-    function deleteUser($id){
-        $this->defaultUser();
-        $user = $this->getModel("UserModel");
-        $user->deleteUser($id);
-
-        $this->getViewAdmin("User", [
-            "user" => $user->getUser(),
+            "user" => $this->model->getUser()
         ]);
     }
 
-    function addUser(){
+    function deleteUser($id)
+    {
         $this->defaultUser();
-        $user = $this->getModel("UserModel");
+        $this->model->deleteUser($id);
+    }
 
-        if (isset($_POST["addUser"])){
-            $name = $_POST["name"];
-            $email = $_POST["email"];
-            $password = $_POST["password"];
-            if ($_POST["role"] == "Admin"){
+    function addUser()
+    {
+        $this->defaultUser();
+
+        if (isset($_POST["addUser"])) {
+            $role = 1;
+            if ($_POST["role"] == "Admin") {
                 $role = 0;
             } else {
                 $role = 1;
             }
-            $user->addUser($name, $email, $password, $role);
-        }   
 
+            $data = [
+                'user_name' => $_POST["name"],
+                'user_email' => $_POST["email"],
+                'user_password' => $_POST["password"],
+                'user_role' => $role
+            ];
+            $this->model->addUser($data);
+        }
     }
 
-    function showEditData($id){
-        $user = $this->getModel("UserModel");
-        $data = $user->getUserById($id);
+    function showEditData($id)
+    {
+        $data = $this->model->getUserById($id);
 
         $this->getViewAdmin("UserEdit", [
             "id" => $data["user_id"],
@@ -52,53 +58,29 @@ class Admin extends Controller {
             "email" => $data["user_email"],
             "password" => $data["user_password"],
             "role" => $data["user_role"],
-            "user" => $user->getUser(),
-
+            "user" => $this->model->getUser(),
         ]);
-        
     }
 
-    function editUser($id){
+    function editUser($id)
+    {
         $this->defaultUser();
-        $user = $this->getModel("UserModel");
-        if (isset($_POST["editUser"])){
-            $name = $_POST["name"];
-            $email = $_POST["email"];
-            $password = $_POST["password"];
-            if ($_POST["role"] == "Admin"){
+        if (isset($_POST["editUser"])) {
+            $role = 1;
+            if ($_POST["role"] == "Admin") {
                 $role = 0;
             } else {
                 $role = 1;
             }
-            $user->editUser($id ,$name, $email, $password, $role);
+
+            $data =  [
+                "user_name" => $_POST["name"],
+                "user_email" => $_POST["email"],
+                "user_password" => $_POST["password"],
+                "user_role" => $role,
+            ];
+
+            $this->model->editUser($id, $data);
         }
-
-        $this->getViewAdmin("User", [
-            "user" => $user->getUser(),
-        ]);
     }
-
-    // Product ------------------------------------------------------------------------------------------------
-    function productDefault(){
-        Header("location:http://localhost/Doanweb/Admin/product");
-    }
-
-    function product(){
-        $model = $this->getModel("ProductModel");
-
-        $this->getViewAdmin("Product", [
-            "product" => $model->getProduct()
-        ]);
-    }
-
-    function deleteProduct($a ,$id){
-        $this->defaultUser();
-        $product = $this->getModel("ProductModel");
-        $product->deleteProduct($id);   
-
-        $this->getViewAdmin("Product", [
-            "product" => $product->getProduct(),
-        ]);
-    }
-
 }

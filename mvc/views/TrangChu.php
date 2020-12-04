@@ -3,6 +3,7 @@
 require_once "Header.php";
 ?>
 
+
 <html>
 
 <head>
@@ -24,6 +25,12 @@ require_once "Header.php";
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="./mvc/views/html/TrangChu.css">
     <style>
+        .item_list {
+            background: #fff !important;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 5px;
+        }
     </style>
 </head>
 
@@ -237,29 +244,33 @@ require_once "Header.php";
                 <a href="">Danh sách món ăn</a>
             </h2>
         </div>
-        <div class="list_monan text-center">
-            <ul class="tabs d-none d-md-flex d-lg-flex">
-                <li class="tab-link1 current"><a href="javascript:;">Bánh</a></li>
-                <li class="tab-link2 "><a href="javascript:;">Trà</a></li>
-                <li class="tab-link3 "><a href="javascript:;">Kem tươi</a></li>
-                <li class="tab-link4 "><a href="javascript:;">Cà phê</a></li>
-                <li class="tab-link5 "><a href="javascript:;">Nước ép</a></li>
-            </ul>
-            <div class="select-container d-lg-none d-md-none">
-                <select class="select" name="items" id="items">
-                    <option value="1">Bánh</option>
-                    <option value="2">Trà</option>
-                    <option value="3">Kem tươi</option>
-                    <option value="4">Cà phê</option>
-                    <option value="5">Nước ép</option>
-                </select>
+        <div class="listt">
+            <div class="list_monan text-center">
+                <ul class="tabs d-none d-md-block d-lg-block">
+                    <!-- d-none d-md-flex d-lg-flex -->
+                    <li class="tab-link1 current"><a href="javascript:;">Bánh</a></li>
+                    <li class="tab-link2 "><a href="javascript:;">Trà</a></li>
+                    <li class="tab-link3 "><a href="javascript:;">Kem tươi</a></li>
+                    <li class="tab-link4 "><a href="javascript:;">Cà phê</a></li>
+                    <li class="tab-link5 "><a href="javascript:;">Nước ép</a></li>
+                </ul>
+                <div class="select-container d-lg-none d-md-none">
+                    <select class="select" name="items" id="items">
+                        <option value="1">Bánh</option>
+                        <option value="2">Trà</option>
+                        <option value="3">Kem tươi</option>
+                        <option value="4">Cà phê</option>
+                        <option value="5">Nước ép</option>
+                    </select>
+                </div>
             </div>
         </div>
+
         <div class="container mb-5 monan">
             <div class="tab1 current">
                 <div class="row">
-                    <div class="col-lg-3 col-md-6 mb-5">
-                        <div class="">
+                    <div class="col-lg-3 col-md-6 mb-5 p-0">
+                        <div class="item_list">
                             <div class="image">
                                 <a href=""><img src="./mvc/views/html/img_doan/dsmonan.jpg" alt="" style="max-width: 100%; max-height: 100%"></a>
                             </div>
@@ -283,8 +294,8 @@ require_once "Header.php";
                         </div>
                     </div>
 
-                    <div class="col-lg-3 col-md-6 mb-5">
-                        <div class="">
+                    <div class="col-lg-3 col-md-6 mb-5 p-0">
+                        <div class="item_list">
                             <div class="image">
                                 <a href=""><img src="./mvc/views/html/img_doan/dsmonan.jpg" alt="" style="max-width: 100%; max-height: 100%"></a>
                             </div>
@@ -308,8 +319,8 @@ require_once "Header.php";
                         </div>
                     </div>
 
-                    <div class="col-lg-3 col-md-6 mb-5">
-                        <div class="">
+                    <div class="col-lg-3 col-md-6 mb-5 p-0">
+                        <div class="item_list">
                             <div class="image">
                                 <a href=""><img src="./mvc/views/html/img_doan/dsmonan.jpg" alt="" style="max-width: 100%; max-height: 100%"></a>
                             </div>
@@ -332,8 +343,8 @@ require_once "Header.php";
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6 mb-5">
-                        <div class="">
+                    <div class="col-lg-3 col-md-6 mb-5 p-0">
+                        <div class="item_list">
                             <div class="image">
                                 <a href=""><img src="./mvc/views/html/img_doan/dsmonan.jpg" alt="" style="max-width: 100%; max-height: 100%"></a>
                             </div>
@@ -360,416 +371,16 @@ require_once "Header.php";
                 </div>
             </div>
             <div class="tab2">
-                <div class="row">
-                    <div class="col-lg-3 col-md-6 mb-5">
-                        <div class="">
-                            <div class="image">
-                                <a href=""><img src="./mvc/views/html/img_doan/download.jpg" alt="" style="max-width: 100%; max-height: 100%"></a>
-                            </div>
-                            <div class="info" style="display:flex">
-                                <div class="infoLeft">
-                                    <h3 class=title>
-                                        <a href="">
-                                            Fruit Cream Puff
-                                        </a>
-                                    </h3>
-                                    <div class="box_price">
-                                        <span class="special_price">
-                                            <span class="price product-price">150.000₫</span>
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="infoRight">
-                                    <button>Thêm vào giỏ</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="col-lg-3 col-md-6 mb-5">
-                        <div class="">
-                            <div class="image">
-                                <a href=""><img src="./mvc/views/html/img_doan/dsmonan.jpg" alt="" style="max-width: 100%; max-height: 100%"></a>
-                            </div>
-                            <div class="info" style="display:flex">
-                                <div class="infoLeft">
-                                    <h3 class=title>
-                                        <a href="">
-                                            Fruit Cream Puff
-                                        </a>
-                                    </h3>
-                                    <div class="box_price">
-                                        <span class="special_price">
-                                            <span class="price product-price">150.000₫</span>
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="infoRight">
-                                    <button>Thêm vào giỏ</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6 mb-5">
-                        <div class="">
-                            <div class="image">
-                                <a href=""><img src="./mvc/views/html/img_doan/dsmonan.jpg" alt="" style="max-width: 100%; max-height: 100%"></a>
-                            </div>
-                            <div class="info" style="display:flex">
-                                <div class="infoLeft">
-                                    <h3 class=title>
-                                        <a href="">
-                                            Fruit Cream Puff
-                                        </a>
-                                    </h3>
-                                    <div class="box_price">
-                                        <span class="special_price">
-                                            <span class="price product-price">150.000₫</span>
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="infoRight">
-                                    <button>Thêm vào giỏ</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 mb-5">
-                        <div class="">
-                            <div class="image">
-                                <a href=""><img src="./mvc/views/html/img_doan/dsmonan.jpg" alt="" style="max-width: 100%; max-height: 100%"></a>
-                            </div>
-                            <div class="info" style="display:flex">
-                                <div class="infoLeft">
-                                    <h3 class=title>
-                                        <a href="">
-                                            Fruit Cream Puff
-                                        </a>
-                                    </h3>
-                                    <div class="box_price">
-                                        <span class="special_price">
-                                            <span class="price product-price">150.000₫</span>
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="infoRight">
-                                    <button>Thêm vào giỏ</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
             </div>
             <div class="tab3">
-                <div class="row">
-                    <div class="col-lg-3 col-md-6 mb-5">
-                        <div class="">
-                            <div class="image">
-                                <a href=""><img src="./mvc/views/html/img_doan/dsmonan.jpg" alt="" style="max-width: 100%; max-height: 100%"></a>
-                            </div>
-                            <div class="info" style="display:flex">
-                                <div class="infoLeft">
-                                    <h3 class=title>
-                                        <a href="">
-                                            Fruit Cream Puff
-                                        </a>
-                                    </h3>
-                                    <div class="box_price">
-                                        <span class="special_price">
-                                            <span class="price product-price">150.000₫</span>
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="infoRight">
-                                    <button>Thêm vào giỏ</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="col-lg-3 col-md-6 mb-5">
-                        <div class="">
-                            <div class="image">
-                                <a href=""><img src="./mvc/views/html/img_doan/download.jpg" alt="" style="max-width: 100%; max-height: 100%"></a>
-                            </div>
-                            <div class="info" style="display:flex">
-                                <div class="infoLeft">
-                                    <h3 class=title>
-                                        <a href="">
-                                            Fruit Cream Puff
-                                        </a>
-                                    </h3>
-                                    <div class="box_price">
-                                        <span class="special_price">
-                                            <span class="price product-price">150.000₫</span>
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="infoRight">
-                                    <button>Thêm vào giỏ</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6 mb-5">
-                        <div class="">
-                            <div class="image">
-                                <a href=""><img src="./mvc/views/html/img_doan/dsmonan.jpg" alt="" style="max-width: 100%; max-height: 100%"></a>
-                            </div>
-                            <div class="info" style="display:flex">
-                                <div class="infoLeft">
-                                    <h3 class=title>
-                                        <a href="">
-                                            Fruit Cream Puff
-                                        </a>
-                                    </h3>
-                                    <div class="box_price">
-                                        <span class="special_price">
-                                            <span class="price product-price">150.000₫</span>
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="infoRight">
-                                    <button>Thêm vào giỏ</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 mb-5">
-                        <div class="">
-                            <div class="image">
-                                <a href=""><img src="./mvc/views/html/img_doan/dsmonan.jpg" alt="" style="max-width: 100%; max-height: 100%"></a>
-                            </div>
-                            <div class="info" style="display:flex">
-                                <div class="infoLeft">
-                                    <h3 class=title>
-                                        <a href="">
-                                            Fruit Cream Puff
-                                        </a>
-                                    </h3>
-                                    <div class="box_price">
-                                        <span class="special_price">
-                                            <span class="price product-price">150.000₫</span>
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="infoRight">
-                                    <button>Thêm vào giỏ</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
             </div>
             <div class="tab4">
-                <div class="row">
-                    <div class="col-lg-3 col-md-6 mb-5">
-                        <div class="">
-                            <div class="image">
-                                <a href=""><img src="./mvc/views/html/img_doan/dsmonan.jpg" alt="" style="max-width: 100%; max-height: 100%"></a>
-                            </div>
-                            <div class="info" style="display:flex">
-                                <div class="infoLeft">
-                                    <h3 class=title>
-                                        <a href="">
-                                            Fruit Cream Puff
-                                        </a>
-                                    </h3>
-                                    <div class="box_price">
-                                        <span class="special_price">
-                                            <span class="price product-price">150.000₫</span>
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="infoRight">
-                                    <button>Thêm vào giỏ</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="col-lg-3 col-md-6 mb-5">
-                        <div class="">
-                            <div class="image">
-                                <a href=""><img src="./mvc/views/html/img_doan/dsmonan.jpg" alt="" style="max-width: 100%; max-height: 100%"></a>
-                            </div>
-                            <div class="info" style="display:flex">
-                                <div class="infoLeft">
-                                    <h3 class=title>
-                                        <a href="">
-                                            Fruit Cream Puff
-                                        </a>
-                                    </h3>
-                                    <div class="box_price">
-                                        <span class="special_price">
-                                            <span class="price product-price">150.000₫</span>
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="infoRight">
-                                    <button>Thêm vào giỏ</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6 mb-5">
-                        <div class="">
-                            <div class="image">
-                                <a href=""><img src="./mvc/views/html/img_doan/download.jpg" alt="" style="max-width: 100%; max-height: 100%"></a>
-                            </div>
-                            <div class="info" style="display:flex">
-                                <div class="infoLeft">
-                                    <h3 class=title>
-                                        <a href="">
-                                            Fruit Cream Puff
-                                        </a>
-                                    </h3>
-                                    <div class="box_price">
-                                        <span class="special_price">
-                                            <span class="price product-price">150.000₫</span>
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="infoRight">
-                                    <button>Thêm vào giỏ</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 mb-5">
-                        <div class="">
-                            <div class="image">
-                                <a href=""><img src="./mvc/views/html/img_doan/dsmonan.jpg" alt="" style="max-width: 100%; max-height: 100%"></a>
-                            </div>
-                            <div class="info" style="display:flex">
-                                <div class="infoLeft">
-                                    <h3 class=title>
-                                        <a href="">
-                                            Fruit Cream Puff
-                                        </a>
-                                    </h3>
-                                    <div class="box_price">
-                                        <span class="special_price">
-                                            <span class="price product-price">150.000₫</span>
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="infoRight">
-                                    <button>Thêm vào giỏ</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
             </div>
             <div class="tab5">
-                <div class="row">
-                    <div class="col-lg-3 col-md-6 mb-5">
-                        <div class="">
-                            <div class="image">
-                                <a href=""><img src="./mvc/views/html/img_doan/dsmonan.jpg" alt="" style="max-width: 100%; max-height: 100%"></a>
-                            </div>
-                            <div class="info" style="display:flex">
-                                <div class="infoLeft">
-                                    <h3 class=title>
-                                        <a href="">
-                                            Fruit Cream Puff
-                                        </a>
-                                    </h3>
-                                    <div class="box_price">
-                                        <span class="special_price">
-                                            <span class="price product-price">150.000₫</span>
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="infoRight">
-                                    <button>Thêm vào giỏ</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="col-lg-3 col-md-6 mb-5">
-                        <div class="">
-                            <div class="image">
-                                <a href=""><img src="./mvc/views/html/img_doan/dsmonan.jpg" alt="" style="max-width: 100%; max-height: 100%"></a>
-                            </div>
-                            <div class="info" style="display:flex">
-                                <div class="infoLeft">
-                                    <h3 class=title>
-                                        <a href="">
-                                            Fruit Cream Puff
-                                        </a>
-                                    </h3>
-                                    <div class="box_price">
-                                        <span class="special_price">
-                                            <span class="price product-price">150.000₫</span>
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="infoRight">
-                                    <button>Thêm vào giỏ</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6 mb-5">
-                        <div class="">
-                            <div class="image">
-                                <a href=""><img src="./mvc/views/html/img_doan/download.jpg" alt="" style="max-width: 100%; max-height: 100%"></a>
-                            </div>
-                            <div class="info" style="display:flex">
-                                <div class="infoLeft">
-                                    <h3 class=title>
-                                        <a href="">
-                                            Fruit Cream Puff
-                                        </a>
-                                    </h3>
-                                    <div class="box_price">
-                                        <span class="special_price">
-                                            <span class="price product-price">150.000₫</span>
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="infoRight">
-                                    <button>Thêm vào giỏ</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 mb-5">
-                        <div class="">
-                            <div class="image">
-                                <a href=""><img src="./mvc/views/html/img_doan/dsmonan.jpg" alt="" style="max-width: 100%; max-height: 100%"></a>
-                            </div>
-                            <div class="info" style="display:flex">
-                                <div class="infoLeft">
-                                    <h3 class=title>
-                                        <a href="">
-                                            Fruit Cream Puff
-                                        </a>
-                                    </h3>
-                                    <div class="box_price">
-                                        <span class="special_price">
-                                            <span class="price product-price">150.000₫</span>
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="infoRight">
-                                    <button>Thêm vào giỏ</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
             </div>
         </div>
 

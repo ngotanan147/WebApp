@@ -1,19 +1,40 @@
 <?php
-    class ProductModel extends Database{
+class ProductModel extends BaseModel
+{
 
-        public function getProduct(){
-            $qr = "Select * from product";
-            return mysqli_query($this->con, $qr);
-        }
-
-        public function deleteProduct($id){
-            $qr="DELETE from product WHERE product_id='$id'";
-            return mysqli_query($this->con, $qr);
-        }
-
-        public function addProduct($name, $image, $price, $description, $category_id, $category_name){
-            $qr = "INSERT INTO product VALUES (NULL,'$name','$image','$price', '$description', '$category_id', '$category_name')";
-            return mysqli_query($this->con, $qr);  
-        }
+    const TABLE = 'product';
+    public function getProduct()
+    {
+        $qr = "Select * from product";
+        // mysqli_query($this->con, $qr);
+        return $this->execute($qr);
     }
-?>  
+
+    public function deleteProduct($id)
+    {
+        $this->delete(self::TABLE, $id);
+    }
+
+    public function addProduct($data = [])
+    {
+        $this->create(self::TABLE, $data);
+    }
+
+    public function editProduct($id, $data = [])
+    {
+        $this->updatee(self::TABLE, $id, $data);
+    }
+
+    public function getProductById($id)
+    {
+        $qr = "Select * from product where product_id='$id'";
+        $result = mysqli_query($this->con, $qr);
+
+        if (!$result) {
+            printf("Error: %s\n", mysqli_error($this->con));
+            exit();
+        }
+        $row = mysqli_fetch_array($result);
+        return $row;
+    }
+}

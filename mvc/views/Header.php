@@ -30,6 +30,10 @@
             position: absolute;
             z-index: 3;
         }
+
+        .active {
+            display: block;
+        }
     </style>
 </head>
 
@@ -96,7 +100,7 @@
                 <div class="mr-5 logo">
                     <img src="https://scontent.fsgn2-5.fna.fbcdn.net/v/t1.0-9/127914547_1774476856062536_2273316599748914912_n.jpg?_nc_cat=104&ccb=2&_nc_sid=0debeb&_nc_ohc=EDCDaNKA3ioAX_WJfhf&_nc_ht=scontent.fsgn2-5.fna&oh=29359fdd246e3b236d93769c4cb55247&oe=5FE9AA01" alt="">
                 </div>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <button class="navbar-toggler" type="button">
                     <span class="navbar-toggler-icon">
                         <i class="fa fa-bars" style="color:#fff; font-size:28px;"></i>
                     </span>
@@ -150,3 +154,11 @@
 </body>
 
 </html>
+
+<script>
+    $(".navbar-toggler").click(function() {
+        $(".navbar-collapse").toggle("normal", function() {
+            // Animation complete.
+        });
+    });
+</script>

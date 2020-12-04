@@ -66,7 +66,7 @@
             </li>
 
             <li class="nav-item active">
-                <a class="nav-link" href="http://localhost/Doanweb/Admin/product">
+                <a class="nav-link" href="http://localhost/Doanweb/AdminProduct">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Product</span></a>
             </li>

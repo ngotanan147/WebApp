@@ -1,7 +1,11 @@
 <?php
 class AdminProduct extends Controller
 {
-
+    private $model;
+    function __construct()
+    {
+        $this->model = $this->getModel("ProductModel");
+    }
 
     function
     default()
@@ -11,48 +15,59 @@ class AdminProduct extends Controller
 
     function SayHi()
     {
-        $model = $this->getModel("ProductModel");
 
         $this->getViewAdmin("Product", [
-            "product" => $model->getProduct()
+            "product" => $this->model->getProduct()
         ]);
     }
     // Product ------------------------------------------------------------------------------------------------
     function deleteProduct($id)
     {
         $this->default();
-        $product = $this->getModel("ProductModel");
-        $product->deleteProduct($id);
-
-        $this->getViewAdmin("Product", [
-            "product" => $product->getProduct(),
-        ]);
+        $this->model->deleteProduct($id);
     }
 
     function addProduct()
     {
         $this->default();
-        $product = $this->getModel("product");
 
         if (isset($_POST["addProduct"])) {
+            $path = "./mvc/assets/img/";
+            $tmp_name = $_FILES['image']['tmp_name'];
+            $img = $_FILES['image']['name'];
+            move_uploaded_file($tmp_name, $path . $img);
 
+            $data = [
+                'product_name' => $_POST["name"],
+                'product_image' => $img,
+                'product_price' => $_POST["price"],
+                'product_description' => $_POST["description"],
+                'categories_id' => $_POST["category_id"],
+                'categories_name' => $_POST["category_name"],
+            ];
+            $this->model->addProduct($data);
+        }
+    }
 
-            $name = $_POST["name"];
-            $price = $_POST["price"];
-            $description = $_POST["description"];
-            $category_id = $_POST["category_id"];
-            $category_name = $_POST["category_name"];
-            $image = $_POST["image"];
-            // $image = $_FILES["c_img"]["name"];
-            // if ($image != null) {
-            //     $path = "./mvc/assets/TableFile/img";
-            //     $tmp_name = $_FILES["c_img"]["tmp_name"];
-            //     $image = $_FILES["c_img"]["name"];
+    function editProduct($id)
+    {
+        $this->default();
+        if (isset($_POST["editUser"])) {
+            $path = "./mvc/assets/img/";
+            $tmp_name = $_FILES['image']['tmp_name'];
+            $img = $_FILES['image']['name'];
+            move_uploaded_file($tmp_name, $path . $img);
 
-            //     move_uploaded_file($tmp_name, $path . $image);
-            // }
+            $data =  [
+                'product_name' => $_POST["name"],
+                'product_image' => $img,
+                'product_price' => $_POST["price"],
+                'product_description' => $_POST["description"],
+                'categories_id' => $_POST["category_id"],
+                'categories_name' => $_POST["category_name"],
+            ];
 
-            $product->addProduct($name, $image, $price, $description, $category_id, $category_name);
+            $this->model->editProduct($id, $data);
         }
     }
 }

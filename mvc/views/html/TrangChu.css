@@ -142,7 +142,7 @@
 }
 
 .list_monan ul {
-    display: flex;
+    /* display: flex; */
     align-items: center;
     justify-content: center;
     background-color: #fff;

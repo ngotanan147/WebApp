@@ -60,13 +60,13 @@
                 <!-- Nav Item - Tables -->
 
                 <li class="nav-item active">
-                    <a class="nav-link" href="tables.html">
+                    <a class="nav-link" href="http://localhost/Doanweb/">
                         <i class="fas fa-fw fa-table"></i>
                         <span>User</span></a>
                 </li>
 
                 <li class="nav-item active">
-                    <a class="nav-link" href="tables.html">
+                    <a class="nav-link" href="http://localhost/Doanweb/AdminProduct">
                         <i class="fas fa-fw fa-table"></i>
                         <span>Product</span></a>
                 </li>
@@ -82,7 +82,7 @@
 
                 <!-- Sidebar Toggler (Sidebar) -->
                 <div class="text-center d-none d-md-inline">
-                    <button class="rounded-circle border-0" id="sidebarToggle" ></button>
+                    <button class="rounded-circle border-0" id="sidebarToggle"></button>
                 </div>
 
             </ul>
@@ -101,8 +101,7 @@
 
                         <!-- DataTales Example -->
                         <div class="card shadow mb-4">
-                            <button data-toggle="modal" data-target="#exampleModal" type="button" 
-                            class="btn btn-primary" style="width: 100%;">Add item</button>
+                            <button data-toggle="modal" data-target="#exampleModal" type="button" class="btn btn-primary" style="width: 100%;">Add item</button>
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -117,29 +116,27 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        
+
                                             <?php
-                                                while($row = mysqli_fetch_array($data["user"])){
+                                            while ($row = mysqli_fetch_array($data["user"])) {
                                             ?>
-                                            <tr>
-                                                <td><?php echo $row["user_id"] ?></td>
-                                                <td><?php echo $row["user_name"] ?></td>
-                                                <td><?php echo $row["user_email"] ?></td>
-                                                <td><?php echo $row["user_password"] ?></td>
-                                                <td><?php echo $row["user_role"] ?></td>
-                                                <td class="d-flex justify-content-around">
-                                                    <a href="Admin/showEditData/<?php $data["id"]?>" data-toggle="modal" data-target="#exampleModal2">
-                                                        <i style="color:#999" class="fa fa-wrench fa-lg function"
-                                                            aria-hidden="true"></i>
-                                                    </a>
-                                                    <a href="Admin/deleteUser/<?php echo $row["user_id"] ?>">
-                                                        <i style="color:#999" class="fa fa-trash fa-lg function"
-                                                            aria-hidden="true"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                        <?php } ?>
-                                        
+                                                <tr>
+                                                    <td><?php echo $row["user_id"] ?></td>
+                                                    <td><?php echo $row["user_name"] ?></td>
+                                                    <td><?php echo $row["user_email"] ?></td>
+                                                    <td><?php echo $row["user_password"] ?></td>
+                                                    <td><?php echo $row["user_role"] ?></td>
+                                                    <td class="d-flex justify-content-around">
+                                                        <a href="Admin/showEditData/<?php $data["id"] ?>" data-toggle="modal" data-target="#exampleModal2">
+                                                            <i style="color:#999" class="fa fa-wrench fa-lg function" aria-hidden="true"></i>
+                                                        </a>
+                                                        <a href="Admin/deleteUser/<?php echo $row["user_id"] ?>">
+                                                            <i style="color:#999" class="fa fa-trash fa-lg function" aria-hidden="true"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            <?php } ?>
+
                                         </tbody>
                                     </table>
                                 </div>
@@ -153,8 +150,7 @@
                 <!-- End of Main Content -->
 
                 <!-- Edit modal -->
-                <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                    aria-hidden="true" data-backdrop="static" data-keyboard="false">
+                <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -164,28 +160,28 @@
                                 </a>
                             </div>
                             <div class="modal-body">
-                            <form action="http://localhost/Doanweb/Admin/editUser/<?php echo $data["id"] ?>" method="POST">
-                                <div class="form-group">
-                                    <input value="<?php echo $data["name"] ?>" name="name" type="text" class="form-control" id="exampleInputEmail1" placeholder="Name">
-                                </div>
-                                <div class="form-group">
-                                    <input value="<?php echo $data["email"] ?>" name="email" type="email" class="form-control" id="exampleInputPassword1" placeholder="Email">
-                                </div>
-                                <div class="form-group">
-                                    <input value="<?php echo $data["password"] ?>" name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                                </div>
-                                <select name="role" multiple class="form-control" id="exampleFormControlSelect2">
-                                    <option Selected>User</option>
-                                    <option>Admin</option>
-                                </select>
-                                <button  name="editUser" type="submit" class="btn btn-primary mt-2">Submit</button>
+                                <form action="http://localhost/Doanweb/Admin/editUser/<?php echo $data["id"] ?>" method="POST">
+                                    <div class="form-group">
+                                        <input value="<?php echo $data["name"] ?>" name="name" type="text" class="form-control" id="exampleInputEmail1" placeholder="Name">
+                                    </div>
+                                    <div class="form-group">
+                                        <input value="<?php echo $data["email"] ?>" name="email" type="email" class="form-control" id="exampleInputPassword1" placeholder="Email">
+                                    </div>
+                                    <div class="form-group">
+                                        <input value="<?php echo $data["password"] ?>" name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                    </div>
+                                    <select name="role" multiple class="form-control" id="exampleFormControlSelect2">
+                                        <option Selected>User</option>
+                                        <option>Admin</option>
+                                    </select>
+                                    <button name="editUser" type="submit" class="btn btn-primary mt-2">Submit</button>
 
-                            </form>
+                                </form>
                             </div>
                             <div class="modal-footer">
-                            <a href="http://localhost/Doanweb/Admin" class="btn btn-secondary">
-                                Close
-                            </a>
+                                <a href="http://localhost/Doanweb/Admin" class="btn btn-secondary">
+                                    Close
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -194,7 +190,7 @@
                     $("#exampleModal2").modal('show');
                 </script>
 
-                                                    
+
                 <!-- Footer -->
                 <footer class="sticky-footer bg-white">
                     <div class="container my-auto">
@@ -235,4 +231,5 @@
         <script src="http://localhost/DoAnWeb/mvc/assets/TableFile/js/demo/datatables-demo.js"></script>
 
     </body>
+
     </html>
