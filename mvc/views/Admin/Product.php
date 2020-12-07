@@ -131,7 +131,7 @@
                                                     <td><?php echo $row["categories_id"] ?></td>
                                                     <td><?php echo $row["categories_name"] ?></td>
                                                     <td class="d-flex justify-content-around">
-                                                        <a href="http://localhost/Doanweb/Admin/showEditData/<?php echo $row["user_id"] ?>">
+                                                        <a href="http://localhost/Doanweb/AdminProduct/showEditData/<?php echo $row["product_id"] ?>">
                                                             <i style="color:#999" class="fa fa-wrench fa-lg function" aria-hidden="true"></i>
 
                                                         </a>

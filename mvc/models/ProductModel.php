@@ -27,14 +27,8 @@ class ProductModel extends BaseModel
 
     public function getProductById($id)
     {
-        $qr = "Select * from product where product_id='$id'";
-        $result = mysqli_query($this->con, $qr);
-
-        if (!$result) {
-            printf("Error: %s\n", mysqli_error($this->con));
-            exit();
-        }
-        $row = mysqli_fetch_array($result);
-        return $row;
+        // $table, $columnsNameId, $id
+        $columnsNameId = "product_id";
+        return $this->getItemById(self::TABLE, $columnsNameId, $id);
     }
 }

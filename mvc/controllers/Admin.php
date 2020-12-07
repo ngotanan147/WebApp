@@ -10,15 +10,87 @@ class Admin extends Controller
 
     function defaultUser()
     {
-        Header("location:http://localhost/Doanweb/Admin");
+        Header("location:" . URL . "Admin");
     }
 
     function SayHi()
     {
-        $this->getViewAdmin("User", [
-            "user" => $this->model->getUser()
-        ]);
+        if (isset($_SESSION["adminEmail"])) {
+            $this->getViewAdmin("User", [
+                "user" => $this->model->getUser()
+            ]);
+        } else {
+            $this->getViewAdmin("Login");
+        }
     }
+
+    function login()
+    {
+        if (isset($_SESSION["adminEmail"])) {
+            Header("Location:" . URL . "Admin");
+        } else {
+            $this->getViewAdmin("Login");
+        }
+    }
+
+    function loginAction()
+    {
+        $email = "";
+        $password = "";
+
+        if (isset($_POST["adminLogin"])) {
+            $email = $_POST["email"];
+            $password  = $_POST["password"];
+
+            $login = $this->model->login($email, $password);
+            $user = $this->model->getUserByEmail($email);
+
+            if (!empty($login) && $user['user_role'] == 0) {
+                $_SESSION['adminEmail'] = $email;
+                Header("Location:" . URL . "Admin");
+            } else {
+                Header("Location:" . URL . "Admin/Login");
+            }
+        }
+    }
+
+    function logout()
+    {
+        session_start();
+        unset($_SESSION["adminEmail"]);
+        header("Location:" . URL . "Admin/Login");
+    }
+
+    function register() 
+    {
+        if (isset($_SESSION["adminEmail"])) {
+            Header("Location:" . URL . "Admin");
+        } else {
+            $this->getViewAdmin("Register");
+        }
+    }
+
+    function registerAction()
+    {
+        if (isset($_POST['adminRegister'])) {
+            $email = $_POST["email"];
+            if (!empty($this->model->getUserByEmail($email))) {
+                $this->fail = true;
+                $this->SayHi();
+            } else {
+                $data = [
+                    'user_name' => $_POST['ho'] . ' ' . $_POST['ten'],
+                    'user_email' => $_POST["email"],
+                    'user_password' => $_POST["password"],
+                    'user_role' => 0
+                ];
+
+                $this->model->addUser($data);
+                Header("Location:http://localhost/Doanweb/Admin/Login");
+            }
+        }
+    }
+
 
     function deleteUser($id)
     {

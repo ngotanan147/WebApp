@@ -6,7 +6,6 @@ class Header extends Controller
         $product = $this->getModel("ProductModel");
 
         $this->getView("Header", []);
-        echo"sdsdsdsds";
     }
 
     function show()

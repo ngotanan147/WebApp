@@ -38,6 +38,7 @@ class AdminProduct extends Controller
             move_uploaded_file($tmp_name, $path . $img);
 
             $data = [
+                
                 'product_name' => $_POST["name"],
                 'product_image' => $img,
                 'product_price' => $_POST["price"],
@@ -49,16 +50,32 @@ class AdminProduct extends Controller
         }
     }
 
+    function showEditData($id)
+    {
+        $data = $this->model->getProductById($id);
+        // print_r($data);
+        // die();
+        $this->getViewAdmin("ProductEdit", [
+            "product" => $this->model->getProduct(),
+            'id' =>$data['product_id'],
+            'name' => $data['product_name'],
+            'image' => $data['product_image'],
+            'price' => $data['product_price'],
+            'description' => $data['product_description'],
+            'category_id' => $data['categories_id'],
+            'category_name' => $data['categories_name'],
+        ]);
+    }
+
     function editProduct($id)
     {
-        $this->default();
-        if (isset($_POST["editUser"])) {
+        if (isset($_POST["editProduct"])) {
             $path = "./mvc/assets/img/";
             $tmp_name = $_FILES['image']['tmp_name'];
             $img = $_FILES['image']['name'];
             move_uploaded_file($tmp_name, $path . $img);
 
-            $data =  [
+            $data = [
                 'product_name' => $_POST["name"],
                 'product_image' => $img,
                 'product_price' => $_POST["price"],
@@ -68,6 +85,7 @@ class AdminProduct extends Controller
             ];
 
             $this->model->editProduct($id, $data);
+            $this->default();
         }
     }
 }

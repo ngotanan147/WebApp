@@ -50,7 +50,7 @@ require_once "Header.php";
             <div class="slider-sub">
                 <div class="container-fluid p-5">
                     <div class="swiper-container">
-                        <div class="swiper-wrapper" style="height:auto">
+                        <!-- <div class="swiper-wrapper" style="height:auto">
 
                             <script>
                                 function format(n) {
@@ -93,16 +93,46 @@ require_once "Header.php";
                                             </div>
                                         </div>
                                     </div>
-                                    <script type="text/javascript">
-                                        array.push({
-                                            id: <?php echo $row["product_id"] ?>,
-                                            price: <?php echo $row["product_price"] ?>
-                                        })
-                                    </script>
                             <?php }
                             } ?>
-                        </div>
+                        </div> -->
+                        <div class="swiper-wrapper" style="height:auto">
+                            <script>
+                                function format(n) {
+                                    return (n * 1000).toLocaleString('vi', {
+                                        style: 'currency',
+                                        currency: 'VND'
+                                    })
+                                }
+                                var array = [];
+                            </script>
 
+                            <?php
+
+                            if (isset($_COOKIE["Seen_product"])) {
+                                $cookie_data = stripslashes($_COOKIE["Seen_product"]);
+                                $cart_data = json_decode($cookie_data, true);
+                            }
+                            else{
+                                $cart_data = array();
+                            }
+                            
+                            $seenProduct_data[] = $data['cookies'];
+                            $cookie_data = json_encode($seenProduct_data);
+                            setcookie("Seen_product", $cookie_data, time() + (86400 * 30));
+
+
+                            if (isset($_COOKIE["Seen_product"])) {
+                                $cookie_data = stripslashes($_COOKIE["Seen_product"]);
+                                $seenProduct_data = json_decode($cookie_data, true);
+                                foreach ($seenProduct_data as $keys => $values) {
+                                    // echo $values["product_name"];
+                                }
+                            }
+                            ?>
+
+            
+                        </div>
                         <!-- Add Pagination -->
                         <div class="swiper-pagination"></div>
                     </div>
@@ -156,16 +186,16 @@ require_once "Header.php";
 </script>
 
 <script type="text/javascript">
-    arrJson = JSON.stringify(array);
-    console.log(arrJson);
+    // arrJson = JSON.stringify(array);
+    // console.log(arrJson);
 
-    var request = new XMLHttpRequest();
-    request.open('GET', arrJson);
-    request.onload = function() {
-        var data = JSON.parse(request.responseText);
-        console.log(data);
-    }
-    request.send();
+    // var request = new XMLHttpRequest();
+    // request.open('GET', arrJson);
+    // request.onload = function() {
+    //     var data = JSON.parse(request.responseText);
+    //     console.log(data);
+    // }
+    // request.send();
 
     array.forEach(item => {
         $("#" + item.id).html(format(item.price));

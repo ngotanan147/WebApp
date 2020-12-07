@@ -3,11 +3,11 @@
 require_once "Header.php";
 ?>
 
-
 <html>
 
 <head>
     <title>Dilicious</title>
+    <add key="webpages:Enabled" value="true" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -80,150 +80,56 @@ require_once "Header.php";
                 <div class="container-fluid p-5">
                     <div class="swiper-container">
                         <div class="swiper-wrapper" style="height:auto">
-                            <div class="swiper-slide" style="max-height: 480px;">
-                                <div class="image">
-                                    <a class="image_product" href="">
-                                        <img src="./mvc/views/html/img_doan/monannoibat (1).jpg" alt="">
-                                    </a>
-                                </div>
-                                <div class="info">
-                                    <div class="infoLeft">
-                                        <h3 class=title>
-                                            <a href="">
-                                                Fruit Cream Puff
+
+                            <script>
+                                function format(n) {
+                                    return (n * 1000).toLocaleString('vi', {
+                                        style: 'currency',
+                                        currency: 'VND'
+                                    })
+                                }
+
+                                var array = [];
+                            </script>
+
+                            <?php
+                            if (!empty($data["product"])) {
+                                while ($row = mysqli_fetch_array($data["product"])) {
+                            ?>
+                                    <div class="swiper-slide" style="max-height: 480px;">
+                                        <div class="image">
+                                            <a class="image_product" href="<?php echo URL ?>Product/productDetail/<?php echo $row["product_id"] ?>">
+                                                <img src="./mvc/assets/img/<?php echo $row["product_image"] ?>" alt="">
                                             </a>
-                                        </h3>
-                                        <div class="box_price">
-                                            <span class="special_price">
-                                                <span class="price product-price">150.000₫</span>
-                                            </span>
+                                        </div>
+                                        <div class="info">
+                                            <div class="infoLeft">
+                                                <h3 class=title>
+                                                    <a href="">
+                                                        <?php echo $row["product_name"] ?>
+                                                    </a>
+                                                </h3>
+                                                <div class="box_price">
+                                                    <span class="special_price">
+                                                        <span id="<?php echo $row["product_id"] ?>" class="price product-price">Error</span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="infoRight">
+                                                <a href="#">
+                                                    <button>Thêm vào giỏ</button>
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="infoRight">
-                                        <button>Thêm vào giỏ</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide" style="max-height: 480px;">
-                                <div class="image">
-                                    <a class="image_product" href="">
-                                        <img src="./mvc/views/html/img_doan/monannoibat (2).jpg" alt="">
-                                    </a>
-                                </div>
-                                <div class="info">
-                                    <div class="infoLeft">
-                                        <h3 class=title>
-                                            <a href="">
-                                                Strawberry Cake
-                                            </a>
-                                        </h3>
-                                        <div class="box_price">
-                                            <span class="special_price">
-                                                <span class="price product-price">150.000₫</span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="infoRight">
-                                        <button>Thêm vào giỏ</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide" style="max-height: 480px;">
-                                <div class="image">
-                                    <a class="image_product" href="">
-                                        <img src="./mvc/views/html/img_doan/monannoibat (3).jpg" alt="">
-                                    </a>
-                                </div>
-                                <div class="info">
-                                    <div class="infoLeft">
-                                        <h3 class=title>
-                                            <a href="">
-                                                Sweet Potato Tart
-                                            </a>
-                                        </h3>
-                                        <div class="box_price">
-                                            <span class="special_price">
-                                                <span class="price product-price">150.000₫</span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="infoRight">
-                                        <button>Thêm vào giỏ</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide" style="max-height: 480px;">
-                                <div class="image">
-                                    <a class="image_product" href="">
-                                        <img src="./mvc/views/html/img_doan/monannoibat (5).jpg" alt="">
-                                    </a>
-                                </div>
-                                <div class="info">
-                                    <div class="infoLeft">
-                                        <h3 class=title>
-                                            <a href="">
-                                                Fruit Cream Puff
-                                            </a>
-                                        </h3>
-                                        <div class="box_price">
-                                            <span class="special_price">
-                                                <span class="price product-price">150.000₫</span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="infoRight">
-                                        <button>Thêm vào giỏ</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide" style="max-height: 480px;">
-                                <div class="image">
-                                    <a class="image_product" href="">
-                                        <img src="./mvc/views/html/img_doan/monannoibat (6).jpg" alt="">
-                                    </a>
-                                </div>
-                                <div class="info">
-                                    <div class="infoLeft">
-                                        <h3 class=title>
-                                            <a href="">
-                                                Fruit Cream Puff
-                                            </a>
-                                        </h3>
-                                        <div class="box_price">
-                                            <span class="special_price">
-                                                <span class="price product-price">150.000₫</span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="infoRight">
-                                        <button>Thêm vào giỏ</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide" style="max-height: 480px;">
-                                <div class="image">
-                                    <a class="image_product" href="">
-                                        <img src="./mvc/views/html/img_doan/monannoibat (7).jpg" alt="">
-                                    </a>
-                                </div>
-                                <div class="info">
-                                    <div class="infoLeft">
-                                        <h3 class=title>
-                                            <a href="">
-                                                Fruit Cream Puff
-                                            </a>
-                                        </h3>
-                                        <div class="box_price">
-                                            <span class="special_price">
-                                                <span class="price product-price">150.000₫</span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="infoRight">
-                                        <button>Thêm vào giỏ</button>
-                                    </div>
-                                </div>
-                            </div>
+                                    <script type="text/javascript">
+                                        array.push({
+                                            id: <?php echo $row["product_id"] ?>,
+                                            price: <?php echo $row["product_price"] ?>
+                                        })
+                                    </script>
+                            <?php }
+                            } ?>
                         </div>
 
                         <!-- Add Pagination -->
@@ -566,7 +472,22 @@ require_once "Header.php";
     });
 </script>
 
-<script>
+<script type="text/javascript">
+    arrJson = JSON.stringify(array);
+    console.log(arrJson);
+
+    var request = new XMLHttpRequest();
+    request.open('GET', arrJson);
+    request.onload = function() {
+        var data = JSON.parse(request.responseText);
+        console.log(data);
+    }
+    request.send();
+
+    array.forEach(item => {
+        $("#" + item.id).html(format(item.price));
+    })
+
     for (let i = 1; i <= 5; i++) {
         $(".tab-link" + i).click(function() {
             $(".tab-link" + i).addClass("current");

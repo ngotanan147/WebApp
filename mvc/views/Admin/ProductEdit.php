@@ -60,13 +60,13 @@
             <!-- Nav Item - Tables -->
 
             <li class="nav-item active">
-                <a class="nav-link" href="http://localhost/doanweb/admin">
+                <a class="nav-link" href="http://localhost/Doanweb/">
                     <i class="fas fa-fw fa-table"></i>
                     <span>User</span></a>
             </li>
 
             <li class="nav-item active">
-                <a class="nav-link" href="http://localhost/doanweb/AdminProduct">
+                <a class="nav-link" href="http://localhost/Doanweb/AdminProduct">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Product</span></a>
             </li>
@@ -131,7 +131,7 @@
                                                     <td><?php echo $row["categories_id"] ?></td>
                                                     <td><?php echo $row["categories_name"] ?></td>
                                                     <td class="d-flex justify-content-around">
-                                                        <a href="http://localhost/Doanweb/Admin/showEditData/<?php echo $row["user_id"] ?>">
+                                                        <a href="http://localhost/Doanweb/AdminProduct/showEditData/<?php echo $row["product_id"] ?>">
                                                             <i style="color:#999" class="fa fa-wrench fa-lg function" aria-hidden="true"></i>
 
                                                         </a>
@@ -151,49 +151,55 @@
 
                 </div>
                 <!-- /.container-fluid -->
+
             </div>
             <!-- End of Main Content -->
 
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <!-- Edit modal -->
+            <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Add product</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+                            <h5 class="modal-title" id="exampleModalLabel">Edit user</h5>
+                            <a href="http://localhost/Doanweb/AdminProduct" class="" style="text-decoration: none; color: #000">
+                                X
+                            </a>
                         </div>
                         <div class="modal-body">
-                            <form action="http://localhost/Doanweb/AdminProduct/addProduct" method="POST" enctype="multipart/form-data">
+                            <form action="http://localhost/Doanweb/AdminProduct/editProduct/<?php echo $data["id"] ?>" method="POST" enctype="multipart/form-data">
                                 <div class="form-group">
-                                    <input name="name" type="text" class="form-control" id="exampleInputEmail" placeholder="Name">
+                                    <input value="<?php echo $data["name"] ?>" name="name" type="text" class="form-control" id="exampleInputEmail" placeholder="Name">
                                 </div>
                                 <div class="form-group">
-                                    <input name="image" type="file" class="form-control" id="exampleInputPassword" placeholder="Image">
+                                    <input value="http://localhost/Doanweb/mvc/assets/img/<?php echo $data["image"]?>" name="image" type="file" class="form-control" id="exampleInputPassword" placeholder="Image">
                                 </div>
                                 <div class="form-group">
-                                    <input name="price" type="text" class="form-control" id="exampleInputPassword" placeholder="Price">
+                                    <input value="<?php echo $data["price"] ?>" name="price" type="text" class="form-control" id="exampleInputPassword" placeholder="Price">
                                 </div>
                                 <div class="form-group">
-                                    <input name="description" type="text" class="form-control" id="exampleInputPassword" placeholder="Description">
+                                    <input value="<?php echo $data["description"] ?>" name="description" type="text" class="form-control" id="exampleInputPassword" placeholder="Description">
                                 </div>
                                 <div class="form-group">
-                                    <input name="category_id" type="text" class="form-control" id="exampleInputPassword" placeholder="Category ID">
+                                    <input value="<?php echo $data["category_id"] ?>" name="category_id" type="text" class="form-control" id="exampleInputPassword" placeholder="Category ID">
                                 </div>
                                 <div class="form-group">
-                                    <input name="category_name" type="text" class="form-control" id="exampleInputPassword" placeholder="Category name">
+                                    <input value="<?php echo $data["category_name"] ?>" name="category_name" type="text" class="form-control" id="exampleInputPassword" placeholder="Category name">
                                 </div>
-                                <button name="addProduct" type="submit" class="btn btn-primary mt-2">Submit</button>
+                                <button name="editProduct" type="submit" class="btn btn-primary mt-2">Submit</button>
 
                             </form>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <a href="http://localhost/Doanweb/AdminProduct" class="btn btn-secondary">
+                                Close
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
+            <script>
+                $("#exampleModal2").modal('show');
+            </script>
 
 
             <!-- Footer -->

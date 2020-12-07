@@ -65,26 +65,26 @@
                         if (!isset($_SESSION['email'])) {
                         ?>
                             <li>
-                                <a href="http://localhost/Doanweb/login">Đăng nhập</a>
+                                <a href="<?php echo URL ?>login">Đăng nhập</a>
                             </li>
                             <li>
                                 <a href="">&</a>
                             </li>
                             <li>
-                                <a href="http://localhost/Doanweb/register">Đăng ký</a>
+                                <a href="<?php echo URL ?>register">Đăng ký</a>
                             </li>
                         <?php } else {
                         ?>
                             <?php
                             ?>
                             <li>
-                                <a href="http://localhost/Doanweb/Account">Tài khoản</a>
+                                <a href="<?php echo URL ?>Account">Tài khoản</a>
                             </li>
                             <li>
                                 <a href="">&</a>
                             </li>
                             <li>
-                                <a href="http://localhost/Doanweb/Logout">Đăng xuất</a>
+                                <a href="<?php echo URL ?>Logout">Đăng xuất</a>
                             </li>
                         <?php
                         } ?>

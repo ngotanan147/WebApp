@@ -98,7 +98,7 @@
             <div class="row mt-3">
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                     <div class="form" >
-                        <form action="http://localhost/Doanweb/Login/log" method="POST">
+                        <form action="<?php echo URL ?>Login/log" method="POST">
                             <div class="form-group">
                                 <label>Nếu bạn đã có tài khoản, đăng nhập ở đây</label><br>
                                 <label for="email">Email:</label>
@@ -118,7 +118,7 @@
                         </form>
                         
                         <div class="register">
-                            <label  for="">Bạn chưa có tài khoản, hãy Đăng ký <a href="http://localhost/Doanweb/Register" style="color:#ef7147;">tại
+                            <label  for="">Bạn chưa có tài khoản, hãy Đăng ký <a href="<?php echo URL ?>Register" style="color:#ef7147;">tại
                                     đây</a> </label>
                         </div>
 

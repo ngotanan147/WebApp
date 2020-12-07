@@ -11,8 +11,7 @@ class UserModel extends BaseModel
 
     public function addUser($data = [])
     {
-        // $qr = "INSERT INTO user(user_id, user_name, user_email, user_password, user_role) VALUES (NULL,'$name','$email','$password', '$role')";
-        // return mysqli_query($this->con, $qr);   
+        
         $this->create(self::TABLE, $data);
     }
 
@@ -21,7 +20,7 @@ class UserModel extends BaseModel
         $this->delete(self::TABLE, $id);
     }
 
-    public function editUser($id, $data=[])
+    public function editUser($id, $data = [])
     {
         $this->updatee(self::TABLE, $id, $data);
     }

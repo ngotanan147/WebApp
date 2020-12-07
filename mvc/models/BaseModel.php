@@ -38,7 +38,7 @@ class BaseModel extends Database
 
     public function delete($table, $id)
     {
-        $columnsNameId = $table .'_id';
+        $columnsNameId = $table . '_id';
         $sql = "DELETE from ${table} WHERE $columnsNameId=${id}";
         // echo $sql;
         // die();
@@ -60,10 +60,19 @@ class BaseModel extends Database
         $this->execute($sql);
     }
 
-    public function getItemById($table, $columnsNameId ,$id)
+    public function getItemById($table, $columnsNameId, $id)
     {
         $sql = "SELECT * from ${table} where ${columnsNameId} = ${id}";
-        $this->execute($sql);
+        $result = $this->execute($sql);
+
+        if (!$result) {
+            printf("Error: %s\n", mysqli_error($this->con));
+            exit();
+        }
+        $row = mysqli_fetch_array($result);
+        // print_r($row);
+        // die();
+        return $row;
     }
 
 
@@ -80,5 +89,4 @@ class BaseModel extends Database
         // die();
         $this->execute($sql);
     }
-
 }
