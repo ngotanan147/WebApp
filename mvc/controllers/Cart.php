@@ -6,11 +6,13 @@ class Cart extends Controller
     {
         $this->model = $this->getModel("CartModel");
     }
+
     function SayHi()
     {
         $this->getView("Cart", [
             "cart" => $this->model->getCart()
         ]);
     }
+    
 
 }

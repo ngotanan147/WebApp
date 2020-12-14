@@ -88,7 +88,6 @@
                             </li>
                         <?php
                         } ?>
-
                     </ul>
                 </div>
             </div>
@@ -138,7 +137,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="" class="nav-link">
+                            <a href="<?php echo URL ?>Cart" class="nav-link">
                                 <div class="cart">
                                     <i class="fa fa-shopping-cart" style="font-size: 22px; color: #ef7147;"></i>
                                     <span style="color:#333">(0)</span>

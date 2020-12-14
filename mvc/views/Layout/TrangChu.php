@@ -474,13 +474,17 @@ require_once "Header.php";
 
 <script type="text/javascript">
     arrJson = JSON.stringify(array);
-    console.log(arrJson);
 
     var request = new XMLHttpRequest();
-    request.open('GET', arrJson);
+    request.open('GET', 'https://gorest.co.in/public-api/users/123', true);
     request.onload = function() {
-        var data = JSON.parse(request.responseText);
-        console.log(data);
+        if (request.readyState === request.DONE) {
+            if (request.status === 200) {
+                console.log(request.response);
+                console.log(request.responseText);
+            }
+        }
+        //       
     }
     request.send();
 

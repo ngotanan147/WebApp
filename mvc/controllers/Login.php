@@ -35,7 +35,7 @@ class Login extends Controller
         } else {
             // $user = $model->getUserByEmail($email);
             // if ($user['role'] == 1){}
-            Header("Location:http://localhost/Doanweb/");
+            Header("Location:" . URL ."");
         }
     }
 }

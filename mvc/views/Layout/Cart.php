@@ -114,24 +114,11 @@ require_once "./mvc/views/html/Header.html";
 <script>
     $("#btn_thanhtoan").width($(".tieptucmuahang").width() - 8);
     const items = [{
-            img: "",
-            name: "châu mat lon",
-            price: 450,
-            quantity: 1,
-        },
-        {
-            img: "",
-            name: "châu mat lon",
-            price: 450,
-            quantity: 2,
-        },
-        {
-            img: "",
-            name: "châu mat lon",
-            price: 500,
-            quantity: 1,
-        }
-    ]
+        img: "",
+        name: "châu mat lon",
+        price: 450,
+        quantity: 1,
+    }]
 
     function format(n) {
         return (n * 1000).toLocaleString('vi', {

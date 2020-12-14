@@ -10,13 +10,13 @@ class AdminProduct extends Controller
     function
     default()
     {
-        Header("location:http://localhost/Doanweb/AdminProduct");
+        Header("location:" . URL ."AdminProduct");
     }
 
     function SayHi()
     {
 
-        $this->getViewAdmin("Product", [
+        $this->getViewAdmin("Product/Product", [
             "product" => $this->model->getProduct()
         ]);
     }
@@ -55,7 +55,7 @@ class AdminProduct extends Controller
         $data = $this->model->getProductById($id);
         // print_r($data);
         // die();
-        $this->getViewAdmin("ProductEdit", [
+        $this->getViewAdmin("Product/ProductEdit", [
             "product" => $this->model->getProduct(),
             'id' =>$data['product_id'],
             'name' => $data['product_name'],

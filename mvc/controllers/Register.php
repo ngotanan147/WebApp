@@ -10,12 +10,12 @@ class Register extends Controller
     function
     default()
     {
-        Header("location:http://localhost/Doanweb/Register");
+        Header("location:" . URL ."Register");
     }
     function SayHi()
     {
         if (isset($_SESSION["adminEmail"])) {
-            Header("Location:http://localhost/Doanweb/");
+            Header("Location:" . URL ."");
         } else if ($this->fail) {
             $this->getView("Register", [
                 'display' => 'block',
@@ -42,7 +42,7 @@ class Register extends Controller
                 ];
 
                 $this->model->addUser($data);
-                Header("Location:http://localhost/Doanweb/Login");
+                Header("Location:" . URL ."Login");
             }
         }
     }

@@ -1,7 +1,7 @@
 <?php
     class Logout extends Controller {
         function default(){
-            Header("location:http://localhost/Doanweb/Login");
+            Header("location:" . URL ."Login");
         }
         
         function SayHi(){   

@@ -6,7 +6,7 @@
         }
 
         public function getView($viewName, $data=[]){
-            require_once "./mvc/views/".$viewName.".php";
+            require_once "./mvc/views/Layout/".$viewName.".php";
         }
 
         public function getViewAdmin($viewName, $data=[]){
