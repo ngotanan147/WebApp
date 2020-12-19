@@ -107,7 +107,7 @@
                 <div class="collapse navbar-collapse" id="collapsibleNavbar">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="<?php echo URL ?>" class="nav-link">
                                 <i class="fa fa-home"></i>
                                 Trang chủ
                             </a>
@@ -119,7 +119,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="<?php echo URL ?>GioiThieu" class="nav-link">
                                 <i class="fa fa-info-circle"></i>
                                 Giới thiệu
                             </a>
@@ -140,7 +140,11 @@
                             <a href="<?php echo URL ?>Cart" class="nav-link">
                                 <div class="cart">
                                     <i class="fa fa-shopping-cart" style="font-size: 22px; color: #ef7147;"></i>
-                                    <span style="color:#333">(0)</span>
+                                    <span style="color:#333">(<?php
+                                                                if (isset($_SESSION["cart"])) {
+                                                                    echo count($_SESSION["cart"]);
+                                                                } else echo 0;
+                                                                ?>)</span>
                                 </div>
                             </a>
                         </li>

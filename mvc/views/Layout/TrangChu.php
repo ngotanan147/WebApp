@@ -79,8 +79,7 @@ require_once "Header.php";
             <div class="slider-sub">
                 <div class="container-fluid p-5">
                     <div class="swiper-container">
-                        <div class="swiper-wrapper" style="height:auto">
-
+                        <div id="noibac" class="swiper-wrapper" style="height:auto">
                             <script>
                                 function format(n) {
                                     return (n * 1000).toLocaleString('vi', {
@@ -93,25 +92,26 @@ require_once "Header.php";
                             </script>
 
                             <?php
+                            
                             if (!empty($data["product"])) {
-                                while ($row = mysqli_fetch_array($data["product"])) {
+                                foreach ($data["product"] as $key => $value) {
                             ?>
                                     <div class="swiper-slide" style="max-height: 480px;">
                                         <div class="image">
-                                            <a class="image_product" href="<?php echo URL ?>Product/productDetail/<?php echo $row["product_id"] ?>">
-                                                <img src="./mvc/assets/img/<?php echo $row["product_image"] ?>" alt="">
+                                            <a class="image_product" href="<?php echo URL ?>Product/productDetail/<?php echo $value["product_id"] ?>">
+                                                <img src="./mvc/assets/img/<?php echo $value["product_image"] ?>" alt="">
                                             </a>
                                         </div>
                                         <div class="info">
                                             <div class="infoLeft">
                                                 <h3 class=title>
                                                     <a href="">
-                                                        <?php echo $row["product_name"] ?>
+                                                        <?php echo $value["product_name"] ?>
                                                     </a>
                                                 </h3>
                                                 <div class="box_price">
                                                     <span class="special_price">
-                                                        <span id="<?php echo $row["product_id"] ?>" class="price product-price">Error</span>
+                                                        <span id="<?php echo $value["product_id"] ?>" class="price product-price">Error</span>
                                                     </span>
                                                 </div>
                                             </div>
@@ -124,314 +124,358 @@ require_once "Header.php";
                                     </div>
                                     <script type="text/javascript">
                                         array.push({
-                                            id: <?php echo $row["product_id"] ?>,
-                                            price: <?php echo $row["product_price"] ?>
+                                            id: <?php echo $value["product_id"] ?>,
+                                            price: <?php echo $value["product_price"] ?>
                                         })
                                     </script>
                             <?php }
                             } ?>
                         </div>
-
                         <!-- Add Pagination -->
+
                         <div class="swiper-pagination"></div>
                     </div>
                 </div>
-            </div>
-
-        </div>
-    </div>
-    <!-- Món ăn được ưa chuộng -->
-    <div class="danhsachmonan">
-        <div class="icon_cupcake text-center">
-            <img src="./mvc/views/html/img_doan/cupcake.png" alt="" style="max-width: 100%;height: auto;">
-        </div>
-        <div class="monannoibat_title text-center">
-            <h2 style="display:inline-block;">
-                <a href="">Danh sách món ăn</a>
-            </h2>
-        </div>
-        <div class="listt">
-            <div class="list_monan text-center">
-                <ul class="tabs d-none d-md-block d-lg-block">
-                    <!-- d-none d-md-flex d-lg-flex -->
-                    <li class="tab-link1 current"><a href="javascript:;">Bánh</a></li>
-                    <li class="tab-link2 "><a href="javascript:;">Trà</a></li>
-                    <li class="tab-link3 "><a href="javascript:;">Kem tươi</a></li>
-                    <li class="tab-link4 "><a href="javascript:;">Cà phê</a></li>
-                    <li class="tab-link5 "><a href="javascript:;">Nước ép</a></li>
-                </ul>
-                <div class="select-container d-lg-none d-md-none">
-                    <select class="select" name="items" id="items">
-                        <option value="1">Bánh</option>
-                        <option value="2">Trà</option>
-                        <option value="3">Kem tươi</option>
-                        <option value="4">Cà phê</option>
-                        <option value="5">Nước ép</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-
-        <div class="container mb-5 monan">
-            <div class="tab1 current">
-                <div class="row">
-                    <div class="col-lg-3 col-md-6 mb-5 p-0">
-                        <div class="item_list">
-                            <div class="image">
-                                <a href=""><img src="./mvc/views/html/img_doan/dsmonan.jpg" alt="" style="max-width: 100%; max-height: 100%"></a>
-                            </div>
-                            <div class="info" style="display:flex">
-                                <div class="infoLeft">
-                                    <h3 class=title>
-                                        <a href="">
-                                            Fruit Cream Puff
-                                        </a>
-                                    </h3>
-                                    <div class="box_price">
-                                        <span class="special_price">
-                                            <span class="price product-price">150.000₫</span>
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="infoRight">
-                                    <button>Thêm vào giỏ</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6 mb-5 p-0">
-                        <div class="item_list">
-                            <div class="image">
-                                <a href=""><img src="./mvc/views/html/img_doan/dsmonan.jpg" alt="" style="max-width: 100%; max-height: 100%"></a>
-                            </div>
-                            <div class="info" style="display:flex">
-                                <div class="infoLeft">
-                                    <h3 class=title>
-                                        <a href="">
-                                            Fruit Cream Puff
-                                        </a>
-                                    </h3>
-                                    <div class="box_price">
-                                        <span class="special_price">
-                                            <span class="price product-price">150.000₫</span>
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="infoRight">
-                                    <button>Thêm vào giỏ</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6 mb-5 p-0">
-                        <div class="item_list">
-                            <div class="image">
-                                <a href=""><img src="./mvc/views/html/img_doan/dsmonan.jpg" alt="" style="max-width: 100%; max-height: 100%"></a>
-                            </div>
-                            <div class="info" style="display:flex">
-                                <div class="infoLeft">
-                                    <h3 class=title>
-                                        <a href="">
-                                            Fruit Cream Puff
-                                        </a>
-                                    </h3>
-                                    <div class="box_price">
-                                        <span class="special_price">
-                                            <span class="price product-price">150.000₫</span>
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="infoRight">
-                                    <button>Thêm vào giỏ</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 mb-5 p-0">
-                        <div class="item_list">
-                            <div class="image">
-                                <a href=""><img src="./mvc/views/html/img_doan/dsmonan.jpg" alt="" style="max-width: 100%; max-height: 100%"></a>
-                            </div>
-                            <div class="info" style="display:flex">
-                                <div class="infoLeft">
-                                    <h3 class=title>
-                                        <a href="">
-                                            Fruit Cream Puff
-                                        </a>
-                                    </h3>
-                                    <div class="box_price">
-                                        <span class="special_price">
-                                            <span class="price product-price">150.000₫</span>
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="infoRight">
-                                    <button>Thêm vào giỏ</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            <div class="tab2">
-
-            </div>
-            <div class="tab3">
-
-            </div>
-            <div class="tab4">
-
-            </div>
-            <div class="tab5">
 
             </div>
         </div>
-
-    </div>
-    <div style="background-img: url('https://scontent.fsgn2-4.fna.fbcdn.net/v/t1.0-9/cp0/127243818_1774477089395846_1556559475064294708_n.jpg?_nc_cat=109&ccb=2&_nc_sid=0debeb&_nc_ohc=cSecq6N2ccwAX8-SQV2&_nc_ht=scontent.fsgn2-4.fna&oh=0c58f35c01385ae8ce27458b39bb289a&oe=5FEE4B84')">
-        <div class="monannoibat_title text-center ">
+        <!-- Món ăn được ưa chuộng -->
+        <div class="danhsachmonan">
             <div class="icon_cupcake text-center">
-                <img class="pt-5" src="./mvc/views/html/img_doan/cupcake.png" alt="" style="max-width: 100%;height: auto;">
+                <img src="./mvc/views/html/img_doan/cupcake.png" alt="" style="max-width: 100%;height: auto;">
             </div>
-            <h2 style="display:inline-block;">
-                <a href="">Blog</a>
-            </h2>
-            <div class="slider" style="">
-                <div class="slider-sub">
-                    <div class="container-fluid p-5">
-                        <div class="swiper-container">
-                            <div class="swiper-wrapper" style="height:auto">
-                                <div class="swiper-slide" style="max-height: 480px;">
-                                    <div class="image">
-                                        <a class="image_product" href="">
-                                            <img src="./mvc/views/html/img_doan/monannoibat (1).jpg" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="info">
-                                        <div class="infoLeft">
-                                            <h3 class=title>
-                                                <a href="">
-                                                    Title of blog
-                                                </a>
-                                            </h3>
-                                        </div>
-                                        <div class="infoRight">
-                                            <button>Xem chi tiết</button>
-                                        </div>
-                                    </div>
+            <div class="monannoibat_title text-center">
+                <h2 style="display:inline-block;">
+                    <a href="">Danh sách món ăn</a>
+                </h2>
+            </div>
+            <div class="listt">
+                <div class="list_monan text-center">
+                    <ul class="tabs d-none d-md-block d-lg-block">
+                        <!-- d-none d-md-flex d-lg-flex -->
+                        <li class="tab-link1 current"><a href="javascript:;">Bánh</a></li>
+                        <li class="tab-link2 "><a href="javascript:;">Trà</a></li>
+                        <li class="tab-link3 "><a href="javascript:;">Kem tươi</a></li>
+                        <li class="tab-link4 "><a href="javascript:;">Cà phê</a></li>
+                        <li class="tab-link5 "><a href="javascript:;">Nước ép</a></li>
+                    </ul>
+                    <div class="select-container d-lg-none d-md-none">
+                        <select class="select" name="items" id="items">
+                            <option value="1">Bánh</option>
+                            <option value="2">Trà</option>
+                            <option value="3">Kem tươi</option>
+                            <option value="4">Cà phê</option>
+                            <option value="5">Nước ép</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container mb-5 monan">
+                <div class="tab1 current">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-6 mb-5 p-0">
+                            <div class="item_list">
+                                <div class="image">
+                                    <a href=""><img src="./mvc/views/html/img_doan/dsmonan.jpg" alt="" style="max-width: 100%; max-height: 100%"></a>
                                 </div>
-                                <div class="swiper-slide" style="max-height: 480px;">
-                                    <div class="image">
-                                        <a class="image_product" href="">
-                                            <img src="./mvc/views/html/img_doan/monannoibat (2).jpg" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="info">
-                                        <div class="infoLeft">
-                                            <h3 class=title>
-                                                <a href="">
-                                                    Title of blog
-                                                </a>
-                                            </h3>
-                                        </div>
-                                        <div class="infoRight">
-                                            <button>Xem chi tiết</button>
+                                <div class="info" style="display:flex">
+                                    <div class="infoLeft">
+                                        <h3 class=title>
+                                            <a href="">
+                                                Fruit Cream Puff
+                                            </a>
+                                        </h3>
+                                        <div class="box_price">
+                                            <span class="special_price">
+                                                <span class="price product-price">150.000₫</span>
+                                            </span>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="swiper-slide" style="max-height: 480px;">
-                                    <div class="image">
-                                        <a class="image_product" href="">
-                                            <img src="./mvc/views/html/img_doan/monannoibat (3).jpg" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="info">
-                                        <div class="infoLeft">
-                                            <h3 class=title>
-                                                <a href="">
-                                                    Title of blog
-                                                </a>
-                                            </h3>
-                                        </div>
-                                        <div class="infoRight">
-                                            <button>Xem chi tiết</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide" style="max-height: 480px;">
-                                    <div class="image">
-                                        <a class="image_product" href="">
-                                            <img src="./mvc/views/html/img_doan/monannoibat (5).jpg" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="info">
-                                        <div class="infoLeft">
-                                            <h3 class=title>
-                                                <a href="">
-                                                    Title of blog
-                                                </a>
-                                            </h3>
-                                        </div>
-                                        <div class="infoRight">
-                                            <button>Xem chi tiết</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide" style="max-height: 480px;">
-                                    <div class="image">
-                                        <a class="image_product" href="">
-                                            <img src="./mvc/views/html/img_doan/monannoibat (6).jpg" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="info">
-                                        <div class="infoLeft">
-                                            <h3 class=title>
-                                                <a href="">
-                                                    Title of blog
-                                                </a>
-                                            </h3>
-                                        </div>
-                                        <div class="infoRight">
-                                            <button>Xem chi tiết</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide" style="max-height: 480px;">
-                                    <div class="image">
-                                        <a class="image_product" href="">
-                                            <img src="./mvc/views/html/img_doan/monannoibat (7).jpg" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="info">
-                                        <div class="infoLeft">
-                                            <h3 class=title>
-                                                <a href="">
-                                                    Title of blog
-                                                </a>
-                                            </h3>
-                                        </div>
-                                        <div class="infoRight">
-                                            <button>Xem chi tiết</button>
-                                        </div>
+                                    <div class="infoRight">
+                                        <button>Thêm vào giỏ</button>
                                     </div>
                                 </div>
                             </div>
-                            <!-- Add Pagination -->
-                            <div class="swiper-pagination"></div>
                         </div>
+
+                        <div class="col-lg-3 col-md-6 mb-5 p-0">
+                            <div class="item_list">
+                                <div class="image">
+                                    <a href=""><img src="./mvc/views/html/img_doan/dsmonan.jpg" alt="" style="max-width: 100%; max-height: 100%"></a>
+                                </div>
+                                <div class="info" style="display:flex">
+                                    <div class="infoLeft">
+                                        <h3 class=title>
+                                            <a href="">
+                                                Fruit Cream Puff
+                                            </a>
+                                        </h3>
+                                        <div class="box_price">
+                                            <span class="special_price">
+                                                <span class="price product-price">150.000₫</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="infoRight">
+                                        <button>Thêm vào giỏ</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6 mb-5 p-0">
+                            <div class="item_list">
+                                <div class="image">
+                                    <a href=""><img src="./mvc/views/html/img_doan/dsmonan.jpg" alt="" style="max-width: 100%; max-height: 100%"></a>
+                                </div>
+                                <div class="info" style="display:flex">
+                                    <div class="infoLeft">
+                                        <h3 class=title>
+                                            <a href="">
+                                                Fruit Cream Puff
+                                            </a>
+                                        </h3>
+                                        <div class="box_price">
+                                            <span class="special_price">
+                                                <span class="price product-price">150.000₫</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="infoRight">
+                                        <button>Thêm vào giỏ</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 mb-5 p-0">
+                            <div class="item_list">
+                                <div class="image">
+                                    <a href=""><img src="./mvc/views/html/img_doan/dsmonan.jpg" alt="" style="max-width: 100%; max-height: 100%"></a>
+                                </div>
+                                <div class="info" style="display:flex">
+                                    <div class="infoLeft">
+                                        <h3 class=title>
+                                            <a href="">
+                                                Fruit Cream Puff
+                                            </a>
+                                        </h3>
+                                        <div class="box_price">
+                                            <span class="special_price">
+                                                <span class="price product-price">150.000₫</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="infoRight">
+                                        <button>Thêm vào giỏ</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
+                <div class="tab2">
 
+                </div>
+                <div class="tab3">
+
+                </div>
+                <div class="tab4">
+
+                </div>
+                <div class="tab5">
+
+                </div>
+            </div>
+
+        </div>
+        <div style="background-img: url('https://scontent.fsgn2-4.fna.fbcdn.net/v/t1.0-9/cp0/127243818_1774477089395846_1556559475064294708_n.jpg?_nc_cat=109&ccb=2&_nc_sid=0debeb&_nc_ohc=cSecq6N2ccwAX8-SQV2&_nc_ht=scontent.fsgn2-4.fna&oh=0c58f35c01385ae8ce27458b39bb289a&oe=5FEE4B84')">
+            <div class="monannoibat_title text-center ">
+                <div class="icon_cupcake text-center">
+                    <img class="pt-5" src="./mvc/views/html/img_doan/cupcake.png" alt="" style="max-width: 100%;height: auto;">
+                </div>
+                <h2 style="display:inline-block;">
+                    <a href="">Blog</a>
+                </h2>
+                <div class="slider" style="">
+                    <div class="slider-sub">
+                        <div class="container-fluid p-5">
+                            <div class="swiper-container">
+                                <div class="swiper-wrapper" style="height:auto">
+                                    <div class="swiper-slide" style="max-height: 480px;">
+                                        <div class="image">
+                                            <a class="image_product" href="">
+                                                <img src="./mvc/views/html/img_doan/monannoibat (1).jpg" alt="">
+                                            </a>
+                                        </div>
+                                        <div class="info">
+                                            <div class="infoLeft">
+                                                <h3 class=title>
+                                                    <a href="">
+                                                        Title of blog
+                                                    </a>
+                                                </h3>
+                                            </div>
+                                            <div class="infoRight">
+                                                <button>Xem chi tiết</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide" style="max-height: 480px;">
+                                        <div class="image">
+                                            <a class="image_product" href="">
+                                                <img src="./mvc/views/html/img_doan/monannoibat (2).jpg" alt="">
+                                            </a>
+                                        </div>
+                                        <div class="info">
+                                            <div class="infoLeft">
+                                                <h3 class=title>
+                                                    <a href="">
+                                                        Title of blog
+                                                    </a>
+                                                </h3>
+                                            </div>
+                                            <div class="infoRight">
+                                                <button>Xem chi tiết</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide" style="max-height: 480px;">
+                                        <div class="image">
+                                            <a class="image_product" href="">
+                                                <img src="./mvc/views/html/img_doan/monannoibat (3).jpg" alt="">
+                                            </a>
+                                        </div>
+                                        <div class="info">
+                                            <div class="infoLeft">
+                                                <h3 class=title>
+                                                    <a href="">
+                                                        Title of blog
+                                                    </a>
+                                                </h3>
+                                            </div>
+                                            <div class="infoRight">
+                                                <button>Xem chi tiết</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide" style="max-height: 480px;">
+                                        <div class="image">
+                                            <a class="image_product" href="">
+                                                <img src="./mvc/views/html/img_doan/monannoibat (5).jpg" alt="">
+                                            </a>
+                                        </div>
+                                        <div class="info">
+                                            <div class="infoLeft">
+                                                <h3 class=title>
+                                                    <a href="">
+                                                        Title of blog
+                                                    </a>
+                                                </h3>
+                                            </div>
+                                            <div class="infoRight">
+                                                <button>Xem chi tiết</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide" style="max-height: 480px;">
+                                        <div class="image">
+                                            <a class="image_product" href="">
+                                                <img src="./mvc/views/html/img_doan/monannoibat (6).jpg" alt="">
+                                            </a>
+                                        </div>
+                                        <div class="info">
+                                            <div class="infoLeft">
+                                                <h3 class=title>
+                                                    <a href="">
+                                                        Title of blog
+                                                    </a>
+                                                </h3>
+                                            </div>
+                                            <div class="infoRight">
+                                                <button>Xem chi tiết</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide" style="max-height: 480px;">
+                                        <div class="image">
+                                            <a class="image_product" href="">
+                                                <img src="./mvc/views/html/img_doan/monannoibat (7).jpg" alt="">
+                                            </a>
+                                        </div>
+                                        <div class="info">
+                                            <div class="infoLeft">
+                                                <h3 class=title>
+                                                    <a href="">
+                                                        Title of blog
+                                                    </a>
+                                                </h3>
+                                            </div>
+                                            <div class="infoRight">
+                                                <button>Xem chi tiết</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Add Pagination -->
+                                <div class="swiper-pagination"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </div>
-    </div>
 
 </body>
 
 </html>
+<script>
+    var array;
+    var xhr = new XMLHttpRequest();
+
+    xhr.onload = function() {
+        if (xhr.readyState === xhr.DONE) {
+            if (xhr.status === 200) {
+                array = JSON.parse(xhr.responseText);
+                const html = array.map(item => `
+                                    <div class="swiper-slide" style="max-height: 480px; width: 447.667px; margin-right: 40px;">
+                                        <div class="image">
+                                            <a class="image_product" href="<?php echo URL ?>Product/productDetail/${item.product_id}">
+                                                <img src="./mvc/assets/img/${item.product_image}" alt="">
+                                            </a>
+                                        </div>
+                                        <div class="info">
+                                            <div class="infoLeft">
+                                                <h3 class=title>
+                                                    <a href="">
+                                                        ${item.product_name}
+                                                    </a>
+                                                </h3>
+                                                <div class="box_price">
+                                                    <span class="special_price">
+                                                        <span id="${item.product_id}" class="price product-price">${format(item.product_price)}</span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="infoRight">
+                                                <a href="<?php echo URL ?>Cart/store/${item.product_id}">
+                                                    <button>Thêm vào giỏ</button>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                `).join('');
+                $("#noibac").html(html);
+            }
+        }
+    }
+
+    xhr.open('GET', '<?php echo URL ?>Product/productAPI/1', true);
+    xhr.send();
+</script>
+
 <script>
     var swiper = new Swiper('.swiper-container', {
         slidesPerView: 5,
@@ -473,21 +517,6 @@ require_once "Header.php";
 </script>
 
 <script type="text/javascript">
-    arrJson = JSON.stringify(array);
-
-    var request = new XMLHttpRequest();
-    request.open('GET', 'https://gorest.co.in/public-api/users/123', true);
-    request.onload = function() {
-        if (request.readyState === request.DONE) {
-            if (request.status === 200) {
-                console.log(request.response);
-                console.log(request.responseText);
-            }
-        }
-        //       
-    }
-    request.send();
-
     array.forEach(item => {
         $("#" + item.id).html(format(item.price));
     })

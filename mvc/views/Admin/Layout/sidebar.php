@@ -41,7 +41,7 @@
     </div>
 
     <li class="nav-item active">
-        <a class="nav-link" href="<?php echo URL ?>Admin/logout">
+        <a class="nav-link" href="<?php echo URL ?>AdminLogout">
             <i class="fa fa-fw fa-sign-out-alt"></i>
             <span>Log out</span></a>
     </li>

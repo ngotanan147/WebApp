@@ -23,10 +23,8 @@
             } else {
                 $sql = "select ${selectList} from ${table}";
             }
-
             // echo $sql;
             // die();
-
             $query = $this->execute($sql);
             $data = [];
             while ($row = mysqli_fetch_assoc($query)) {

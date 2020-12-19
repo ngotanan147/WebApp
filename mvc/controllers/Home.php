@@ -9,7 +9,7 @@ class Home extends Controller
     function SayHi()
     {
         $this->getView("TrangChu", [
-            "product" => $this->productModel->getProduct()
+            "product" => $this->productModel->getProductByCategoryId(1)
         ]);
     }
 

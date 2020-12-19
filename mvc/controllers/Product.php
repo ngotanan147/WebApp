@@ -33,4 +33,20 @@ class Product extends Controller
 
         $this->SayHi();
     }
+
+    function AllProductAPI()
+    {
+        $data = $this->productModel->getAll();
+        $myJson = json_encode($data, JSON_UNESCAPED_UNICODE);
+
+        echo $myJson;
+    }
+
+    function productAPI($category_id)
+    {
+        $data = $this->productModel->getProductByCategoryId(1);
+        $myJson = json_encode($data, JSON_UNESCAPED_UNICODE);
+
+        echo $myJson;
+    }
 }

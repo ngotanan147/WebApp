@@ -10,16 +10,12 @@ class Register extends Controller
     function
     default()
     {
-        Header("location:" . URL ."Register");
+        Header("location:" . URL . "Register");
     }
     function SayHi()
     {
-        if (isset($_SESSION["adminEmail"])) {
-            Header("Location:" . URL ."");
-        } else if ($this->fail) {
-            $this->getView("Register", [
-                'display' => 'block',
-            ]);
+        if (isset($_SESSION["email"])) {
+            Header("Location:" . URL . "");
         } else {
             $this->getView("Register");
         }
@@ -42,7 +38,7 @@ class Register extends Controller
                 ];
 
                 $this->model->addUser($data);
-                Header("Location:" . URL ."Login");
+                Header("Location:" . URL . "Login");
             }
         }
     }

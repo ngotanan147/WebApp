@@ -6,8 +6,12 @@ class ProductModel extends BaseModel
     public function getProduct()
     {
         $qr = "Select * from product";
-        // mysqli_query($this->con, $qr);
         return $this->execute($qr);
+    }
+    public function getAll()
+    {
+
+        return $this->all(self::TABLE);
     }
 
     public function deleteProduct($id)
@@ -25,10 +29,25 @@ class ProductModel extends BaseModel
         $this->updatee(self::TABLE, $id, $data);
     }
 
+
     public function getProductById($id)
     {
         // $table, $columnsNameId, $id
         $columnsNameId = "product_id";
         return $this->getItemById(self::TABLE, $columnsNameId, $id);
+    }
+
+    public function getProductByCategoryId($category_id)
+    {
+        $qr = "SELECT * from product where categories_id = $category_id";
+
+        $query = $this->execute($qr);
+
+        $data = [];
+        while ($row = mysqli_fetch_assoc($query)) {
+            array_push($data, $row);
+        }
+
+        return $data;
     }
 }

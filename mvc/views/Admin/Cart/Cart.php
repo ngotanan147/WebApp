@@ -44,7 +44,7 @@
 
         <!-- Sidebar -->
         <?php
-            require_once "./mvc/views/Admin/Layout/Sidebar.php";  
+        require_once "./mvc/views/Admin/Layout/Sidebar.php";
         ?>
         <!-- End of Sidebar -->
 
@@ -61,8 +61,7 @@
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
-                        <button data-toggle="modal" data-target="#exampleModal" type="button" 
-                        class="btn btn-primary" style="width: 100%;">Add item</button>
+                        <button data-toggle="modal" data-target="#exampleModal" type="button" class="btn btn-primary" style="width: 100%;">Add item</button>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -77,30 +76,29 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    
+
+
                                         <?php
-                                            while($row = mysqli_fetch_array($data["cart"])){
+                                        while ($row = mysqli_fetch_array($data["cart"])) {
                                         ?>
-                                        <tr>
-                                            <td><?php echo $row["user_id"] ?></td>
-                                            <td><?php echo $row["user_name"] ?></td>
-                                            <td><?php echo $row["user_email"] ?></td>
-                                            <td><?php echo $row["user_password"] ?></td>
-                                            <td><?php echo $row["user_role"] ?></td>
-                                            <td class="d-flex justify-content-around">
-                                                <a href="<?php echo URL ?>Admin/showEditData/<?php echo $row["user_id"] ?>">
-                                                    <i style="color:#999" class="fa fa-wrench fa-lg function"
-                                                        aria-hidden="true"></i>
-                                                        
-                                                </a>
-                                                <a href="Admin/deleteUser/<?php echo $row["user_id"] ?>">
-                                                    <i style="color:#999" class="fa fa-trash fa-lg function"
-                                                        aria-hidden="true"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    <?php } ?>
-                                    
+                                            <tr>
+                                                <td><?php echo $row["cart_id"] ?></td>
+                                                <td><?php echo $row["user_id"] ?></td>
+                                                <td><?php echo $row["cart_email"] ?></td>
+                                                <td><?php echo $row["cart_password"] ?></td>
+                                                <td><?php echo $row["cart_role"] ?></td>
+                                                <td class="d-flex justify-content-around">
+                                                    <a href="<?php echo URL ?>Admin/showEditData/<?php echo $row["user_id"] ?>">
+                                                        <i style="color:#999" class="fa fa-wrench fa-lg function" aria-hidden="true"></i>
+
+                                                    </a>
+                                                    <a href="Admin/deleteUser/<?php echo $row["user_id"] ?>">
+                                                        <i style="color:#999" class="fa fa-trash fa-lg function" aria-hidden="true"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        <?php } ?>
+
                                     </tbody>
                                 </table>
                             </div>
@@ -114,8 +112,7 @@
             <!-- End of Main Content -->
 
             <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -125,23 +122,23 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                        <form action="<?php echo URL ?>Admin/addUser" method="POST">
-                            <div class="form-group">
-                                <input name="name" type="text" class="form-control" id="exampleInputEmail" placeholder="Name">
-                            </div>
-                            <div class="form-group">
-                                <input name="email" type="email" class="form-control" id="exampleInputPassword" placeholder="Email">
-                            </div>
-                            <div class="form-group">
-                                <input name="password" type="password" class="form-control" id="exampleInputPassword" placeholder="Password">
-                            </div>
-                            <select name="role" multiple class="form-control" id="exampleFormControlSelect2">
-                                <option Selected>User</option>
-                                <option>Admin</option>
-                            </select>
-                            <button name="addUser" type="submit" class="btn btn-primary mt-2">Submit</button>
+                            <form action="<?php echo URL ?>Admin/addUser" method="POST">
+                                <div class="form-group">
+                                    <input name="name" type="text" class="form-control" id="exampleInputEmail" placeholder="Name">
+                                </div>
+                                <div class="form-group">
+                                    <input name="email" type="email" class="form-control" id="exampleInputPassword" placeholder="Email">
+                                </div>
+                                <div class="form-group">
+                                    <input name="password" type="password" class="form-control" id="exampleInputPassword" placeholder="Password">
+                                </div>
+                                <select name="role" multiple class="form-control" id="exampleFormControlSelect2">
+                                    <option Selected>User</option>
+                                    <option>Admin</option>
+                                </select>
+                                <button name="addUser" type="submit" class="btn btn-primary mt-2">Submit</button>
 
-                        </form>
+                            </form>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -150,7 +147,7 @@
                 </div>
             </div>
 
-                                                
+
             <!-- Footer -->
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
@@ -191,4 +188,5 @@
     <script src="<?php echo URL ?>mvc/assets/TableFile/js/demo/datatables-demo.js"></script>
 
 </body>
+
 </html>

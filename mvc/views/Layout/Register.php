@@ -1,5 +1,5 @@
 <?php
-require_once "./mvc/views/html/Header.html";
+require_once "Header.php";
 ?>
 <html>
 
@@ -200,5 +200,5 @@ require_once "./mvc/views/html/Header.html";
 </html>
 
 <?php
-require_once "./mvc/views/html/Footer.html";
+require_once "Footer.php";
 ?>

@@ -60,19 +60,7 @@
     padding-top: 5px;
 } */
 
-.tieptucmuahang button{
-    outline: none;
-    padding: 8px 20px;
-    border: 1px solid #ececec;
-    background-color:#fff;
-    transition: 0.2s;
-    border-radius: 5px;
-}
 
-.tieptucmuahang button:hover{
-    border: 1px solid #ef7147;
-    color: #ef7147;
-}
 
 .tongtienthanhtoan{
     background-color: #fff;

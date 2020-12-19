@@ -8,12 +8,6 @@ class Account extends Controller
     }
     function SayHi()
     {
-        $this->getView("Account", [
-         
-        ]);
+        $this->getView("Account", []);
     }
-
-    
-
-
 }

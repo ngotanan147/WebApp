@@ -1,5 +1,5 @@
 <?php
-require_once "./mvc/views/html/Header.html";
+require_once "Header.php";
 ?>
 
 <html>
@@ -19,106 +19,130 @@ require_once "./mvc/views/html/Header.html";
     <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <link rel="stylesheet" href="./mvc/views/html/Cart.css">
+    <style>
+        .tieptucmuahang a {
+            text-decoration: none;
+            color: #000;
+            outline: none;
+            padding: 8px 20px;
+            border: 1px solid #ececec;
+            background-color: #fff;
+            transition: 0.2s;
+            border-radius: 5px;
+        }
+
+        .tieptucmuahang a:hover {
+            border: 1px solid #ef7147;
+            color: #ef7147;
+            text-decoration: none;
+        }
+
+        .hide {
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
-    <div class="cartt">
-        <div class="container">
-            <div class="header">
-                <span>
-                    <a class="trangchu" href="">Trang chủ</a>
-                    <span>/</span>
-                    <span class="giohang">Giỏ hàng</span>
-                </span>
-            </div>
-            <div class="title pt-3 pb-4">
-                <h2>Giỏ hàng của tôi</h2>
-            </div>
-            <div class="content">
-                <table class="table text-center d-none d-md-table d-lg-table">
-                    <thead>
-                        <tr>
-                            <th scope="col">Ảnh sản phẩm</th>
-                            <th scope="col">Tên sản phẩm</th>
-                            <th scope="col">Đơn giá</th>
-                            <th scope="col">Số lượng</th>
-                            <th scope="col">Thành tiền</th>
-                            <th scope="col">Xóa</th>
-                        </tr>
-                    </thead>
-                    <tbody id="order_items">
-                        <!-- JS render -->
-                    </tbody>
-                </table>
-                <div id="order_items_mobile" class="mobile_table d-lg-none d-md-none mb-3 bg-white p-3 pt-4">
-                    <div class="d-flex justify-content-between">
-                        <div class="d-flex">
-                            <div>
-                                <img src="./mvc/views/html/img_doan/chaumatlon.jpg" alt="" width="75" height="auto">
-                            </div>
-                            <div class="tenvagia pl-3">
-                                <div class="mb-2">
-                                    <span class="mb-3" style="width: 200px;">Espresso Con Panna - S</span>
+    <form method="POST" action="<?php echo URL ?>cart/update">
+        <div class="cartt">
+            <div class="container">
+                <div class="header">
+                    <span>
+                        <a class="trangchu" href="">Trang chủ</a>
+                        <span>/</span>
+                        <span class="giohang">Giỏ hàng</span>
+                    </span>
+                </div>
+                <div class="title pt-3 pb-4">
+                    <h2>Giỏ hàng của tôi</h2>
+                </div>
+                <div class="text-center giohangtrong hide">
+                    <h2>Giỏ hàng trống!</h2>
+                </div>
+                <div class="form">
+                    <div class="content">
+                        <table class="table text-center d-none d-md-table d-lg-table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Ảnh sản phẩm</th>
+                                    <th scope="col">Tên sản phẩm</th>
+                                    <th scope="col">Đơn giá</th>
+                                    <th scope="col">Số lượng</th>
+                                    <th scope="col">Thành tiền</th>
+                                    <th scope="col">Xóa</th>
+                                </tr>
+                            </thead>
+
+
+                            <tbody id="order_items">
+
+                                <!-- JS render -->
+
+                            </tbody>
+                        </table>
+                        <div id="order_items_mobile" class="mobile_table d-lg-none d-md-none mb-3 bg-white p-3 pt-4">
+                            <!-- JS render -->
+                        </div>
+                    </div>
+                    <div class="container">
+                        <div class="thanhtoan">
+                            <div class="d-flex justify-content-between">
+                                <div class="tieptucmuahang pt-1">
+                                    <a href="<?php echo URL ?>">
+                                        Tiếp tục mua hàng
+                                    </a>
                                 </div>
-                                <div>
-                                    <span>Giá: </span> <span style="color: #ef7147">150.000₫</span>
+                                <div class="tongtienthanhtoan p-2 d-flex">
+                                    <div class="">
+                                        <span>Tổng tiền thanh toán:</span>
+                                    </div>
+                                    <div class="text-center">
+                                        <span style="color: #ef7147" class="total pl-3">0₫</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="d-flex mt-4">
-                            <div class="congtru">
-                                <button onclick="cong()">+</button>
-                                <input id="soluong" type="text" value="1" style="width:35px">
-                                <button onclick="tru()">-</button>
-                            </div>
-
+                        <div class="text-right pt-3 tienhanhthanhtoan" style="">
+                            <button type="submit" id="btn_thanhtoan">Cập nhật giỏ hàng</button>
+                        </div>
+                        <div class="text-right pt-3 pb-3 tienhanhthanhtoan">
+                            <a href="#">
+                                <button type="submit" id="btn_thanhtoan">Tiến hành thanh toán</button>
+                            </a>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
 
-        <div class="container">
-            <div class="thanhtoan">
-                <div class="d-flex justify-content-between">
-                    <div class="tieptucmuahang pt-1">
-                        <a href="#">
-                            <button>Tiếp tục mua hàng</button>
-                        </a>
-                    </div>
-                    <div class="tongtienthanhtoan p-2 d-flex">
-                        <div class="">
-                            <span>Tổng tiền thanh toán:</span>
-                        </div>
-                        <div class="text-center">
-                            <span style="color: #ef7147" class="total pl-3">0₫</span>
-                        </div>
-                    </div>
-                </div>
+
             </div>
-            <div class="text-right pt-3 pb-3 tienhanhthanhtoan">
-                <a href="#">
-                    <button id="btn_thanhtoan">Tiến hành thanh toán</button>
-                </a>
-            </div>
+
+
         </div>
-    </div>
-    <div class='text-center'>
-        <button class="p-3" id="btn-add" onclick="add()" style="outline:none; border: 1px solid #ccc; color: #fff;
-            background-color:  #ef7147;">
-            Thêm sản phẩm (test)
-        </button>
-    </div>
+    </form>
+
 
 </html>
+
 <script>
     $("#btn_thanhtoan").width($(".tieptucmuahang").width() - 8);
-    const items = [{
-        img: "",
-        name: "châu mat lon",
-        price: 450,
-        quantity: 1,
-    }]
+
+    const items = [
+        <?php
+        if (isset($_SESSION['cart'])) {
+            foreach ($_SESSION['cart'] as $key => $value) {
+        ?> {
+                    id: <?php echo $value['product_id'] ?>,
+                    img: "<?php echo $value['product_image'] ?>",
+                    name: "<?php echo $value['product_name'] ?>",
+                    price: <?php echo $value['product_price'] ?>,
+                    quantity: <?php echo $value['quantity'] ?>,
+                },
+        <?php
+            }
+        }
+        ?>
+    ]
 
     function format(n) {
         return (n * 1000).toLocaleString('vi', {
@@ -133,7 +157,7 @@ require_once "./mvc/views/html/Header.html";
     }
 
     function updateQuantity(index, quantity) {
-        if (quantity < 1) {
+        if (quantity < 0) {
             return;
         }
         items[index].quantity = quantity;
@@ -141,6 +165,13 @@ require_once "./mvc/views/html/Header.html";
     }
 
     function render() {
+        if (items.length == 0) {
+            $(".form").addClass("hide");
+            $(".giohangtrong").removeClass("hide");
+        } else if ($(".form").hasClass("hide")) {
+            $(".form").removeClass("hide");
+            $(".giohangtrong").addClass("hide");
+        }
         let subTotal = 0;
         items.forEach(item => {
             subTotal += (item.quantity * item.price);
@@ -149,7 +180,7 @@ require_once "./mvc/views/html/Header.html";
         const html = items.map(item => `
                             <tr>
                                 <th scope="row">
-                                    <img src="./mvc/views/html/img_doan/chaumatlon.jpg" alt="" width="75" height="auto">
+                                    <img src="./mvc/assets/img/${item.img}" alt="" width="75" height="auto">
                                 </th>
                                 <td>${item.name}</td>
                                 <td>
@@ -158,7 +189,7 @@ require_once "./mvc/views/html/Header.html";
                                 <td>
                                     <div class="congtru">
                                         <button id="inc">+</button>
-                                        <input id="quantity1" type="text" value="${item.quantity}" style="width:35px">
+                                        <input name="quantity[${item.id}]" id="quantity1" type="text" value="${item.quantity}" style="width:35px">
                                         <button id="dec">-</button>
                                     </div>
                                 </td>
@@ -166,9 +197,11 @@ require_once "./mvc/views/html/Header.html";
                                     <span id="thanhtien">${format(item.quantity * item.price)}</span>
                                 </td>
                                 <td>
-                                    <button id="deleteButton">
-                                        <i class="fa fa-trash-o"></i>
-                                    </button>
+                                    <a href="<?php echo URL ?>cart/delete/${item.id}">
+                                        <button id="deleteButton">
+                                            <i class="fa fa-trash-o"></i>
+                                        </button>
+                                    </a>
                                 </td>
                             </tr>
                             `).join('');
@@ -193,11 +226,14 @@ require_once "./mvc/views/html/Header.html";
                             <div class="d-flex mt-4">
                                 <div class="congtru">
                                     <button id="inc2">+</button>
-                                    <input id="quantity2" type="text" value="${item.quantity}" style="width:35px">
+                                    <input name="quantity[${item.id}]" id="quantity2" type="text" value="${item.quantity}" style="width:35px">
                                     <button id="dec2">-</button>
-                                <button id="deleteButton2">
-                                    <i class="fa fa-trash-o"></i>
-                                </button>
+                                <a href="<?php echo URL ?>cart/delete/${item.id}">
+                                    <button id="deleteButton2">
+                                        <i class="fa fa-trash-o"></i>
+                                    </button>
+                                </a>
+                                
                                 </div>
                             </div>
                         </div>`).join('');
@@ -214,7 +250,7 @@ require_once "./mvc/views/html/Header.html";
         const decs2 = document.querySelectorAll("#dec2");
         const quantitys1 = document.querySelectorAll("#quantity1");
         const quantitys2 = document.querySelectorAll("#quantity2");
-        console.log(quantitys1[0].value);
+
         for (let i = 0; i < deleteButton.length; i++) {
             deleteButton[i].addEventListener('click', () => {
                 remove(i);
@@ -270,6 +306,7 @@ require_once "./mvc/views/html/Header.html";
         const total = subTotal;
         $(".total").text(`${format(total)}`);
     }
+
 
     function add() {
         items.push({

@@ -33,9 +33,7 @@ class Login extends Controller
                 "success" => 'block',
             ]);
         } else {
-            // $user = $model->getUserByEmail($email);
-            // if ($user['role'] == 1){}
-            Header("Location:" . URL ."");
+            Header("Location:" . URL . "");
         }
     }
 }

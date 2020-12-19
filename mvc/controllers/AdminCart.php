@@ -5,7 +5,7 @@ class AdminCart extends Controller
 
     function __construct()
     {
-        $this->model = $this->getModel("UserModel");
+        $this->model = $this->getModel("CartModel");
     }
 
     function defaultUser()
@@ -15,13 +15,10 @@ class AdminCart extends Controller
 
     function SayHi()
     {
-        if (isset($_SESSION["adminEmail"])) {
-            $this->getViewAdmin("User/User", [
-                "user" => $this->model->getUser()
-            ]);
-        } else {
-            $this->getViewAdmin("Login");
-        }
+
+        $this->getViewAdmin("Cart/Cart", [
+            "cart" => $this->model->getCart()
+        ]);
     }
 
     function deleteUser($id)
