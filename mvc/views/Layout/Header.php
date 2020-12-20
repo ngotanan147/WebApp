@@ -140,11 +140,19 @@
                             <a href="<?php echo URL ?>Cart" class="nav-link">
                                 <div class="cart">
                                     <i class="fa fa-shopping-cart" style="font-size: 22px; color: #ef7147;"></i>
-                                    <span style="color:#333">(<?php
-                                                                if (isset($_SESSION["cart"])) {
-                                                                    echo count($_SESSION["cart"]);
-                                                                } else echo 0;
-                                                                ?>)</span>
+                                    <span>(</span>
+                                    <span id="soluong" style="color:#333"><?php
+                                                                            $total = 0;
+                                                                            if (isset($_SESSION['cart'])) {
+                                                                                if (count($_SESSION['cart']) != 0) {
+                                                                                    foreach ($_SESSION['cart'] as $key => $value) {
+                                                                                        $total += $value['quantity'];
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                            echo $total;
+                                                                            ?></span>
+                                    <span>)</span>
                                 </div>
                             </a>
                         </li>

@@ -3,10 +3,13 @@ class Cart extends Controller
 {
     private $productModel;
     private $cartModel;
+    private $userModel;
+    private $total_quantity;
     function __construct()
     {
         $this->productModel = $this->getModel("ProductModel");
         $this->cartModel = $this->getModel("CartModel");
+        $this->userModel = $this->getModel("UserModel");
     }
 
     function SayHi()
@@ -16,24 +19,43 @@ class Cart extends Controller
             $data = $_SESSION['cart'];
         }
 
+
+
         $this->getView("Cart", [
-            "cart" => $data
+            "cart" => $data,
         ]);
+    }
+
+    function test()
+    {
+        $user = $this->userModel->getUserByEmail($_SESSION['email']);
+        print_r($user["user_id"]);
     }
 
     function store($id)
     {
         $product = $this->productModel->getProductById($id);
 
-        if (empty($_SESSION['cart']) || !array_key_exists($id, $_SESSION['cart'])) {
-            $product['quantity'] = 1;
-            $_SESSION['cart'][$id] = $product;
+
+        if (isset($_SESSION['email'])) {
+            $user = $this->userModel->getUserByEmail($_SESSION['email']);
         } else {
-            $product['quantity'] = $_SESSION['cart'][$id]['quantity'] + 1;
-            $_SESSION['cart'][$id] = $product;
+            if (empty($_SESSION['cart']) || !array_key_exists($id, $_SESSION['cart'])) {
+                $product['quantity'] = 1;
+                $_SESSION['cart'][$id] = $product;
+            } else {
+                $product['quantity'] = $_SESSION['cart'][$id]['quantity'] + 1;
+                $_SESSION['cart'][$id] = $product;
+            }
+            $data = $_SESSION['cart'];
+
+            $total = 0;
+            foreach ($_SESSION['cart'] as $key => $value) {
+                $total += $value['quantity'];
+            }
+
+            echo "Success/" . strval($total);
         }
-        $data = $_SESSION['cart'];
-        Header('Location: ' . URL . 'cart');
     }
 
     function update()
@@ -53,8 +75,22 @@ class Cart extends Controller
 
     function delete($id)
     {
-        unset($_SESSION['cart'][$id]);
-        $data = $_SESSION['cart'];
-        Header('Location: ' . URL . 'cart');
+        if (count($_SESSION['cart']) == 1) {
+            unset($_SESSION['cart']);
+        } else {
+            unset($_SESSION['cart'][$id]);
+        }
+
+        if (isset($_SESSION['cart'])) {
+            $data = $_SESSION['cart'];
+
+            $total = 0;
+            if (isset($_SESSION['cart'])) {
+                foreach ($_SESSION['cart'] as $key => $value) {
+                    $total += $value['quantity'];
+                }
+            }
+            echo $id . '/' . $total;
+        }
     }
 }

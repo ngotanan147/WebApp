@@ -129,17 +129,20 @@ require_once "Header.php";
 
     const items = [
         <?php
-        if (isset($_SESSION['cart'])) {
-            foreach ($_SESSION['cart'] as $key => $value) {
+        if (!isset($_SESSION['email'])) {
+            if (isset($_SESSION['cart'])) {
+                foreach ($_SESSION['cart'] as $key => $value) {
         ?> {
-                    id: <?php echo $value['product_id'] ?>,
-                    img: "<?php echo $value['product_image'] ?>",
-                    name: "<?php echo $value['product_name'] ?>",
-                    price: <?php echo $value['product_price'] ?>,
-                    quantity: <?php echo $value['quantity'] ?>,
-                },
+                        id: <?php echo $value['product_id'] ?>,
+                        img: "<?php echo $value['product_image'] ?>",
+                        name: "<?php echo $value['product_name'] ?>",
+                        price: <?php echo $value['product_price'] ?>,
+                        quantity: <?php echo $value['quantity'] ?>,
+                    },
         <?php
+                }
             }
+        } else {
         }
         ?>
     ]
@@ -157,20 +160,28 @@ require_once "Header.php";
     }
 
     function updateQuantity(index, quantity) {
-        if (quantity < 0) {
+        if (quantity < 1) {
+            items[index].quantity = 1;
+            render();
             return;
         }
         items[index].quantity = quantity;
         render();
     }
 
-    function render() {
-        if (items.length == 0) {
-            $(".form").addClass("hide");
-            $(".giohangtrong").removeClass("hide");
-        } else if ($(".form").hasClass("hide")) {
+    function emptyCartMessage() {
+        if ($(".form").hasClass("hide")) {
             $(".form").removeClass("hide");
             $(".giohangtrong").addClass("hide");
+        } else {
+            $(".form").addClass("hide");
+            $(".giohangtrong").removeClass("hide");
+        }
+    }
+
+    function render() {
+        if (items.length == 0) {
+            emptyCartMessage();
         }
         let subTotal = 0;
         items.forEach(item => {
@@ -178,7 +189,7 @@ require_once "Header.php";
         })
 
         const html = items.map(item => `
-                            <tr>
+                            <tr id="product${item.id}">
                                 <th scope="row">
                                     <img src="./mvc/assets/img/${item.img}" alt="" width="75" height="auto">
                                 </th>
@@ -197,7 +208,7 @@ require_once "Header.php";
                                     <span id="thanhtien">${format(item.quantity * item.price)}</span>
                                 </td>
                                 <td>
-                                    <a href="<?php echo URL ?>cart/delete/${item.id}">
+                                    <a class="deletee" href="<?php echo URL ?>cart/delete/${item.id}">
                                         <button id="deleteButton">
                                             <i class="fa fa-trash-o"></i>
                                         </button>
@@ -241,9 +252,6 @@ require_once "Header.php";
         $("#order_items_mobile").html(htmlMoble);
         $("#order_items").html(html);
 
-        const deleteButton = document.querySelectorAll("#deleteButton");
-        const deleteButton2 = document.querySelectorAll("#deleteButton2");
-
         const incs = document.querySelectorAll("#inc");
         const decs = document.querySelectorAll("#dec");
         const incs2 = document.querySelectorAll("#inc2");
@@ -251,14 +259,43 @@ require_once "Header.php";
         const quantitys1 = document.querySelectorAll("#quantity1");
         const quantitys2 = document.querySelectorAll("#quantity2");
 
-        for (let i = 0; i < deleteButton.length; i++) {
-            deleteButton[i].addEventListener('click', () => {
-                remove(i);
-            });
+        $(".deletee").click(function(event) {
+            event.preventDefault();
+            var href = $(this).attr("href");
+            var xhr = new XMLHttpRequest();
 
-            deleteButton2[i].addEventListener('click', () => {
-                remove(i);
-            });
+            xhr.onload = function() {
+                if (xhr.readyState === xhr.DONE) {
+                    if (xhr.status === 200) {
+                        //Hứng dữ liệu
+                        arr = xhr.responseText.trim().split("/");
+
+                        //Tìm index của item cần xóa trong giỏ hàng
+                        var result = $.grep(items, function(e) {
+                            return e.id == arr[0];
+                        });
+
+                        //Xóa item thông qua index
+                        remove(items.indexOf(result[0]));
+                        $("#soluong").html(arr[1]);
+
+                        if (arr[1] === 0) {
+                            emptyCartMessage();
+                            $("#soluong").html(0);
+                        }
+
+                        if (typeof(arr[1]) == 'undefined') {
+                            $("#soluong").html(0);
+                        }
+                    }
+                }
+            }
+
+            xhr.open('GET', href, true);
+            xhr.send();
+        })
+
+        for (let i = 0; i < incs.length; i++) {
 
             if (incs[i]) {
                 incs[i].addEventListener('click', () => {
@@ -307,15 +344,6 @@ require_once "Header.php";
         $(".total").text(`${format(total)}`);
     }
 
-
-    function add() {
-        items.push({
-            name: "châu matlon",
-            price: 500,
-            quantity: 1,
-        })
-        render();
-    }
     render();
 </script>
 

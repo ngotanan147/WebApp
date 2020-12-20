@@ -23,6 +23,8 @@ require_once "Header.php";
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
     <link rel="stylesheet" href="./mvc/views/html/TrangChu.css">
     <style>
         .item_list {
@@ -92,7 +94,7 @@ require_once "Header.php";
                             </script>
 
                             <?php
-                            
+
                             if (!empty($data["product"])) {
                                 foreach ($data["product"] as $key => $value) {
                             ?>
@@ -109,14 +111,14 @@ require_once "Header.php";
                                                         <?php echo $value["product_name"] ?>
                                                     </a>
                                                 </h3>
-                                                <div class="box_price">
+                                                <div class="box_price sdsdsds">
                                                     <span class="special_price">
                                                         <span id="<?php echo $value["product_id"] ?>" class="price product-price">Error</span>
                                                     </span>
                                                 </div>
                                             </div>
                                             <div class="infoRight">
-                                                <a href="#">
+                                                <a class="addtocart" id="product<?php echo $value["product_id"] ?>" href="<?php echo URL ?>cart/store/<?php echo $value["product_id"] ?>">
                                                     <button>Thêm vào giỏ</button>
                                                 </a>
                                             </div>
@@ -432,7 +434,33 @@ require_once "Header.php";
 
 </html>
 <script>
-    var array;
+    $(".addtocart").click(function(event) {
+        event.preventDefault();
+        var href = $(this).attr("href");
+        var xhr = new XMLHttpRequest();
+
+        xhr.onload = function() {
+            if (xhr.readyState === xhr.DONE) {
+                if (xhr.status === 200) {
+                    arr = xhr.responseText.trim().split("/");
+                    // console.log(arr);
+                    if (arr[0] == "Success") {
+                        swal("Đã thêm vào giỏ hàng!", "", "success");
+                    } else {
+                        swal("Hết hàng!", "", "warning");
+                    }
+
+                }
+                $("#soluong").html(arr[1]);
+            }
+        }
+
+        xhr.open('GET', href, true);
+        xhr.send();
+    })
+</script>
+
+<script>
     var xhr = new XMLHttpRequest();
 
     xhr.onload = function() {
@@ -467,7 +495,7 @@ require_once "Header.php";
                                         </div>
                                     </div>
                                 `).join('');
-                $("#noibac").html(html);
+                // $("#noibac").html(html);
             }
         }
     }

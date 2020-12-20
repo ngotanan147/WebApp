@@ -8,30 +8,29 @@ class AdminCart extends Controller
         $this->model = $this->getModel("CartModel");
     }
 
-    function defaultUser()
+    function defaultCart()
     {
-        Header("location:" . URL . "Admin");
+        Header("location:" . URL . "Admin/cart");
     }
 
     function SayHi()
     {
-
         $this->getViewAdmin("Cart/Cart", [
             "cart" => $this->model->getCart()
         ]);
     }
 
-    function deleteUser($id)
+    function delete($id)
     {
-        $this->defaultUser();
-        $this->model->deleteUser($id);
+        $this->defaultCart();
+        $this->model->deleteCart($id);
     }
 
-    function addUser()
+    function addCart()
     {
-        $this->defaultUser();
+        $this->defaultCart();
 
-        if (isset($_POST["addUser"])) {
+        if (isset($_POST["addCart"])) {
             $role = 1;
             if ($_POST["role"] == "Admin") {
                 $role = 0;
@@ -40,33 +39,33 @@ class AdminCart extends Controller
             }
 
             $data = [
-                'user_name' => $_POST["name"],
-                'user_email' => $_POST["email"],
-                'user_password' => $_POST["password"],
-                'user_role' => $role
+                'Cart_name' => $_POST["name"],
+                'Cart_email' => $_POST["email"],
+                'Cart_password' => $_POST["password"],
+                'Cart_role' => $role
             ];
-            $this->model->addUser($data);
+            $this->model->addCart($data);
         }
     }
 
     function showEditData($id)
     {
-        $data = $this->model->getUserById($id);
+        $data = $this->model->getCartById($id);
 
-        $this->getViewAdmin("UserEdit", [
-            "id" => $data["user_id"],
-            "name" => $data["user_name"],
-            "email" => $data["user_email"],
-            "password" => $data["user_password"],
-            "role" => $data["user_role"],
-            "user" => $this->model->getUser(),
+        $this->getViewAdmin("CartEdit", [
+            "id" => $data["Cart_id"],
+            "name" => $data["Cart_name"],
+            "email" => $data["Cart_email"],
+            "password" => $data["Cart_password"],
+            "role" => $data["Cart_role"],
+            "Cart" => $this->model->getCart(),
         ]);
     }
 
-    function editUser($id)
+    function editCart($id)
     {
-        $this->defaultUser();
-        if (isset($_POST["editUser"])) {
+        $this->defaultCart();
+        if (isset($_POST["editCart"])) {
             $role = 1;
             if ($_POST["role"] == "Admin") {
                 $role = 0;
@@ -75,13 +74,13 @@ class AdminCart extends Controller
             }
 
             $data =  [
-                "user_name" => $_POST["name"],
-                "user_email" => $_POST["email"],
-                "user_password" => $_POST["password"],
-                "user_role" => $role,
+                "Cart_name" => $_POST["name"],
+                "Cart_email" => $_POST["email"],
+                "Cart_password" => $_POST["password"],
+                "Cart_role" => $role,
             ];
 
-            $this->model->editUser($id, $data);
+            $this->model->editCart($id, $data);
         }
     }
 }

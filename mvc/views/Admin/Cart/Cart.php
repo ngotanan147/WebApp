@@ -68,37 +68,45 @@
                                     <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Name</th>
-                                            <th>Email</th>
-                                            <th>Password</th>
-                                            <th>Role</th>
-                                            <th>Function</th>
+                                            <th>User ID</th>
+                                            <th>Product name</th>
+                                            <th>Product ID</th>
+                                            <th>Product image</th>
+                                            <th>Product price</th>
+                                            <th>Quantity</th>
+                                            <th>Total</th>
+                                            <th>function</th>
                                         </tr>
                                     </thead>
                                     <tbody>
 
 
                                         <?php
-                                        while ($row = mysqli_fetch_array($data["cart"])) {
+                                        // print_r($data['cart']);
+                                        // die();
+                                        if (isset($data['cart'])){
+                                        foreach ($data['cart'] as $key => $value){
                                         ?>
                                             <tr>
-                                                <td><?php echo $row["cart_id"] ?></td>
-                                                <td><?php echo $row["user_id"] ?></td>
-                                                <td><?php echo $row["cart_email"] ?></td>
-                                                <td><?php echo $row["cart_password"] ?></td>
-                                                <td><?php echo $row["cart_role"] ?></td>
+                                                <td><?php echo $value["cart_id"] ?></td>
+                                                <td><?php echo $value["user_id"] ?></td>
+                                                <td><?php echo $value["product_name"] ?></td>
+                                                <td><?php echo $value["product_id"] ?></td>
+                                                <td><?php echo $value["product_image"] ?></td>
+                                                <td><?php echo $value["product_price"] ?></td>
+                                                <td><?php echo $value["quatity"] ?></td>
+                                                <td><?php echo $value["total"] ?></td>
                                                 <td class="d-flex justify-content-around">
-                                                    <a href="<?php echo URL ?>Admin/showEditData/<?php echo $row["user_id"] ?>">
+                                                    <a href="<?php echo URL ?>AdminCart/showEditData/<?php echo $value["user_id"] ?>">
                                                         <i style="color:#999" class="fa fa-wrench fa-lg function" aria-hidden="true"></i>
 
                                                     </a>
-                                                    <a href="Admin/deleteUser/<?php echo $row["user_id"] ?>">
+                                                    <a href="AdminCart/delete/<?php echo $value["user_id"] ?>">
                                                         <i style="color:#999" class="fa fa-trash fa-lg function" aria-hidden="true"></i>
                                                     </a>
                                                 </td>
                                             </tr>
-                                        <?php } ?>
-
+                                        <?php }}?>
                                     </tbody>
                                 </table>
                             </div>

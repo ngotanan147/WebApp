@@ -5,8 +5,10 @@ class CartModel extends BaseModel
     const TABLE = 'cart';
     public function getCart()
     {
-        $qr = "Select * from cart";
-        return $this->execute($qr);
+        // $qr = "Select * from cart";
+        // return $this->execute($qr);
+
+        return $this->all(self::TABLE);
     }
 
     public function deleteCart($id)

@@ -124,7 +124,7 @@ class Admin extends Controller
     {
         $data = $this->model->getUserById($id);
 
-        $this->getViewAdmin("UserEdit", [
+        $this->getViewAdmin("User/UserEdit", [
             "id" => $data["user_id"],
             "name" => $data["user_name"],
             "email" => $data["user_email"],
