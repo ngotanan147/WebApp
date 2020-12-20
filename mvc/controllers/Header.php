@@ -1,7 +1,7 @@
 <?php
 class Header extends Controller
 {
-    function SayHi()
+    function index()
     {
         $product = $this->getModel("ProductModel");
 

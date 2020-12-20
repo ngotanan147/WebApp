@@ -12,7 +12,7 @@ class Register extends Controller
     {
         Header("location:" . URL . "Register");
     }
-    function SayHi()
+    function index()
     {
         if (isset($_SESSION["email"])) {
             Header("Location:" . URL . "");
@@ -23,11 +23,11 @@ class Register extends Controller
 
     function register()
     {
-        if (isset($_POST['adminRegister'])) {
+        if (isset($_POST['register'])) {
             $email = $_POST["email"];
             if (!empty($this->model->getUserByEmail($email))) {
                 $this->fail = true;
-                $this->SayHi();
+                $this->index();
                 // Header("Location:http://localhost/Doanweb/Register");
             } else {
                 $data = [

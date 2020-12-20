@@ -13,7 +13,7 @@ class AdminLogin extends Controller
         Header("location:" . URL . "Admin");
     }
 
-    function SayHi()
+    function index()
     {
         if (isset($_SESSION["adminEmail"])) {
             Header("Location:" . URL . "Admin");

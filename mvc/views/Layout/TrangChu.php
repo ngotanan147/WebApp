@@ -443,7 +443,7 @@ require_once "Header.php";
             if (xhr.readyState === xhr.DONE) {
                 if (xhr.status === 200) {
                     arr = xhr.responseText.trim().split("/");
-                    // console.log(arr);
+                    console.log(arr);
                     if (arr[0] == "Success") {
                         swal("Đã thêm vào giỏ hàng!", "", "success");
                     } else {

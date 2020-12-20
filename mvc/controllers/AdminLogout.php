@@ -13,7 +13,7 @@ class AdminLogout extends Controller
         Header("location:" . URL . "Admin");
     }
 
-    function SayHi()
+    function index()
     {
         session_start();
         unset($_SESSION["adminEmail"]);

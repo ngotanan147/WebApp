@@ -139,10 +139,20 @@ require_once "Header.php";
                         price: <?php echo $value['product_price'] ?>,
                         quantity: <?php echo $value['quantity'] ?>,
                     },
-        <?php
+                <?php
                 }
             }
         } else {
+            foreach ($data["cart"] as $key => $value) {
+                ?> {
+                    id: <?php echo $value['product_id'] ?>,
+                    img: "<?php echo $value['product_image'] ?>",
+                    name: "<?php echo $value['product_name'] ?>",
+                    price: <?php echo $value['product_price'] ?>,
+                    quantity: <?php echo $value['quatity'] ?>,
+                },
+        <?php
+            }
         }
         ?>
     ]

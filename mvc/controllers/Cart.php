@@ -12,34 +12,79 @@ class Cart extends Controller
         $this->userModel = $this->getModel("UserModel");
     }
 
-    function SayHi()
+    function index()
     {
         $data = [];
-        if (isset($_SESSION['cart'])) {
-            $data = $_SESSION['cart'];
+        if (!isset($_SESSION['email'])) {
+            if (isset($_SESSION['cart'])) {
+                $data = $_SESSION['cart'];
+
+                $this->getView("Cart", [
+                    "cart" => $data,
+                ]);
+            } else {
+                $this->getView("Cart", []);
+            }
+        } else {
+            $user = $this->userModel->getUserByEmail($_SESSION['email']);
+            $data = $this->cartModel->getCartByUserId($user["user_id"]);
+
+            $quantity = $this->cartModel->sumQuantity($user["user_id"]);
+
+            $this->getView("Cart", [
+                "cart" => $data,
+                "quantity" => $quantity[0]["sum(quatity)"]
+            ]);
         }
-
-
-
-        $this->getView("Cart", [
-            "cart" => $data,
-        ]);
     }
 
     function test()
     {
         $user = $this->userModel->getUserByEmail($_SESSION['email']);
-        print_r($user["user_id"]);
+        $cart = $this->cartModel->getCartByUserId($user["user_id"]);
+
+        foreach ($cart as $key => $value) {
+            print_r($value);
+            echo "</br>";
+        }
     }
 
     function store($id)
     {
         $product = $this->productModel->getProductById($id);
 
-
         if (isset($_SESSION['email'])) {
             $user = $this->userModel->getUserByEmail($_SESSION['email']);
-        } else {
+            $data = $this->cartModel->checkIfDuplicate($user["user_id"], $product["product_id"]);
+
+            //Check if exist in cart
+            if (empty($data)) {
+                $data = [
+                    "user_id" => $user["user_id"],
+                    "user_name" => $user["user_name"],
+                    "product_name" => $product["product_name"],
+                    "product_id" => $product["product_id"],
+                    "product_image" => $product["product_image"],
+                    "product_price" => $product["product_price"],
+                    "quatity" => 1,
+                    "total" => $product["product_price"],
+                ];
+
+                $data = $this->cartModel->sumQuantity(10);
+
+                $this->cartModel->addToCart($data);
+
+                echo "Success/" . strval(1);
+            } else {
+                $new_quantity = $data[0]["quatity"] + 1;
+                $this->cartModel->updateQuantity($user["user_id"], $product["product_id"], $new_quantity);
+
+                $data = $this->cartModel->sumQuantity($user["user_id"]);
+
+                echo "Success/" . $data[0]["sum(quatity)"];
+                // die();
+            }
+        } else { // Xử lí cart session
             if (empty($_SESSION['cart']) || !array_key_exists($id, $_SESSION['cart'])) {
                 $product['quantity'] = 1;
                 $_SESSION['cart'][$id] = $product;

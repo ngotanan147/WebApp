@@ -13,7 +13,7 @@ class Admin extends Controller
         Header("location:" . URL . "Admin");
     }
 
-    function SayHi()
+    function index()
     {
         if (isset($_SESSION["adminEmail"])) {
             $this->getViewAdmin("User/User", [
@@ -76,7 +76,7 @@ class Admin extends Controller
             $email = $_POST["email"];
             if (!empty($this->model->getUserByEmail($email))) {
                 $this->fail = true;
-                $this->SayHi();
+                $this->index();
             } else {
                 $data = [
                     'user_name' => $_POST['ho'] . ' ' . $_POST['ten'],

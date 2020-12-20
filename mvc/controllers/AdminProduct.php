@@ -13,7 +13,7 @@ class AdminProduct extends Controller
         Header("location:" . URL ."AdminProduct");
     }
 
-    function SayHi()
+    function index()
     {
 
         $this->getViewAdmin("Product/Product", [

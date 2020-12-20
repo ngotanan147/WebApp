@@ -13,7 +13,7 @@ class AdminCart extends Controller
         Header("location:" . URL . "Admin/cart");
     }
 
-    function SayHi()
+    function index()
     {
         $this->getViewAdmin("Cart/Cart", [
             "cart" => $this->model->getCart()

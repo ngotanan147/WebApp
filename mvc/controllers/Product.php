@@ -8,7 +8,7 @@ class Product extends Controller
         $this->productModel = $this->getModel("ProductModel");
     }
 
-    function SayHi()
+    function index()
     {
         $this->getView("Product", [
             "product" => $this->productModel->getProduct(),
@@ -31,7 +31,7 @@ class Product extends Controller
             'category_id' => $data['categories_id']
         );
 
-        $this->SayHi();
+        $this->index();
     }
 
     function AllProductAPI()

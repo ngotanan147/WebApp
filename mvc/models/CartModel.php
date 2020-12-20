@@ -5,9 +5,6 @@ class CartModel extends BaseModel
     const TABLE = 'cart';
     public function getCart()
     {
-        // $qr = "Select * from cart";
-        // return $this->execute($qr);
-
         return $this->all(self::TABLE);
     }
 
@@ -30,5 +27,51 @@ class CartModel extends BaseModel
     {
         $columnsNameId = "cart_id";
         return $this->getItemById(self::TABLE, $columnsNameId, $id);
+    }
+
+    public function checkIfDuplicate($user_id, $product_id)
+    {
+        $qr = "Select * from cart c where c.user_id = '$user_id' and c.product_id = '$product_id'";
+
+        $query = $this->execute($qr);
+        $data = [];
+        while ($row = mysqli_fetch_assoc($query)) {
+            array_push($data, $row);
+        }
+
+        return $data;
+    }
+
+    public function getCartByUserId($user_id)
+    {
+        $qr = "Select * from cart c where c.user_id = '$user_id'";
+
+        $query = $this->execute($qr);
+        $data = [];
+        while ($row = mysqli_fetch_assoc($query)) {
+            array_push($data, $row);
+        }
+
+        return $data;
+    }
+
+    public function updateQuantity($user_id, $product_id, $new_quantity)
+    {
+        $qr = "update cart c set c.quatity = $new_quantity where c.user_id = '$user_id' and c.product_id = '$product_id'";
+
+        $this->execute($qr);
+    }
+
+    public function sumQuantity($user_id)
+    {
+        $qr = "select sum(quatity) from cart c where c.user_id = '$user_id'";
+
+        $query = $this->execute($qr);
+        $data = [];
+        while ($row = mysqli_fetch_assoc($query)) {
+            array_push($data, $row);
+        }
+
+        return $data;
     }
 }

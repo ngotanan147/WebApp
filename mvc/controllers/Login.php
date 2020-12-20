@@ -6,7 +6,7 @@ class Login extends Controller
     {
         Header("location:http://localhost/Doanweb/Login");
     }
-    function SayHi()
+    function index()
     {
         if (isset($_SESSION["email"])) {
             Header("Location:http://localhost/Doanweb/");

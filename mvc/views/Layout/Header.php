@@ -143,11 +143,17 @@
                                     <span>(</span>
                                     <span id="soluong" style="color:#333"><?php
                                                                             $total = 0;
-                                                                            if (isset($_SESSION['cart'])) {
-                                                                                if (count($_SESSION['cart']) != 0) {
-                                                                                    foreach ($_SESSION['cart'] as $key => $value) {
-                                                                                        $total += $value['quantity'];
+                                                                            if (!isset($_SESSION['email'])) {
+                                                                                if (isset($_SESSION['cart'])) {
+                                                                                    if (count($_SESSION['cart']) != 0) {
+                                                                                        foreach ($_SESSION['cart'] as $key => $value) {
+                                                                                            $total += $value['quantity'];
+                                                                                        }
                                                                                     }
+                                                                                }
+                                                                            } else {
+                                                                                if (!empty($data["quantity"])) {
+                                                                                    $total = $data["quantity"];
                                                                                 }
                                                                             }
                                                                             echo $total;

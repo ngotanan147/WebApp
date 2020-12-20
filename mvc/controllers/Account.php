@@ -6,7 +6,7 @@ class Account extends Controller
     {
         $this->model = $this->getModel("UserModel");
     }
-    function SayHi()
+    function index()
     {
         $this->getView("Account", []);
     }

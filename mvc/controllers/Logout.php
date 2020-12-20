@@ -7,7 +7,7 @@ class Logout extends Controller
         Header("location:" . URL . "Login");
     }
 
-    function SayHi()
+    function index()
     {
         session_start();
         unset($_SESSION["email"]);

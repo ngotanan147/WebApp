@@ -69,6 +69,7 @@
                                         <tr>
                                             <th>ID</th>
                                             <th>User ID</th>
+                                            <th>User name</th>
                                             <th>Product name</th>
                                             <th>Product ID</th>
                                             <th>Product image</th>
@@ -90,6 +91,7 @@
                                             <tr>
                                                 <td><?php echo $value["cart_id"] ?></td>
                                                 <td><?php echo $value["user_id"] ?></td>
+                                                <td><?php echo $value["user_name"] ?></td>
                                                 <td><?php echo $value["product_name"] ?></td>
                                                 <td><?php echo $value["product_id"] ?></td>
                                                 <td><?php echo $value["product_image"] ?></td>
