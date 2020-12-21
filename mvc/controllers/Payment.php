@@ -40,4 +40,17 @@ class Payment extends Controller
             }
         }
     }
+
+
+    function paymentDone()
+    {
+        if (!isset($_SESSION['email'])) {
+            unset($_SESSION['cart']);
+            header("Location:" . URL . "");
+        } else {
+            $user = $this->userModel->getUserByEmail($_SESSION['email']);
+            $this->cartModel->deleteAll($user["user_id"]);
+            header("Location:" . URL . "");
+        }
+    }
 }

@@ -364,10 +364,10 @@
                     <h4 class="text-white">SOCIAL MEDIA</h4>
                     <div class="icon d-flex">
                         <div class="facebook mr-2">
-                            <a href="#"><i class="fa fa-facebook" aria-hidden="true" style="color: #fff; transition: 0.3s;"></i></a>
+                            <a href="https://www.facebook.com/20p.GG/"><i class="fa fa-facebook" aria-hidden="true" style="color: #fff; transition: 0.3s;"></i></a>
                         </div>
                         <div class="instagram">
-                            <a href="#"><i class="fa fa-instagram" aria-hidden="true" style="color: #fff; transition: 0.3s;"></i></a>
+                            <a href="https://www.instagram.com/ngotanan147/"><i class="fa fa-instagram" aria-hidden="true" style="color: #fff; transition: 0.3s;"></i></a>
                         </div>
                     </div>
                 </div>

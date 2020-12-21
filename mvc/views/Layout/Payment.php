@@ -7,6 +7,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=PT+Serif&display=swap" rel="stylesheet">
     <title>Thanh Toán</title>
@@ -68,25 +69,22 @@
                     <form>
                         <p class="info">Thông tin nhận hàng</p>
                         <div class="form-row">
-                            <?php if (!isset($_SESSION["email"])) {
-                            ?>
-                                <div class="form-group col-md-6">
-                                    <label for="inputEmail4">Email</label>
-                                    <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="inputPassword4">Họ và tên</label>
-                                    <input class="form-control" placeholder="Họ và tên">
-                                </div>
-                            <?php } ?>
+                            <div class="form-group col-md-6">
+                                <label for="inputEmail4">Email</label>
+                                <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputPassword4">Họ và tên</label>
+                                <input id="inputName" class="form-control" placeholder="Họ và tên">
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="inputAddress">Địa chỉ</label>
-                            <input type="text" class="form-control" id="inputAddress" placeholder="263 Hoàng Văn Thụ, Q. Tân Bình, TP. HCM">
+                            <input id="inputAddress" type="text" class="form-control" id="inputAddress" placeholder="263 Hoàng Văn Thụ, Q. Tân Bình, TP. HCM">
                         </div>
                         <div class="form-group">
                             <label>SĐT</label>
-                            <input type="number" class="form-control" placeholder="Phone number">
+                            <input id="inputPhone" type="number" class="form-control" placeholder="Phone number">
                         </div>
                     </form>
                 </div>
@@ -123,7 +121,7 @@
             </div>
             <div class="tablee">
                 <p class="info">Thông tin sản phẩm</p>
-                <table class="table table-bordered table-hover text-center">
+                <table id="bd" class="table table-bordered table-hover text-center">
                     <thead>
                         <tr>
                             <th>STT</th>
@@ -134,7 +132,6 @@
                             <th>Tổng cộng</th>
                         </tr>
                     </thead>
-
                     <script>
                         array = [];
                     </script>
@@ -173,6 +170,7 @@
                             <script type="text/javascript">
                                 array.push({
                                     id: <?php echo $value["product_id"] ?>,
+                                    name: "<?php echo $value["product_name"] ?>",
                                     price: <?php echo $value["product_price"] ?>,
                                     quantity: <?php if (isset($_SESSION["email"])) {
                                                     echo $value["quatity"];
@@ -186,22 +184,31 @@
                     }
 
                     ?>
+                    <tfoot>
+                        <tr>
+                            <th colspan="5">
+                                <div class="text-left">
+                                    <h4 style="color: #ef7147;">Tổng tiền cần thanh toán:</h4>
+                                </div>
+                            </th>
+                            <th>
+                                <span class="pl-2" style="color: #ef7147; font-size: 18px;" id="total"></span>
+                            </th>
+                        </tr>
+                    </tfoot>
                 </table>
             </div>
 
             <div class="row">
                 <div class="col-md-6 text-center mb-5 mt-3">
-                    <div class="text-left">
-                        <h4 style="color: #ef7147;">Tổng tiền cần thanh toán: <span class="pl-2" style="color: #000" id="total"></span> </h4>
-                    </div>
+
                 </div>
                 <div class="col-md-6 text-center mt-2 mb-5 ">
                     <div class="text-right">
-                        <button class="btn btn-primary pt-3 pb-3 pl-5 pr-5" id="btn">
+                        <button type="button" class="btn btn-primary pt-3 pb-3 pl-5 pr-5" id="btn">
                             Thanh toán
                         </button>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -211,6 +218,11 @@
 </body>
 
 </html>
+<script>
+
+</script>
+
+<script src="https://smtpjs.com/v3/smtp.js"></script>
 
 <script>
     function format(n) {
@@ -220,18 +232,81 @@
         })
     }
 
+    var total = 0;
     array.forEach(item => {
         $("#price" + item.id).html(format(item.price));
 
         $("#total" + item.id).html(format(item.price * item.quantity));
-
-        var total = 0;
-        array.forEach(item => {
-            total += item.price * item.quantity;
-        })
-
+        total += item.price * item.quantity;
         $("#total").html(format(total));
     })
 
-    console.log(array);
+
+    console.log(total);
+    var item = array.map(item => `
+        <tbody>
+                <tr>
+                    <td>${item.name}</td>
+                    <td>${item.quantity}</td>
+                    <td>${format(item.price)}</td>
+                </tr>
+        </tbody>
+    `).join('');
+    var bd = `<table style="width:500px; text-align:center" cellspacing=”0” cellpadding=”0” width=”640” align=”center” border=”1”>
+        <thead>
+            <tr>
+                <th>Tên sản phẩm</th>
+                <th>Số lượng</th>
+                <th>Giá</th>
+            </tr>
+        </thead>` + item + `<tfoot>
+            <tr>
+                    <th colspan="2">
+                        <div class="text-left">
+                            <h4 style="color: #ef7147;margin-top: 13px">Tổng tiền cần thanh toán:</h4>
+                        </div>
+                    </th>
+                    <th>
+                        <span class="pl-2" style="color: #ef7147; font-size: 18px;" id="total">${format(total)}</span>
+                    </th>
+            </tr>
+        </tfoot>
+        </table> `;
+
+    $("#btn").click(function() {
+        if ($("#inputEmail").val().length == 0 ||
+            $("#inputName").val().length == 0 ||
+            $("#inputPhone").val().length == 0 ||
+            $("#inputAddress").val().length == 0) {
+            swal("Xin vui lòng nhập đầy đủ thông tin!", "", "warning");
+            window.scroll({
+                top: 0
+            })
+
+        } else {
+            email = $("#inputEmail").val();
+            Email.send({
+                Host: "smtp.gmail.com",
+                Username: "nta.projectweb@gmail.com",
+                Password: "ngotanan123",
+                SecureToken: "Generate token here",
+                From: "nta.projectweb@gmail.com",
+                To: email,
+                Subject: "You've ordered from Delicious!",
+                Body: bd
+            }).then(function(response) {
+                if (response == 'OK') {
+                    swal("Chúng tôi đã gửi hóa đơn đến email của bạn! 2 giây sau chuyển hướng đến trang chủ...", "", "success");
+                    window.setTimeout(function() {
+                        window.location.href = "<?php echo URL ?>Payment/paymentDone";
+                    }, 2000);
+
+                } else {
+                    swal("Đã có lỗi xảy ra!", "", "error");
+                }
+            });
+
+        }
+
+    })
 </script>

@@ -11,6 +11,6 @@ class Logout extends Controller
     {
         session_start();
         unset($_SESSION["email"]);
-        header('Location:http://localhost/Doanweb/Login');
+        header('Location:' . URL . 'Login');
     }
 }

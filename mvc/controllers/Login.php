@@ -4,12 +4,12 @@ class Login extends Controller
     function
     default()
     {
-        Header("location:http://localhost/Doanweb/Login");
+        Header("location:" . URL . "Doanweb/Login");
     }
     function index()
     {
         if (isset($_SESSION["email"])) {
-            Header("Location:http://localhost/Doanweb/");
+            header("Location:" . URL . "Doanweb/");
         } else {
             $this->getView("Login");
         }

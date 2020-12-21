@@ -13,6 +13,12 @@ class CartModel extends BaseModel
         $this->delete(self::TABLE, $id);
     }
 
+    public function deleteAll($user_id)
+    {
+        $qr = "delete from cart where cart.user_id = $user_id";
+        $this->execute($qr);
+    }
+
     public function addToCart($data = [])
     {
         $this->create(self::TABLE, $data);
