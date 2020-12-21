@@ -279,6 +279,8 @@ require_once "Header.php";
                     if (xhr.status === 200) {
                         //Hứng dữ liệu
                         arr = xhr.responseText.trim().split("/");
+                        console.log(arr);
+                        console.log(items);
 
                         //Tìm index của item cần xóa trong giỏ hàng
                         var result = $.grep(items, function(e) {

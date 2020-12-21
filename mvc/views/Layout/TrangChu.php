@@ -444,12 +444,12 @@ require_once "Header.php";
                 if (xhr.status === 200) {
                     arr = xhr.responseText.trim().split("/");
                     console.log(arr);
+
                     if (arr[0] == "Success") {
                         swal("Đã thêm vào giỏ hàng!", "", "success");
                     } else {
                         swal("Hết hàng!", "", "warning");
                     }
-
                 }
                 $("#soluong").html(arr[1]);
             }

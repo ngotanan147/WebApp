@@ -11,7 +11,7 @@ class UserModel extends BaseModel
 
     public function addUser($data = [])
     {
-        
+
         $this->create(self::TABLE, $data);
     }
 
@@ -54,12 +54,13 @@ class UserModel extends BaseModel
     public function login($email, $password)
     {
         $qr = "Select * from user where user_email = '$email' and user_password = '$password'";
-        $result = mysqli_query($this->con, $qr);
-        if (!$result) {
-            printf("Error: %s\n", mysqli_error($this->con));
-            exit();
+
+        $query = $this->execute($qr);
+        $data = [];
+        while ($row = mysqli_fetch_assoc($query)) {
+            array_push($data, $row);
         }
-        $row = mysqli_fetch_array($result);
-        return $row;
+        
+        return $data;
     }
 }

@@ -1,5 +1,5 @@
 <?php
-    require_once "Header.php";
+require_once "Header.php";
 ?>
 
 <html>
@@ -97,28 +97,25 @@
 
             <div class="row mt-3">
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                    <div class="form" >
+                    <div class="form">
                         <form action="<?php echo URL ?>Login/log" method="POST">
                             <div class="form-group">
                                 <label>Nếu bạn đã có tài khoản, đăng nhập ở đây</label><br>
                                 <label for="email">Email:</label>
-                                <input type="email" class="form-control" id="email" placeholder="Username"
-                                    name="email">
+                                <input type="email" class="form-control" id="email" placeholder="Username" name="email">
                             </div>
                             <div class="form-group">
                                 <label for="pwd">Mật khẩu:</label>
-                                <input type="password" class="form-control" id="pwd" placeholder="Password"
-                                    name="password">
+                                <input type="password" class="form-control" id="pwd" placeholder="Password" name="password">
                             </div>
-                            <button type="submit" name="login" class="btn1">Đăng Nhập</button>                         
-                            <label class="pt-2" for="" 
-                            style="display: none; display: <?php echo $data['success'] ?> !important; color: red;">
+                            <button type="submit" name="login" class="btn1" id="dangnhap">Đăng Nhập</button>
+                            <label id="msg" class="pt-2" for="" style="display: none;display: <?php echo $data['success'] ?> !important; color: red;">
                                 Đăng nhập thất bại, xin vui lòng kiểm tra lại thông tin!
                             </label>
                         </form>
-                        
+
                         <div class="register">
-                            <label  for="">Bạn chưa có tài khoản, hãy Đăng ký <a href="<?php echo URL ?>Register" style="color:#ef7147;">tại
+                            <label for="">Bạn chưa có tài khoản, hãy Đăng ký <a href="<?php echo URL ?>Register" style="color:#ef7147;">tại
                                     đây</a> </label>
                         </div>
 
@@ -126,12 +123,10 @@
                             <p>Hoặc đăng nhập bằng</p>
                             <div class="social text-center">
                                 <div class="fb" style="margin-left: 10px;">
-                                    <img width="40px" height="40px"
-                                        src="https://img.icons8.com/fluent/48/000000/facebook-new.png" />
+                                    <img width="40px" height="40px" src="https://img.icons8.com/fluent/48/000000/facebook-new.png" />
                                 </div>
                                 <div class="gg" style="margin-left: 10px;">
-                                    <img width="40px" height="40px"
-                                        src="https://img.icons8.com/fluent/48/000000/google-logo.png" />
+                                    <img width="40px" height="40px" src="https://img.icons8.com/fluent/48/000000/google-logo.png" />
                                 </div>
                             </div>
                         </div>
@@ -154,6 +149,29 @@
 
 </html>
 
+<script>
+    // $("#dangnhap").click(function(event) {
+    //     event.preventDefault();
+    //     var href = "<?php echo URL ?>Login/log";
+    //     var xhr = new XMLHttpRequest();
+
+    //     xhr.onload = function() {
+    //         if (xhr.readyState === xhr.DONE) {
+    //             if (xhr.status === 200) {
+    //                 res = xhr.responseText.trim();
+    //                 console.log(res);
+    //                 if (res == "error") {
+    //                     $("#msg").css("display", "block");
+    //                 }
+    //             }
+    //         }
+    //     }
+
+    //     xhr.open('GET', href, true);
+    //     xhr.send();
+    // })
+</script>
+
 <?php
-    require_once "Footer.php";
+require_once "Footer.php";
 ?>

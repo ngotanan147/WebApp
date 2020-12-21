@@ -41,12 +41,7 @@ class Cart extends Controller
     function test()
     {
         $user = $this->userModel->getUserByEmail($_SESSION['email']);
-        $cart = $this->cartModel->getCartByUserId($user["user_id"]);
-
-        foreach ($cart as $key => $value) {
-            print_r($value);
-            echo "</br>";
-        }
+        $this->cartModel->deleteItem($user["user_id"], 33);
     }
 
     function store($id)
@@ -70,14 +65,15 @@ class Cart extends Controller
                     "total" => $product["product_price"],
                 ];
 
-                $data = $this->cartModel->sumQuantity(10);
-
                 $this->cartModel->addToCart($data);
 
-                echo "Success/" . strval(1);
+                $data = $this->cartModel->sumQuantity($user["user_id"]);
+
+                echo "Success/" . $data[0]["sum(quatity)"];
             } else {
                 $new_quantity = $data[0]["quatity"] + 1;
-                $this->cartModel->updateQuantity($user["user_id"], $product["product_id"], $new_quantity);
+                $total = intval($new_quantity) * $data[0]["product_price"];
+                $this->cartModel->updateQuantity($user["user_id"], $product["product_id"], $new_quantity, $total);
 
                 $data = $this->cartModel->sumQuantity($user["user_id"]);
 
@@ -120,22 +116,35 @@ class Cart extends Controller
 
     function delete($id)
     {
-        if (count($_SESSION['cart']) == 1) {
-            unset($_SESSION['cart']);
-        } else {
-            unset($_SESSION['cart'][$id]);
-        }
-
-        if (isset($_SESSION['cart'])) {
-            $data = $_SESSION['cart'];
-
-            $total = 0;
-            if (isset($_SESSION['cart'])) {
-                foreach ($_SESSION['cart'] as $key => $value) {
-                    $total += $value['quantity'];
-                }
+        if (!isset($_SESSION['email'])) {
+            if (count($_SESSION['cart']) == 1) {
+                unset($_SESSION['cart']);
+            } else {
+                unset($_SESSION['cart'][$id]);
             }
-            echo $id . '/' . $total;
+
+            if (isset($_SESSION['cart'])) {
+                $data = $_SESSION['cart'];
+
+                $total = 0;
+                if (isset($_SESSION['cart'])) {
+                    foreach ($_SESSION['cart'] as $key => $value) {
+                        $total += $value['quantity'];
+                    }
+                }
+                echo $id . '/' . $total;
+            }
+        } else {
+            $user = $this->userModel->getUserByEmail($_SESSION['email']);
+            $this->cartModel->deleteItem($user["user_id"], $id);
+
+            $quantity = $this->cartModel->sumQuantity($user["user_id"]);
+
+            if (empty($quantity[0]["sum(quatity)"])) {
+                echo $id . "/" . 0;
+            } else {
+                echo $id . "/" . $quantity[0]["sum(quatity)"];
+            }
         }
     }
 }

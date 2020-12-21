@@ -29,7 +29,8 @@ class Home extends Controller
         }
     }
 
-    function show()
-    {
-    }
+    // function show()
+    // {
+    //     echo $_SESSION['email'];
+    // }
 }

@@ -42,6 +42,15 @@ class CartModel extends BaseModel
         return $data;
     }
 
+    public function deleteItem($user_id, $product_id)
+    {
+        $qr = "DELETE from cart WHERE user_id = '$user_id' and product_id = '$product_id'";
+
+        // echo $qr;
+        // die();
+        $this->execute($qr);
+    }
+
     public function getCartByUserId($user_id)
     {
         $qr = "Select * from cart c where c.user_id = '$user_id'";
@@ -55,9 +64,9 @@ class CartModel extends BaseModel
         return $data;
     }
 
-    public function updateQuantity($user_id, $product_id, $new_quantity)
+    public function updateQuantity($user_id, $product_id, $new_quantity, $total)
     {
-        $qr = "update cart c set c.quatity = $new_quantity where c.user_id = '$user_id' and c.product_id = '$product_id'";
+        $qr = "update cart c set c.quatity = $new_quantity, c.total = $total where c.user_id = '$user_id' and c.product_id = '$product_id'";
 
         $this->execute($qr);
     }

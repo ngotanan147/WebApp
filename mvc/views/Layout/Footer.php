@@ -317,7 +317,7 @@
                     </div>
                     <div class="p-2">
                         <i class="fa fa-envelope" style="color: #ef7147"></i>
-                        <span>nhom6_uit2018@gmail.com</span><br>
+                        <span>ngotanan147@gmail.com</span><br>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 pl-3 pt-2">
