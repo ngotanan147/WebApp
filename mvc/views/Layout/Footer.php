@@ -194,6 +194,14 @@
             text-align: center;
             transition: 0.3s;
             cursor: pointer;
+            position: relative;
+        }
+
+        .fa-facebook {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
 
         .facebook:hover {
@@ -214,6 +222,14 @@
             text-align: center;
             transition: 0.3s;
             cursor: pointer;
+            position: relative;
+        }
+
+        .fa-instagram {
+            position: absolute;
+            top: 49%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
 
 
@@ -348,12 +364,10 @@
                     <h4 class="text-white">SOCIAL MEDIA</h4>
                     <div class="icon d-flex">
                         <div class="facebook mr-2">
-                            <a href="#"><i class="fa fa-facebook" aria-hidden="true"
-                                    style="color: #fff; transition: 0.3s;"></i></a>
+                            <a href="#"><i class="fa fa-facebook" aria-hidden="true" style="color: #fff; transition: 0.3s;"></i></a>
                         </div>
                         <div class="instagram">
-                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"
-                                    style="color: #fff; transition: 0.3s;"></i></a>
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true" style="color: #fff; transition: 0.3s;"></i></a>
                         </div>
                     </div>
                 </div>

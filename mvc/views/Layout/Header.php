@@ -68,7 +68,7 @@
                                 <a href="<?php echo URL ?>login">Đăng nhập</a>
                             </li>
                             <li>
-                                <a href="">&</a>
+                                <a>&</a>
                             </li>
                             <li>
                                 <a href="<?php echo URL ?>register">Đăng ký</a>

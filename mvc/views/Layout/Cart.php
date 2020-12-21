@@ -85,7 +85,7 @@ require_once "Header.php";
                             <!-- JS render -->
                         </div>
                     </div>
-                    <div class="container">
+                    <div class="container p-0">
                         <div class="thanhtoan">
                             <div class="d-flex justify-content-between">
                                 <div class="tieptucmuahang pt-1">
@@ -104,11 +104,11 @@ require_once "Header.php";
                             </div>
                         </div>
                         <div class="text-right pt-3 tienhanhthanhtoan" style="">
-                            <button type="submit" id="btn_thanhtoan">Cập nhật giỏ hàng</button>
+                            <button style="width: 250.7px !important;" type="submit" id="btn_thanhtoan">Cập nhật giỏ hàng</button>
                         </div>
                         <div class="text-right pt-3 pb-3 tienhanhthanhtoan">
-                            <a href="#">
-                                <button type="submit" id="btn_thanhtoan">Tiến hành thanh toán</button>
+                            <a href="<?php echo URL ?>Payment">
+                                <button type="button" id="btn_thanhtoan">Tiến hành thanh toán</button>
                             </a>
                         </div>
                     </div>
@@ -125,8 +125,6 @@ require_once "Header.php";
 </html>
 
 <script>
-    $("#btn_thanhtoan").width($(".tieptucmuahang").width() - 8);
-
     const items = [
         <?php
         if (!isset($_SESSION['email'])) {
@@ -156,6 +154,7 @@ require_once "Header.php";
         }
         ?>
     ]
+    console.log(items);
 
     function format(n) {
         return (n * 1000).toLocaleString('vi', {

@@ -1,12 +1,9 @@
 <?php
-class Account extends Controller
+class Bill extends Controller
 {
-    private $cartModel;
     private $userModel;
     function __construct()
     {
-        $this->productModel = $this->getModel("ProductModel");
-        $this->cartModel = $this->getModel("CartModel");
         $this->userModel = $this->getModel("UserModel");
     }
 
@@ -21,10 +18,8 @@ class Account extends Controller
         $data = [];
         if (isset($_SESSION['email'])) {
             $data = $this->userModel->getUserByEmail($_SESSION['email']);
-            $quantity = $this->cartModel->sumQuantity($data["user_id"]);
             $this->getView("Account", [
-                'user' => $data,
-                "quantity" => $quantity[0]["sum(quatity)"]
+                'user' => $data
             ]);
         }
         $this->getView("Account", []);

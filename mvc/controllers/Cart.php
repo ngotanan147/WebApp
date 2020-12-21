@@ -101,16 +101,24 @@ class Cart extends Controller
 
     function update()
     {
-        foreach ($_POST['quantity'] as $key => $value) {
-            if ($value < 0 || !is_numeric($value)) {
-                continue;
+        if (!isset($_SESSION["email"])) {
+            foreach ($_POST['quantity'] as $key => $value) {
+                print_r($key);
+                die();
+                if ($value < 0 || !is_numeric($value)) {
+                    continue;
+                }
+                if ($value == 0) {
+                    unset($_SESSION['cart'][$key]);
+                } else {
+                    $_SESSION['cart'][$key]['quantity'] = $value;
+                }
             }
-            if ($value == 0) {
-                unset($_SESSION['cart'][$key]);
-            } else {
-                $_SESSION['cart'][$key]['quantity'] = $value;
+        } else {
+            foreach ($_POST['quantity'] as $key => $value) {
             }
         }
+
         Header('Location: ' . URL . 'cart');
     }
 

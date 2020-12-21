@@ -145,10 +145,8 @@ require_once "Header.php";
 <body>
     <div class="Content_Detail">
         <div class="Detail_Product_All">
-            <p class="chitiet"><a href="#">Trang chủ</a> <span style="color:#000!important;">/</span> Trang khách
+            <p class="chitiet"><a href="<?php echo URL ?>">Trang chủ</a> <span style="color:#000!important;">/</span> Trang khách
                 hàng </p>
-            <h1>TRANG KHÁCH HÀNG</h1>
-            <p>Xin chào, <a>Chiến Trần</a></p>
 
             <div class="row">
                 <div class="col-12 col-lg-9 col-md-12 col-sm-12 products">
@@ -176,40 +174,16 @@ require_once "Header.php";
                                                     <td>70.000₫</td>
                                                     <td>Chưa thanh toán</td>
                                                     <td>Chưa giao hàng</td>
-
                                                 </tr>
                                             </tbody>
-                                            <tbody class="tdody_content">
-                                                <tr>
-                                                    <td>#0001</td>
-                                                    <td>28/11/2020</td>
-                                                    <td>Hà Nội, Việt Nam</td>
-                                                    <td>70.000₫</td>
-                                                    <td>Chưa thanh toán</td>
-                                                    <td>Chưa giao hàng</td>
 
-                                                </tr>
-                                            </tbody>
-                                            <tbody class="tdody_content">
-                                                <tr>
-                                                    <td>#0001</td>
-                                                    <td>28/11/2020</td>
-                                                    <td>Hà Nội, Việt Nam</td>
-                                                    <td>70.000₫</td>
-                                                    <td>Chưa thanh toán</td>
-                                                    <td>Chưa giao hàng</td>
-
-                                                </tr>
-                                            </tbody>
                                         </table>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                 </div>
-
                 <div class="left-content col-xs-12 col-sm-12 col-lg-3 col-md-12 col-12">
                     <div class="aside_vanchuyen mb-4">
                         <div class="aside_content">
@@ -218,31 +192,19 @@ require_once "Header.php";
                                     <p style="padding-left: 5px;">TÀI KHOẢN CỦA TÔI</p>
                                 </div>
                                 <div class="form_signup">
-                                    <p>Tên tài khoản : Chiến Trần!</p>
-                                    <p>
-                                        <i class="fa fa-home font_some"></i>
-                                        <span>Địa chỉ:</span>
-                                    </p>
-                                    <p>
-                                        <i class="fa fa-mobile font_some"></i>
-                                        <span>Điện thoại:</span>
-                                    </p>
-                                    <p>
-                                        <i class="fa fa-map-marker font_some"></i>
-                                        <span>Địa chỉ 1:</span>
-                                    </p>
-                                    <p>
-                                        <i class="fa fa-yelp font_some"></i>
-                                        <span>Công ty :</span>
-                                    </p>
-                                    <p>
-                                        <i class="fa fa-plane font_some"></i>
-                                        <span>Quốc gia : </span>
-                                    </p>
-                                    <p>
-                                        <i class="fa fa-code font_some"></i>
-                                        <span>Zip code: </span>
-                                    </p>
+                                    <?php
+                                    // print_r($data["user"]["user_name"]);
+                                    // die();
+                                    if (!empty($data["user"])) {
+                                    ?>
+                                        <p>Tên tài khoản : <?php echo $data["user"]["user_name"] ?></p>
+                                        <p>
+                                            <i class="fa fa-envelope font_some"></i>
+                                            <span>Email: <?php echo $data["user"]["user_email"] ?></span>
+                                        </p>
+
+                                    <?php }
+                                    ?>
                                 </div>
                             </div>
                         </div>
