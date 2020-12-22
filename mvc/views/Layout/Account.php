@@ -176,7 +176,6 @@ require_once "Header.php";
                                                     <td>Chưa giao hàng</td>
                                                 </tr>
                                             </tbody>
-
                                         </table>
                                     </div>
                                 </div>
@@ -202,7 +201,6 @@ require_once "Header.php";
                                             <i class="fa fa-envelope font_some"></i>
                                             <span>Email: <?php echo $data["user"]["user_email"] ?></span>
                                         </p>
-
                                     <?php }
                                     ?>
                                 </div>

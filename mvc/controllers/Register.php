@@ -34,7 +34,7 @@ class Register extends Controller
                     'user_name' => $_POST['ho'] . ' ' . $_POST['ten'],
                     'user_email' => $_POST["email"],
                     'user_password' => $_POST["password"],
-                    'user_role' => 0
+                    'user_role' => 1
                 ];
 
                 $this->model->addUser($data);

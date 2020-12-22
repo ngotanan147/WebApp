@@ -15,13 +15,7 @@ class Bill extends Controller
 
     function index()
     {
-        $data = [];
-        if (isset($_SESSION['email'])) {
-            $data = $this->userModel->getUserByEmail($_SESSION['email']);
-            $this->getView("Account", [
-                'user' => $data
-            ]);
-        }
-        $this->getView("Account", []);
+
+        $this->getView("" . URL . "", []);
     }
 }

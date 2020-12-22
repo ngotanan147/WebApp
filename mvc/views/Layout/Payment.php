@@ -252,6 +252,7 @@
                 </tr>
         </tbody>
     `).join('');
+    
     var bd = `<table style="width:500px; text-align:center" cellspacing=”0” cellpadding=”0” width=”640” align=”center” border=”1”>
         <thead>
             <tr>
@@ -305,8 +306,6 @@
                     swal("Đã có lỗi xảy ra!", "", "error");
                 }
             });
-
         }
-
     })
 </script>

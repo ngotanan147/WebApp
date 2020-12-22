@@ -104,7 +104,7 @@ require_once "Header.php";
                             </div>
                         </div>
                         <div class="text-right pt-3 tienhanhthanhtoan" style="">
-                            <button style="width: 250.7px !important;" type="submit" id="btn_thanhtoan">Cập nhật giỏ hàng</button>
+                            <button style="width: 250.7px !important;" type="submit" id="update">Cập nhật giỏ hàng</button>
                         </div>
                         <div class="text-right pt-3 pb-3 tienhanhthanhtoan">
                             <a href="<?php echo URL ?>Payment">
@@ -268,6 +268,26 @@ require_once "Header.php";
         const quantitys1 = document.querySelectorAll("#quantity1");
         const quantitys2 = document.querySelectorAll("#quantity2");
 
+        //Update cart
+        // $("#update").click(function(event) {
+        //     event.preventDefault();
+        //     var href = $(this).attr("href");
+        //     var xhr = new XMLHttpRequest();
+
+        //     xhr.onload = function() {
+        //         if (xhr.readyState === xhr.DONE) {
+        //             if (xhr.status === 200) {
+
+
+        //             }
+        //         }
+        //     }
+
+        //     xhr.open('GET', href, true);
+        //     xhr.send();
+        // })
+
+        //Delete item
         $(".deletee").click(function(event) {
             event.preventDefault();
             var href = $(this).attr("href");

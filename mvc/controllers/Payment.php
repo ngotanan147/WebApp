@@ -41,7 +41,6 @@ class Payment extends Controller
         }
     }
 
-
     function paymentDone()
     {
         if (!isset($_SESSION['email'])) {
@@ -49,6 +48,7 @@ class Payment extends Controller
             header("Location:" . URL . "");
         } else {
             $user = $this->userModel->getUserByEmail($_SESSION['email']);
+            $cart_data = $this->cartModel->getCart();
             $this->cartModel->deleteAll($user["user_id"]);
             header("Location:" . URL . "");
         }
