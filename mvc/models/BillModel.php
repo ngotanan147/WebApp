@@ -2,7 +2,7 @@
 class BillModel extends BaseModel
 {
 
-    const TABLE = 'Bill';
+    const TABLE = 'bill';
     public function getBill()
     {
         return $this->all(self::TABLE);
@@ -19,7 +19,7 @@ class BillModel extends BaseModel
         $this->execute($qr);
     }
 
-    public function addToBill($data = [])
+    public function createBill($data = [])
     {
         $this->create(self::TABLE, $data);
     }
@@ -31,8 +31,16 @@ class BillModel extends BaseModel
 
     public function getBillById($id)
     {
-        $columnsNameId = "Bill_id";
-        return $this->getItemById(self::TABLE, $columnsNameId, $id);
-    }
+        $qr = "select * from bill where bill.user_id = '$id'";
 
+        $query = $this->execute($qr);
+        $data = [];
+        while ($row = mysqli_fetch_assoc($query)) {
+            array_push($data, $row);
+        }
+
+        return $data;
+        // $columnsNameId = "user_id";
+        // return $this->getItemById(self::TABLE, $columnsNameId, $id);
+    }
 }

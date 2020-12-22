@@ -59,6 +59,7 @@
 </head>
 
 <body>
+
     <div class="background">
         <div class="container">
             <div class="header">
@@ -66,7 +67,7 @@
             </div>
             <div class="row mt-3">
                 <div class="col-md-8">
-                    <form>
+                    <form method="POST" id="formsubmit">
                         <p class="info">Thông tin nhận hàng</p>
                         <div class="form-row">
                             <div class="form-group col-md-6">
@@ -80,12 +81,9 @@
                         </div>
                         <div class="form-group">
                             <label for="inputAddress">Địa chỉ</label>
-                            <input id="inputAddress" type="text" class="form-control" id="inputAddress" placeholder="263 Hoàng Văn Thụ, Q. Tân Bình, TP. HCM">
+                            <input name="address" id="inputAddress" type="text" class="form-control" placeholder="263 Hoàng Văn Thụ, Q. Tân Bình, TP. HCM">
                         </div>
-                        <div class="form-group">
-                            <label>SĐT</label>
-                            <input id="inputPhone" type="number" class="form-control" placeholder="Phone number">
-                        </div>
+
                     </form>
                 </div>
                 <div class="col-md-4">
@@ -200,19 +198,15 @@
             </div>
 
             <div class="row">
-                <div class="col-md-6 text-center mb-5 mt-3">
-
-                </div>
-                <div class="col-md-6 text-center mt-2 mb-5 ">
+                <div class="col-md-12 text-center mt-2 mb-5 ">
                     <div class="text-right">
-                        <button type="button" class="btn btn-primary pt-3 pb-3 pl-5 pr-5" id="btn">
+                        <button name="pay" type="button" class="btn btn-primary pt-3 pb-3 pl-5 pr-5" id="btn">
                             Thanh toán
                         </button>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
 
 </body>
@@ -252,7 +246,7 @@
                 </tr>
         </tbody>
     `).join('');
-    
+
     var bd = `<table style="width:500px; text-align:center" cellspacing=”0” cellpadding=”0” width=”640” align=”center” border=”1”>
         <thead>
             <tr>
@@ -274,10 +268,10 @@
         </tfoot>
         </table> `;
 
-    $("#btn").click(function() {
+    $("#btn").click(function(event) {
+        // event.preventDefault();
         if ($("#inputEmail").val().length == 0 ||
             $("#inputName").val().length == 0 ||
-            $("#inputPhone").val().length == 0 ||
             $("#inputAddress").val().length == 0) {
             swal("Xin vui lòng nhập đầy đủ thông tin!", "", "warning");
             window.scroll({
@@ -285,6 +279,7 @@
             })
 
         } else {
+            var address = $("#inputAddress").val();
             email = $("#inputEmail").val();
             Email.send({
                 Host: "smtp.gmail.com",
@@ -297,10 +292,10 @@
                 Body: bd
             }).then(function(response) {
                 if (response == 'OK') {
-                    swal("Chúng tôi đã gửi hóa đơn đến email của bạn! 2 giây sau chuyển hướng đến trang chủ...", "", "success");
+                    swal("Chúng tôi đã gửi hóa đơn đến email của bạn! 3 giây sau chuyển hướng đến trang chủ...", "", "success");
                     window.setTimeout(function() {
-                        window.location.href = "<?php echo URL ?>Payment/paymentDone";
-                    }, 2000);
+                        window.location.href = "<?php echo URL ?>Payment/paymentDone" + "/" + address;
+                    }, 3000);
 
                 } else {
                     swal("Đã có lỗi xảy ra!", "", "error");

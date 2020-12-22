@@ -53,7 +53,12 @@ require_once "Header.php";
         }
 
         .chitiet a:hover {
-            color: #ef7147;
+            color: #ef7147 !important;
+        }
+
+        .chitiet2:hover {
+            color: #ef7147 !important;
+            text-decoration: none;
         }
 
 
@@ -81,10 +86,10 @@ require_once "Header.php";
         .thead_default tr th {
             padding: 5px;
             font-size: 14px;
-            color: #55595c;
+            color: #ef7147;
             background-color: #eceeef;
             text-align: center;
-            font-weight: 400;
+            font-weight: bold;
         }
 
         .thead_default tr {
@@ -144,9 +149,14 @@ require_once "Header.php";
 
 <body>
     <div class="Content_Detail">
+        <p class="chitiet"><a href="<?php echo URL ?>">Trang chủ</a> <span style="color:#000!important;">/</span> Trang khách
+            hàng </p>
+        <div class="chitiet" style="color:#000!important;">
+            <h3>Hóa đơn của bạn</h3>
+
+        </div>
         <div class="Detail_Product_All">
-            <p class="chitiet"><a href="<?php echo URL ?>">Trang chủ</a> <span style="color:#000!important;">/</span> Trang khách
-                hàng </p>
+
 
             <div class="row">
                 <div class="col-12 col-lg-9 col-md-12 col-sm-12 products">
@@ -155,27 +165,49 @@ require_once "Header.php";
                             <div class="dashboard">
                                 <div class="recent_orders">
                                     <div class="tab_all">
-                                        <table class="table_cart">
+                                        <table class="table table-bordered table-hover text-center" style="font-size: 16px">
                                             <thead class="thead_default">
                                                 <tr>
-                                                    <th>Đơn hàng</th>
-                                                    <th>Ngày</th>
+                                                    <th>STT</th>
+                                                    <th>ID</th>
+                                                    <th>Thời gian</th>
                                                     <th>Địa chỉ</th>
                                                     <th>Giá trị đơn hàng</th>
-                                                    <th>Tình trạng thanh toán</th>
-                                                    <th>Tình trạng vận chuyển</th>
                                                 </tr>
                                             </thead>
-                                            <tbody class="tdody_content">
-                                                <tr>
-                                                    <td>#0001</td>
-                                                    <td>28/11/2020</td>
-                                                    <td>Hà Nội, Việt Nam</td>
-                                                    <td>70.000₫</td>
-                                                    <td>Chưa thanh toán</td>
-                                                    <td>Chưa giao hàng</td>
-                                                </tr>
-                                            </tbody>
+                                            <script>
+                                                var array = [];
+                                            </script>
+                                            <?php
+                                            $stt = 1;
+                                            if (isset($data["bill"])) {
+                                                foreach ($data["bill"] as $key => $value) {
+
+                                            ?>
+                                                    <tbody class="tdody_content">
+                                                        <tr>
+                                                            <td><?php echo $stt; ?></td>
+                                                            <td>#<?php echo $value["bill_id"]; ?></td>
+                                                            <td><?php echo date("Y/m/d H:i:s", strtotime($value["date"])); ?></td>
+                                                            <td><?php echo $value["address"]; ?></td>
+                                                            <td id="price<?php echo $value["bill_id"]; ?>"></td>
+
+                                                            <td>
+                                                                <a class="chitiet2" href="">Xem chi tiết</a>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                    <script type="text/javascript">
+                                                        array.push({
+                                                            id: <?php echo $value["bill_id"]; ?>,
+                                                            price: <?php echo $value["total"] ?>
+                                                        })
+                                                    </script>
+                                            <?php $stt++;
+                                                }
+                                            }
+
+                                            ?>
                                         </table>
                                     </div>
                                 </div>
@@ -192,8 +224,6 @@ require_once "Header.php";
                                 </div>
                                 <div class="form_signup">
                                     <?php
-                                    // print_r($data["user"]["user_name"]);
-                                    // die();
                                     if (!empty($data["user"])) {
                                     ?>
                                         <p>Tên tài khoản : <?php echo $data["user"]["user_name"] ?></p>
@@ -215,6 +245,19 @@ require_once "Header.php";
 </body>
 
 </html>
+
+<script>
+    function format(n) {
+        return (n * 1000).toLocaleString('vi', {
+            style: 'currency',
+            currency: 'VND'
+        })
+    }
+
+    array.forEach(item => {
+        $("#price" + item.id).html(format(item.price));
+    })
+</script>
 
 <?php
 require_once "./mvc/views/html/Footer.html";
