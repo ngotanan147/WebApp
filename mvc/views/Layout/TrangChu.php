@@ -529,7 +529,7 @@ require_once "Header.php";
             },
 
             '1300': {
-                slidesPerView: 3,
+                slidesPerView: 4,
                 spaceBetween: 40,
             },
 
@@ -563,6 +563,32 @@ require_once "Header.php";
     }
 </script>
 
+
 <?php
 require_once "Footer.php";
 ?>
+<script src="https://smtpjs.com/v3/smtp.js"></script>
+
+<script>
+    $("#btnnnnn").click(function(event) {
+        event.preventDefault();
+        var email = $("#emailllll").val();
+        Email.send({
+            Host: "smtp.gmail.com",
+            Username: "nta.projectweb@gmail.com",
+            Password: "ngotanan123",
+            SecureToken: "Generate token here",
+            From: "nta.projectweb@gmail.com",
+            To: email,
+            Subject: "Tin nhắn từ Delicous.",
+            Body: "From UIT with love!"
+        }).then(function(response) {
+            if (response == 'OK') {
+                swal("Cảm ơn bạn đã đăng ký <3!", "", "success");
+            } else {
+                swal("Đã có lỗi xảy ra!", "", "error");
+            }
+        });
+
+    })
+</script>

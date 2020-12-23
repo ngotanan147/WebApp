@@ -100,8 +100,6 @@ class Cart extends Controller
 
     function update()
     {
-
-
         if (!isset($_SESSION["email"])) {
             foreach ($_POST['quantity'] as $key => $value) {
                 if ($value < 0 || !is_numeric($value)) {

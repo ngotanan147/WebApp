@@ -215,5 +215,5 @@ require_once "Header.php";
 
 
 <?php
-require_once "./mvc/views/html/Footer.html";
+require_once "Footer.php";
 ?>

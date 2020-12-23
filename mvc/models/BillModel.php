@@ -40,7 +40,18 @@ class BillModel extends BaseModel
         }
 
         return $data;
-        // $columnsNameId = "user_id";
-        // return $this->getItemById(self::TABLE, $columnsNameId, $id);
+    }
+
+    public function getBillIdByDate($date)
+    {
+        $qr = "select * from bill where bill.date = '$date'";
+
+        $query = $this->execute($qr);
+        $data = [];
+        while ($row = mysqli_fetch_assoc($query)) {
+            array_push($data, $row);
+        }
+
+        return $data;
     }
 }

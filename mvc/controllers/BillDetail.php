@@ -2,9 +2,11 @@
 class BillDetail extends Controller
 {
     private $userModel;
+    private $billDetailModel;
     function __construct()
     {
         $this->userModel = $this->getModel("UserModel");
+        $this->billDetailModel = $this->getModel("BillDetailModel");
     }
 
     function test()
@@ -23,5 +25,9 @@ class BillDetail extends Controller
             ]);
         }
         $this->getView("Account", []);
+    }
+
+    function showBillDetail($bill_id)
+    {
     }
 }

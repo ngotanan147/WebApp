@@ -57,7 +57,7 @@ require_once "Header.php";
                 <div class="title pt-3 pb-4">
                     <h2>Giỏ hàng của tôi</h2>
                 </div>
-                <div class="text-center giohangtrong hide">
+                <div class="text-center giohangtrong hide pt-5 pb-2">
                     <h2>Giỏ hàng trống!</h2>
                 </div>
                 <div class="form">
@@ -154,7 +154,6 @@ require_once "Header.php";
         }
         ?>
     ]
-    console.log(items);
 
     function format(n) {
         return (n * 1000).toLocaleString('vi', {
@@ -349,7 +348,6 @@ require_once "Header.php";
                     updateQuantity(i, parseInt(quantitys2[i].value));
                 });
             }
-
         }
 
         const total = subTotal;
@@ -360,5 +358,5 @@ require_once "Header.php";
 </script>
 
 <?php
-require_once "./mvc/views/html/Footer.html";
+require_once "Footer.php";
 ?>

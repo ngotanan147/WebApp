@@ -375,10 +375,10 @@
                     <h4 class="text-white">ĐĂNG KÍ NHẬN TIN</h4>
                     <form action="">
                         <div class="pt-2">
-                            <input type="text" placeholder="Email"><br>
+                            <input id="emailllll" type="text" placeholder="Email"><br>
                         </div>
                         <div class="pt-2">
-                            <input type="button" value="Đăng kí">
+                            <input id="btnnnnn" type="button" value="Đăng kí">
                         </div>
                     </form>
                 </div>

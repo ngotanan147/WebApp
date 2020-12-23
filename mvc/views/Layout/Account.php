@@ -156,8 +156,6 @@ require_once "Header.php";
 
         </div>
         <div class="Detail_Product_All">
-
-
             <div class="row">
                 <div class="col-12 col-lg-9 col-md-12 col-sm-12 products">
                     <div class="row">
@@ -166,7 +164,7 @@ require_once "Header.php";
                                 <div class="recent_orders">
                                     <div class="tab_all">
                                         <table class="table table-bordered table-hover text-center" style="font-size: 16px">
-                                            <thead class="thead_default">
+                                            <thead class="">
                                                 <tr>
                                                     <th>STT</th>
                                                     <th>ID</th>
@@ -193,7 +191,9 @@ require_once "Header.php";
                                                             <td id="price<?php echo $value["bill_id"]; ?>"></td>
 
                                                             <td>
-                                                                <a class="chitiet2" href="">Xem chi tiết</a>
+                                                                <a id="<?php echo $value["bill_id"]; ?>" class="xemchitiet" href="">
+                                                                    Xem chi tiết
+                                                                </a>
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -242,6 +242,26 @@ require_once "Header.php";
         </div>
     </div>
 
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Chi tiết hóa đơn</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="modalBody">
+
+                </div>
+                <!-- <div class="modal-footer">
+                    <button style="outline: none; border: none; padding: 5px 10px" type="button" class="btn-secondary" data-dismiss="modal">Close</button>
+                </div> -->
+            </div>
+        </div>
+    </div>
+
 </body>
 
 </html>
@@ -254,11 +274,60 @@ require_once "Header.php";
         })
     }
 
+    $(".xemchitiet").click(function(event) {
+        event.preventDefault();
+        var id = $(this).attr("id");
+        var href = "<?php echo URL ?>Account/showBillDetail/" + id;
+        var xhr = new XMLHttpRequest();
+
+        xhr.onload = function() {
+            if (xhr.readyState === xhr.DONE) {
+                if (xhr.status === 200) {
+                    var data = JSON.parse(xhr.responseText);
+                    // console.log(data);
+
+                    var dataFromJson = data.map(item => `  
+                        <tbody>
+                            <tr>
+                                <td>${item.product_name}</td>
+                                <td> 
+                                    <img src="./mvc/assets/img/${item.product_image}" alt="" width="75" height="auto">
+                                </td>
+                                <td>${format(item.price)}</td>
+                                <td>${item.quantity}</td>
+                            </tr>
+                        </tbody>
+                    `).join("");
+                    var html = `
+                    <table id="bd" class="table table-bordered table-hover text-center">
+                        <thead>
+                            <tr>
+                                <th>Tên sản phẩm</th>
+                                <th>Hình ảnh</th>
+                                <th>Giá</th>
+                                <th>Số lượng</th>
+                            </tr>
+                        </thead>
+                    ` + dataFromJson + `</table>`;
+
+                    $(".modal").modal('show');
+                    $("#modalBody").html(html);
+
+                }
+            }
+        }
+
+        xhr.open('GET', href, true);
+        xhr.send();
+    })
+
+
+
     array.forEach(item => {
         $("#price" + item.id).html(format(item.price));
     })
 </script>
 
 <?php
-require_once "./mvc/views/html/Footer.html";
+require_once "Footer.php";
 ?>

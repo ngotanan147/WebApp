@@ -22,7 +22,7 @@
     <style>
         .rangcua {
             float: left;
-            background-image: url('https://scontent.fsgn2-3.fna.fbcdn.net/v/t1.0-9/cp0/127278858_1774477026062519_9031826519242504429_n.jpg?_nc_cat=106&ccb=2&_nc_sid=0debeb&_nc_ohc=oS-U_9Bh4ugAX9diGNo&_nc_ht=scontent.fsgn2-3.fna&oh=1709f649e8f5b5fab84893a3287a56c1&oe=5FE9063C');
+            background-image: url('http://bizweb.dktcdn.net/100/332/765/themes/801707/assets/rang-cua.png?1608023825787');
             background-repeat: repeat-x;
             height: 7px;
             width: 100%;

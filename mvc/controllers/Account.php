@@ -4,22 +4,31 @@ class Account extends Controller
     private $cartModel;
     private $userModel;
     private $billModel;
+    private $billDetailModel;
     function __construct()
     {
         $this->productModel = $this->getModel("ProductModel");
         $this->cartModel = $this->getModel("CartModel");
         $this->userModel = $this->getModel("UserModel");
         $this->billModel = $this->getModel("BillModel");
+        $this->billDetailModel = $this->getModel("BillDetailModel");
     }
 
     function test()
     {
-        $data = $this->userModel->getUserByEmail($_SESSION['email']);
-        $bill = $this->billModel->getBillById($data[0]);
+        $data =  $this->billDetailModel->getBillDetailByBillId(14);
 
-        foreach ($bill as $key => $value) {
+        foreach ($data as $key => $value) {
             print_r($value);
+            echo "</br>";
         }
+        // print_r($data);
+        // $data = $this->userModel->getUserByEmail($_SESSION['email']);
+        // $bill = $this->billModel->getBillById($data[0]);
+
+        // foreach ($bill as $key => $value) {
+        //     print_r($value);
+        // }
     }
 
     function index()
@@ -37,5 +46,13 @@ class Account extends Controller
             ]);
         }
         $this->getView("Account", []);
+    }
+
+    function showBillDetail($bill_id)
+    {
+        $data =  $this->billDetailModel->getBillDetailByBillId($bill_id);
+
+        $myJson = json_encode($data, JSON_UNESCAPED_UNICODE);
+        echo $myJson;
     }
 }

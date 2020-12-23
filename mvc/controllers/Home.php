@@ -28,9 +28,4 @@ class Home extends Controller
             ]);
         }
     }
-
-    // function show()
-    // {
-    //     echo $_SESSION['email'];
-    // }
 }
