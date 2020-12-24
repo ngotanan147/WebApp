@@ -96,7 +96,7 @@ require_once "Header.php";
             </div>
 
             <div class="row mt-3">
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                <div class="col-xs-12 col-sm-12">
                     <div class="form">
                         <form action="<?php echo URL ?>Login/log" method="POST">
                             <div class="form-group">
@@ -132,7 +132,7 @@ require_once "Header.php";
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                <!-- <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                     <div class="form">
                         <div class="form-group">
                             <label>Bạn quên mật khẩu? Nhập địa chỉ Email để lấy lại mật khẩu.</label><br>
@@ -141,7 +141,7 @@ require_once "Header.php";
                             <button type="submit" class="btn1 mt-3">Lấy lại mật khẩu</button>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>

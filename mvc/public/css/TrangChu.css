@@ -251,9 +251,9 @@
     .cart {
         margin-right: 5px;
     }
-    #img_monan {
+    /* #img_monan {
         width: 250px !important;
-    }
+    } */
 }
 
 @media only screen and (min-width: 769px) {

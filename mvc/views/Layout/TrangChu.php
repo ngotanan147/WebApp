@@ -336,10 +336,10 @@ require_once "Header.php";
                                     <div class="item_list ml-4 mr-4">
                                         <div class="image text-center">
                                             <a href="<?php echo URL ?>productDetail/detail/<?php echo $value["product_id"] ?>" class="image_product2">
-                                                <img id="img_monan" src="./mvc/assets/img/<?php echo $value["product_image"] ?>" alt="" style="width: 253px; height: 208px">
+                                                <img id="img_monan" src="./mvc/assets/img/<?php echo $value["product_image"] ?>" alt="" style="max-width: 100%; height: 208px">
                                             </a>
                                         </div>
-                                        <div class="info" style="display:flex">
+                                        <div class="info d-flex">
                                             <div class="infoLeft">
                                                 <h3 class=title>
                                                     <a href="">

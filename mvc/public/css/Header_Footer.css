@@ -80,7 +80,6 @@
     border-bottom-right-radius: 2px;
     width: 37px;
     height: 30px;
-    top: 16px;
     right: 15px;
     line-height: 30px;
     border: 1px solid #ccc;
@@ -134,7 +133,6 @@
 .navbar-dark .navbar-nav .nav-item:hover .nav-link {
     color: #ef7147;
 }
-
 
 .navbar-toggler-icon {
     background: #ef7147;
@@ -204,7 +202,6 @@
     color: #fff !important;
 }
 
-
 .instagram {
     width: 50px;
     height: 50px;
@@ -216,7 +213,6 @@
     cursor: pointer;
 }
 
-
 .instagram:hover {
     background: #ef7147 !important;
 }
@@ -224,7 +220,6 @@
 .instagram:hover .fa-instagram {
     color: #fff !important;
 }
-
 
 .footer form input[type="text"] {
     border-radius: 4px;
@@ -259,12 +254,10 @@
     .navbar-dark .navbar-nav .nav-item {
         padding: 10px 10px;
     }
-
     .navbar-dark .navbar-nav .nav-link {
         font-size: 14px;
     }
 }
-
 
 @media only screen and (max-width: 500px) {
     .logo img {
@@ -282,16 +275,13 @@
     .navbar-dark .navbar-nav {
         padding-top: 10px
     }
-
     .navbar-dark .navbar-nav .nav-item {
         padding-top: 5px;
         padding-left: 0 !important;
     }
-
     .navbar-dark .navbar-nav .nav-link {
         font-size: 18px;
     }
-
     .cart {
         margin-right: 5px;
     }

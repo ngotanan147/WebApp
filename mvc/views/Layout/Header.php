@@ -51,9 +51,9 @@
                 </div>
                 <div class="hidden-xs hidden-sm col-md-3 col-lg-3">
                     <div class="header_search">
-                        <form action="<?php echo URL ?>Search">
-                            <input type="text" placeholder="Tìm sản phẩm">
-                            <button class="btn" type="submit" style="top: 16px">
+                        <form action="<?php echo URL ?>Search" method="POST" enctype="multipart/form-data">
+                            <input name="name_search" type="text" placeholder="Tìm sản phẩm">
+                            <button name="search" class="btn" type="submit" style="top: 16px">
                                 <i class="fa fa-search"></i>
                             </button>
                         </form>

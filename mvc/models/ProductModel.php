@@ -32,7 +32,6 @@ class ProductModel extends BaseModel
 
     public function getProductById($id)
     {
-        // $table, $columnsNameId, $id
         $columnsNameId = "product_id";
         return $this->getItemById(self::TABLE, $columnsNameId, $id);
     }
@@ -43,6 +42,19 @@ class ProductModel extends BaseModel
 
         $query = $this->execute($qr);
 
+        $data = [];
+        while ($row = mysqli_fetch_assoc($query)) {
+            array_push($data, $row);
+        }
+
+        return $data;
+    }
+
+    public function searchByName($name_search)
+    {
+        $qr = "select * from product where product_name like '%$name_search%'";
+
+        $query = $this->execute($qr);
         $data = [];
         while ($row = mysqli_fetch_assoc($query)) {
             array_push($data, $row);

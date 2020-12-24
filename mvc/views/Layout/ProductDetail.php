@@ -121,30 +121,33 @@ require_once "Header.php";
                                     <?php
                                     foreach ($data["same_product"] as $key => $value) {
                                     ?>
-                                        <div class="owl_item col-lg-4 col-md-4 col-6">
+                                        <div class="owl_item col-lg-6 col-md-6 col-xs-12">
                                             <div class="item_product_main">
                                                 <div class="items">
                                                     <div class="image">
-                                                        <a href="<?php echo URL ?>cart/store/<?php echo $data["product_id"] ?>" class="addtocart">
-                                                            <img src="<?php echo URL ?>/mvc/assets/img/<?php echo $value["product_image"] ?>" alt="" width="100%">
+                                                        <a href="<?php echo URL ?>productDetail/detail/<?php echo $value["product_id"] ?>">
+                                                            <img src="<?php echo URL ?>/mvc/assets/img/<?php echo $value["product_image"] ?>" alt="" width="100%" height="250px">
                                                         </a>
                                                     </div>
                                                     <div class="infor mt-3" style="width: 100%">
                                                         <h3 class="title">
                                                             <span><?php echo $value["product_name"] ?></span>
                                                         </h3>
-                                                        <div class="box_price">
-                                                            <span class="special_price">
-                                                                <span id="price<?php echo $value["product_id"] ?>" class="prices" style="color: #ef7147;font-size: 20px;">100.000đ</span>
-                                                            </span>
-                                                            <a class="addtocart" href="<?php echo URL ?>cart/store/<?php echo $value["product_id"] ?>">
-                                                                <button id="btn-same" type="submit" class=" btn-primary">
-                                                                    Thêm vào giỏ
-                                                                </button>
-                                                            </a>
+                                                        <div class="box_price d-flex">
+                                                            <div>
+                                                                <span class="special_price">
+                                                                    <span id="price<?php echo $value["product_id"] ?>" class="prices" style="color: #ef7147;font-size: 20px;">100.000đ</span>
+                                                                </span>
+                                                            </div>
 
+                                                            <div class="text-right w-100">
+                                                                <a class="addtocart" href="<?php echo URL ?>cart/store/<?php echo $value["product_id"] ?>">
+                                                                    <button id="btn-same" type="submit" class=" btn-primary">
+                                                                        Thêm vào giỏ
+                                                                    </button>
+                                                                </a>
+                                                            </div>
                                                         </div>
-
                                                     </div>
                                                 </div>
                                             </div>

@@ -114,14 +114,14 @@ require_once "Header.php";
                         <div>
                             <span style="font-size:14px;">
                                 <h3 style="font-family:Arial,Helvetica,sans-serif;">
-                                    - Website made by Ngo Tan An.
+                                    - Website made by Ngô Tấn An.
                                 </h3>
                             </span>
                         </div>
                         <div class="pt-3">
                             <span style="font-size:14px;">
                                 <h3 style="font-family:Arial,Helvetica,sans-serif;">
-                                    - Supporter: Minh Hieu, Minh Chien, Xuan Da.
+                                    - Supporter: Minh Hiếu, Minh Chiến, Xuân Đà.
                                 </h3>
                             </span>
                         </div>

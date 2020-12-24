@@ -11,8 +11,18 @@ class Search extends Controller
         $this->userModel = $this->getModel("UserModel");
     }
 
+    function test()
+    {
+        $data = $this->productModel->searchByName("La");
+    }
+
     function index()
     {
-        $this->getView("Search", []);
+        if (isset($_POST["search"])) {
+            $data = $this->productModel->searchByName($_POST["name_search"]);
+            $this->getView("Search", [
+                "result" => $data
+            ]);
+        }
     }
 }
