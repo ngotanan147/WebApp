@@ -255,9 +255,6 @@ require_once "Header.php";
                 <div class="modal-body" id="modalBody">
 
                 </div>
-                <!-- <div class="modal-footer">
-                    <button style="outline: none; border: none; padding: 5px 10px" type="button" class="btn-secondary" data-dismiss="modal">Close</button>
-                </div> -->
             </div>
         </div>
     </div>

@@ -17,10 +17,10 @@ require_once "Header.php";
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <link rel="icon" href="./mvc/views/html/img_doan/favicon.png" type="image/x-icon">
+    <link rel="icon" href="./mvc/public/css/img_doan/favicon.png" type="image/x-icon">
     <style>
         .Content_Register {
-            background-image: url(./mvc/views/html/img_doan/bg_all.png);
+            background-image: url(./mvc/public/css/img_doan/bg_all.png);
             background-repeat: repeat;
             padding-top: 20px;
 
@@ -181,10 +181,10 @@ require_once "Header.php";
                                     <p class="text-center" style="font-size: 13px;">Hoặc đăng nhập bằng</p>
                                     <div class="icon_login text-center">
                                         <a href="#" class="fbook ">
-                                            <img class="img_facebook" width="190px" height="35px" src="./mvc/views/html/img_doan/fb-btn.svg" alt="">
+                                            <img class="img_facebook" width="190px" height="35px" src="./mvc/public/css/img_doan/fb-btn.svg" alt="">
                                         </a>
                                         <a href="#" class="google">
-                                            <img style="margin-bottom: 20px;" width="190px" height="35px" src="./mvc/views/html/img_doan/gp-btn.svg" alt="">
+                                            <img style="margin-bottom: 20px;" width="190px" height="35px" src="./mvc/public/css/img_doan/gp-btn.svg" alt="">
                                         </a>
                                     </div>
                                 </div> -->

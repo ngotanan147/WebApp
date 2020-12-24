@@ -22,7 +22,7 @@ require_once "Header.php";
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <style>
         .login {
-            background: url('./mvc/views/html/img_doan/bg_all.png');
+            background: url('./mvc/public/css/img_doan/bg_all.png');
             background-repeat: repeat;
             padding: 20px;
             width: 100%;

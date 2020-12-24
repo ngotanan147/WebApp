@@ -18,7 +18,7 @@ require_once "Header.php";
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <link rel="stylesheet" href="./mvc/views/html/Cart.css">
+    <link rel="stylesheet" href="./mvc/public/css/Cart.css">
     <style>
         .tieptucmuahang a {
             text-decoration: none;
@@ -228,7 +228,7 @@ require_once "Header.php";
                         <div class="d-flex justify-content-between mb-4">
                             <div class="d-flex">
                                 <div>
-                                    <img src="./mvc/views/html/img_doan/chaumatlon.jpg" alt="" width="75" height="auto">
+                                    <img src="./mvc/public/css/img_doan/chaumatlon.jpg" alt="" width="75" height="auto">
                                 </div>
                                 <div class="tenvagia pl-3">
                                     <div class="mb-1">

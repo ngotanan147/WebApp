@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <link rel="stylesheet" href="./mvc/views/html/Header_Footer.css">
+    <link rel="stylesheet" href="./mvc/public/css/Header_Footer.css">
     <style>
         .rangcua {
             float: left;
@@ -51,9 +51,9 @@
                 </div>
                 <div class="hidden-xs hidden-sm col-md-3 col-lg-3">
                     <div class="header_search">
-                        <form action="">
+                        <form action="<?php echo URL ?>Search">
                             <input type="text" placeholder="Tìm sản phẩm">
-                            <button class="btn" type="button" style="top: 16px">
+                            <button class="btn" type="submit" style="top: 16px">
                                 <i class="fa fa-search"></i>
                             </button>
                         </form>
@@ -113,7 +113,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="<?php echo URL ?>Product" class="nav-link">
                                 <i class="fa fa-birthday-cake"></i>
                                 Sản phẩm
                             </a>
@@ -125,13 +125,13 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="<?php echo URL ?>blog" class="nav-link">
                                 <i class="fa fa-pencil-square-o"></i>
                                 Blog
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="<?php echo URL ?>Contact" class="nav-link">
                                 <i class="fa fa-phone"></i>
                                 Liên hệ
                             </a>

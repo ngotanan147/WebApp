@@ -1,5 +1,5 @@
 <?php
-// require_once "./mvc/views/html/Header.html";
+// require_once "./mvc/public/css/Header.html";
 require_once "Header.php";
 ?>
 
@@ -25,7 +25,7 @@ require_once "Header.php";
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
-    <link rel="stylesheet" href="./mvc/views/html/TrangChu.css">
+    <link rel="stylesheet" href="./mvc/public/css/TrangChu.css">
     <style>
         .item_list {
             background: #fff !important;
@@ -33,12 +33,34 @@ require_once "Header.php";
             padding: 10px;
             margin: 5px;
         }
+
+        .image_product2 img {
+            transition: 0.2s;
+        }
+
+        .image_product2:hover img {
+            transform: scale(1.06);
+        }
+
+        .item_list:hover {
+            box-shadow: 5px 0px 40px rgba(0, 0, 0, .2);
+        }
+
+        @media only screen and (max-width: 1309px) {
+            #img_monan {
+                width: 177px !important;
+            }
+        }
+
+        @media only screen and (max-width: 991px) {
+            #img_monan {
+                width: 250px !important;
+            }
+        }
     </style>
 </head>
 
 <body>
-
-
     <!-- Slider carousel -->
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
@@ -48,13 +70,13 @@ require_once "Header.php";
         </ol>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img class="d-block w-100" src="./mvc/views/html/img_doan/imgSlider.jpg" alt="First slide">
+                <img class="d-block w-100" src="./mvc/public/img_doan/imgSlider.jpg" alt="First slide">
             </div>
             <div class="carousel-item">
-                <img class="d-block w-100" src="./mvc/views/html/img_doan/imgSlider.jpg" alt="Second slide">
+                <img class="d-block w-100" src="./mvc/public/img_doan/imgSlider.jpg" alt="Second slide">
             </div>
             <div class="carousel-item">
-                <img class="d-block w-100" src="./mvc/views/html/img_doan/imgSlider.jpg" alt="Third slide">
+                <img class="d-block w-100" src="./mvc/public/img_doan/imgSlider.jpg" alt="Third slide">
             </div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -69,7 +91,7 @@ require_once "Header.php";
     <!-- Món ăn nổi bật -->
     <div class="monannoibat">
         <div class="icon_cupcake text-center">
-            <img src="./mvc/views/html/img_doan/cupcake.png" alt="" style="max-width: 100%;height: auto;">
+            <img src="./mvc/public/css/img_doan/cupcake.png" alt="" style="max-width: 100%;height: auto;">
         </div>
         <div class="monannoibat_title text-center">
             <h2 style="display:inline-block;">
@@ -100,7 +122,7 @@ require_once "Header.php";
                             ?>
                                     <div class="swiper-slide" style="max-height: 480px;">
                                         <div class="image">
-                                            <a class="image_product" href="<?php echo URL ?>Product/productDetail/<?php echo $value["product_id"] ?>">
+                                            <a class="image_product" href="<?php echo URL ?>productDetail/detail/<?php echo $value["product_id"] ?>">
                                                 <img src="./mvc/assets/img/<?php echo $value["product_image"] ?>" alt="">
                                             </a>
                                         </div>
@@ -144,7 +166,7 @@ require_once "Header.php";
         <!-- Món ăn được ưa chuộng -->
         <div class="danhsachmonan">
             <div class="icon_cupcake text-center">
-                <img src="./mvc/views/html/img_doan/cupcake.png" alt="" style="max-width: 100%;height: auto;">
+                <img src="./mvc/public/css/img_doan/cupcake.png" alt="" style="max-width: 100%;height: auto;">
             </div>
             <div class="monannoibat_title text-center">
                 <h2 style="display:inline-block;">
@@ -155,147 +177,210 @@ require_once "Header.php";
                 <div class="list_monan text-center">
                     <ul class="tabs d-none d-md-block d-lg-block">
                         <!-- d-none d-md-flex d-lg-flex -->
-                        <li class="tab-link1 current"><a href="javascript:;">Bánh</a></li>
-                        <li class="tab-link2 "><a href="javascript:;">Trà</a></li>
+                        <li class="tab-link2 current"><a href="javascript:;">Trà</a></li>
                         <li class="tab-link3 "><a href="javascript:;">Kem tươi</a></li>
                         <li class="tab-link4 "><a href="javascript:;">Cà phê</a></li>
                         <li class="tab-link5 "><a href="javascript:;">Nước ép</a></li>
                     </ul>
                     <div class="select-container d-lg-none d-md-none">
                         <select class="select" name="items" id="items">
-                            <option value="1">Bánh</option>
-                            <option value="2">Trà</option>
-                            <option value="3">Kem tươi</option>
-                            <option value="4">Cà phê</option>
-                            <option value="5">Nước ép</option>
+                            <option value="1">Trà</option>
+                            <option value="2">Kem tươi</option>
+                            <option value="3">Cà phê</option>
+                            <option value="4">Nước ép</option>
                         </select>
                     </div>
                 </div>
             </div>
 
-            <div class="container mb-5 monan">
-                <div class="tab1 current">
+            <div class="container-fluid monan">
+                <div class="tab2 current">
                     <div class="row">
-                        <div class="col-lg-3 col-md-6 mb-5 p-0">
-                            <div class="item_list">
-                                <div class="image">
-                                    <a href=""><img src="./mvc/views/html/img_doan/dsmonan.jpg" alt="" style="max-width: 100%; max-height: 100%"></a>
-                                </div>
-                                <div class="info" style="display:flex">
-                                    <div class="infoLeft">
-                                        <h3 class=title>
-                                            <a href="">
-                                                Fruit Cream Puff
+                        <?php
+                        if (!empty($data["tea"])) {
+                            foreach ($data["tea"] as $key => $value) {
+                        ?>
+                                <div class="col-lg-3 col-md-6 mb-5 p-0">
+                                    <div class="item_list ml-4 mr-4">
+                                        <div class="image text-center">
+                                            <a href="<?php echo URL ?>productDetail/detail/<?php echo $value["product_id"] ?>" class="image_product2">
+                                                <img id="img_monan" src="./mvc/assets/img/<?php echo $value["product_image"] ?>" alt="" style="width: 253px; height: 208px">
                                             </a>
-                                        </h3>
-                                        <div class="box_price">
-                                            <span class="special_price">
-                                                <span class="price product-price">150.000₫</span>
-                                            </span>
+                                        </div>
+                                        <div class="info" style="display:flex">
+                                            <div class="infoLeft">
+                                                <h3 class=title>
+                                                    <a href="">
+                                                        <?php echo $value["product_name"] ?>
+                                                    </a>
+                                                </h3>
+                                                <div class="box_price">
+                                                    <span class="special_price">
+                                                        <span id="<?php echo $value["product_id"] ?>" class="price product-price">150.000₫</span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="infoRight">
+                                                <a class="addtocart" id="product<?php echo $value["product_id"] ?>" href="<?php echo URL ?>cart/store/<?php echo $value["product_id"] ?>">
+                                                    <button>Thêm vào giỏ</button>
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="infoRight">
-                                        <button>Thêm vào giỏ</button>
-                                    </div>
                                 </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3 col-md-6 mb-5 p-0">
-                            <div class="item_list">
-                                <div class="image">
-                                    <a href=""><img src="./mvc/views/html/img_doan/dsmonan.jpg" alt="" style="max-width: 100%; max-height: 100%"></a>
-                                </div>
-                                <div class="info" style="display:flex">
-                                    <div class="infoLeft">
-                                        <h3 class=title>
-                                            <a href="">
-                                                Fruit Cream Puff
-                                            </a>
-                                        </h3>
-                                        <div class="box_price">
-                                            <span class="special_price">
-                                                <span class="price product-price">150.000₫</span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="infoRight">
-                                        <button>Thêm vào giỏ</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3 col-md-6 mb-5 p-0">
-                            <div class="item_list">
-                                <div class="image">
-                                    <a href=""><img src="./mvc/views/html/img_doan/dsmonan.jpg" alt="" style="max-width: 100%; max-height: 100%"></a>
-                                </div>
-                                <div class="info" style="display:flex">
-                                    <div class="infoLeft">
-                                        <h3 class=title>
-                                            <a href="">
-                                                Fruit Cream Puff
-                                            </a>
-                                        </h3>
-                                        <div class="box_price">
-                                            <span class="special_price">
-                                                <span class="price product-price">150.000₫</span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="infoRight">
-                                        <button>Thêm vào giỏ</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 mb-5 p-0">
-                            <div class="item_list">
-                                <div class="image">
-                                    <a href=""><img src="./mvc/views/html/img_doan/dsmonan.jpg" alt="" style="max-width: 100%; max-height: 100%"></a>
-                                </div>
-                                <div class="info" style="display:flex">
-                                    <div class="infoLeft">
-                                        <h3 class=title>
-                                            <a href="">
-                                                Fruit Cream Puff
-                                            </a>
-                                        </h3>
-                                        <div class="box_price">
-                                            <span class="special_price">
-                                                <span class="price product-price">150.000₫</span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="infoRight">
-                                        <button>Thêm vào giỏ</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
+                                <script type="text/javascript">
+                                    array.push({
+                                        id: <?php echo $value["product_id"] ?>,
+                                        price: <?php echo $value["product_price"] ?>
+                                    })
+                                </script>
+                        <?php }
+                        } ?>
                     </div>
                 </div>
-                <div class="tab2">
-
-                </div>
                 <div class="tab3">
-
+                    <div class="row">
+                        <?php
+                        if (!empty($data["kemtuoi"])) {
+                            foreach ($data["kemtuoi"] as $key => $value) {
+                        ?>
+                                <div class="col-lg-3 col-md-6 mb-5 p-0">
+                                    <div class="item_list ml-4 mr-4">
+                                        <div class="image text-center">
+                                            <a href="<?php echo URL ?>productDetail/detail/<?php echo $value["product_id"] ?>" class="image_product2">
+                                                <img id="img_monan" src="./mvc/assets/img/<?php echo $value["product_image"] ?>" alt="" style="width: 253px; height: 208px">
+                                            </a>
+                                        </div>
+                                        <div class="info" style="display:flex">
+                                            <div class="infoLeft">
+                                                <h3 class=title>
+                                                    <a href="">
+                                                        <?php echo $value["product_name"] ?>
+                                                    </a>
+                                                </h3>
+                                                <div class="box_price">
+                                                    <span class="special_price">
+                                                        <span id="<?php echo $value["product_id"] ?>" class="price product-price">150.000₫</span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="infoRight">
+                                                <a class="addtocart" id="product<?php echo $value["product_id"] ?>" href="<?php echo URL ?>cart/store/<?php echo $value["product_id"] ?>">
+                                                    <button>Thêm vào giỏ</button>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <script type="text/javascript">
+                                    array.push({
+                                        id: <?php echo $value["product_id"] ?>,
+                                        price: <?php echo $value["product_price"] ?>
+                                    })
+                                </script>
+                        <?php }
+                        } ?>
+                    </div>
                 </div>
                 <div class="tab4">
-
+                    <div class="row">
+                        <?php
+                        if (!empty($data["caphe"])) {
+                            foreach ($data["caphe"] as $key => $value) {
+                        ?>
+                                <div class="col-lg-3 col-md-6 mb-5 p-0">
+                                    <div class="item_list ml-4 mr-4">
+                                        <div class="image text-center">
+                                            <a href="<?php echo URL ?>productDetail/detail/<?php echo $value["product_id"] ?>" class="image_product2">
+                                                <img id="img_monan" src="./mvc/assets/img/<?php echo $value["product_image"] ?>" alt="" style="width: 253px; height: 208px">
+                                            </a>
+                                        </div>
+                                        <div class="info" style="display:flex">
+                                            <div class="infoLeft">
+                                                <h3 class=title>
+                                                    <a href="">
+                                                        <?php echo $value["product_name"] ?>
+                                                    </a>
+                                                </h3>
+                                                <div class="box_price">
+                                                    <span class="special_price">
+                                                        <span id="<?php echo $value["product_id"] ?>" class="price product-price">150.000₫</span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="infoRight">
+                                                <a class="addtocart" id="product<?php echo $value["product_id"] ?>" href="<?php echo URL ?>cart/store/<?php echo $value["product_id"] ?>">
+                                                    <button>Thêm vào giỏ</button>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <script type="text/javascript">
+                                    array.push({
+                                        id: <?php echo $value["product_id"] ?>,
+                                        price: <?php echo $value["product_price"] ?>
+                                    })
+                                </script>
+                        <?php }
+                        } ?>
+                    </div>
                 </div>
                 <div class="tab5">
-
+                    <div class="row">
+                        <?php
+                        if (!empty($data["nuocep"])) {
+                            foreach ($data["nuocep"] as $key => $value) {
+                        ?>
+                                <div class="col-lg-3 col-md-6 mb-5 p-0">
+                                    <div class="item_list ml-4 mr-4">
+                                        <div class="image text-center">
+                                            <a href="<?php echo URL ?>productDetail/detail/<?php echo $value["product_id"] ?>" class="image_product2">
+                                                <img id="img_monan" src="./mvc/assets/img/<?php echo $value["product_image"] ?>" alt="" style="width: 253px; height: 208px">
+                                            </a>
+                                        </div>
+                                        <div class="info" style="display:flex">
+                                            <div class="infoLeft">
+                                                <h3 class=title>
+                                                    <a href="">
+                                                        <?php echo $value["product_name"] ?>
+                                                    </a>
+                                                </h3>
+                                                <div class="box_price">
+                                                    <span class="special_price">
+                                                        <span id="<?php echo $value["product_id"] ?>" class="price product-price">150.000₫</span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="infoRight">
+                                                <a class="addtocart" id="product<?php echo $value["product_id"] ?>" href="<?php echo URL ?>cart/store/<?php echo $value["product_id"] ?>">
+                                                    <button>Thêm vào giỏ</button>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <script type="text/javascript">
+                                    array.push({
+                                        id: <?php echo $value["product_id"] ?>,
+                                        price: <?php echo $value["product_price"] ?>
+                                    })
+                                </script>
+                        <?php }
+                        } ?>
+                    </div>
                 </div>
             </div>
 
         </div>
-        <div style="background-img: url('https://scontent.fsgn2-4.fna.fbcdn.net/v/t1.0-9/cp0/127243818_1774477089395846_1556559475064294708_n.jpg?_nc_cat=109&ccb=2&_nc_sid=0debeb&_nc_ohc=cSecq6N2ccwAX8-SQV2&_nc_ht=scontent.fsgn2-4.fna&oh=0c58f35c01385ae8ce27458b39bb289a&oe=5FEE4B84')">
+
+        <div class="text-center">
+            <h1>Blog updating...</h1>
+        </div>
+        <!-- <div style="background-img: url('https://scontent.fsgn2-4.fna.fbcdn.net/v/t1.0-9/cp0/127243818_1774477089395846_1556559475064294708_n.jpg?_nc_cat=109&ccb=2&_nc_sid=0debeb&_nc_ohc=cSecq6N2ccwAX8-SQV2&_nc_ht=scontent.fsgn2-4.fna&oh=0c58f35c01385ae8ce27458b39bb289a&oe=5FEE4B84')">
             <div class="monannoibat_title text-center ">
                 <div class="icon_cupcake text-center">
-                    <img class="pt-5" src="./mvc/views/html/img_doan/cupcake.png" alt="" style="max-width: 100%;height: auto;">
+                    <img class="pt-5" src="./mvc/public/css/img_doan/cupcake.png" alt="" style="max-width: 100%;height: auto;">
                 </div>
                 <h2 style="display:inline-block;">
                     <a href="">Blog</a>
@@ -308,7 +393,7 @@ require_once "Header.php";
                                     <div class="swiper-slide" style="max-height: 480px;">
                                         <div class="image">
                                             <a class="image_product" href="">
-                                                <img src="./mvc/views/html/img_doan/monannoibat (1).jpg" alt="">
+                                                <img src="./mvc/public/css/img_doan/monannoibat (1).jpg" alt="">
                                             </a>
                                         </div>
                                         <div class="info">
@@ -327,7 +412,7 @@ require_once "Header.php";
                                     <div class="swiper-slide" style="max-height: 480px;">
                                         <div class="image">
                                             <a class="image_product" href="">
-                                                <img src="./mvc/views/html/img_doan/monannoibat (2).jpg" alt="">
+                                                <img src="./mvc/public/css/img_doan/monannoibat (2).jpg" alt="">
                                             </a>
                                         </div>
                                         <div class="info">
@@ -346,7 +431,7 @@ require_once "Header.php";
                                     <div class="swiper-slide" style="max-height: 480px;">
                                         <div class="image">
                                             <a class="image_product" href="">
-                                                <img src="./mvc/views/html/img_doan/monannoibat (3).jpg" alt="">
+                                                <img src="./mvc/public/css/img_doan/monannoibat (3).jpg" alt="">
                                             </a>
                                         </div>
                                         <div class="info">
@@ -365,7 +450,7 @@ require_once "Header.php";
                                     <div class="swiper-slide" style="max-height: 480px;">
                                         <div class="image">
                                             <a class="image_product" href="">
-                                                <img src="./mvc/views/html/img_doan/monannoibat (5).jpg" alt="">
+                                                <img src="./mvc/public/css/img_doan/monannoibat (5).jpg" alt="">
                                             </a>
                                         </div>
                                         <div class="info">
@@ -384,7 +469,7 @@ require_once "Header.php";
                                     <div class="swiper-slide" style="max-height: 480px;">
                                         <div class="image">
                                             <a class="image_product" href="">
-                                                <img src="./mvc/views/html/img_doan/monannoibat (6).jpg" alt="">
+                                                <img src="./mvc/public/css/img_doan/monannoibat (6).jpg" alt="">
                                             </a>
                                         </div>
                                         <div class="info">
@@ -403,7 +488,7 @@ require_once "Header.php";
                                     <div class="swiper-slide" style="max-height: 480px;">
                                         <div class="image">
                                             <a class="image_product" href="">
-                                                <img src="./mvc/views/html/img_doan/monannoibat (7).jpg" alt="">
+                                                <img src="./mvc/public/css/img_doan/monannoibat (7).jpg" alt="">
                                             </a>
                                         </div>
                                         <div class="info">
@@ -421,14 +506,14 @@ require_once "Header.php";
                                     </div>
                                 </div>
                                 <!-- Add Pagination -->
-                                <div class="swiper-pagination"></div>
-                            </div>
-                        </div>
-                    </div>
+        <div class="swiper-pagination"></div>
+    </div>
+    </div>
+    </div>
 
-                </div>
-            </div>
-        </div>
+    </div>
+    </div>
+    </div> -->
 
 </body>
 
