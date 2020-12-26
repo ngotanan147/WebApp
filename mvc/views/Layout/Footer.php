@@ -343,19 +343,19 @@
                     <div class="menu_footer">
                         <ul class="">
                             <li>
-                                <a href="#">Trang chủ</a>
+                                <a href="<?php echo URL ?>">Trang chủ</a>
                             </li>
                             <li>
-                                <a href="#">Sản phẩm</a>
+                                <a href="<?php echo URL ?>Product">Sản phẩm</a>
                             </li>
                             <li>
-                                <a href="#">Giới thiệu</a>
+                                <a href="<?php echo URL ?>GioiThieu">Giới thiệu</a>
                             </li>
                             <li>
-                                <a href="#">Blog</a>
+                                <a href="<?php echo URL ?>blog">Blog</a>
                             </li>
                             <li>
-                                <a href="#">Liên hệ</a>
+                                <a href="<?php echo URL ?>Contact">Liên hệ</a>
                             </li>
                         </ul>
                     </div>

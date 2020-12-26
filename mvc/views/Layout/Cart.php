@@ -73,12 +73,8 @@ require_once "Header.php";
                                     <th scope="col">Xóa</th>
                                 </tr>
                             </thead>
-
-
                             <tbody id="order_items">
-
                                 <!-- JS render -->
-
                             </tbody>
                         </table>
                         <div id="order_items_mobile" class="mobile_table d-lg-none d-md-none mb-3 bg-white p-3 pt-4">
@@ -102,9 +98,6 @@ require_once "Header.php";
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="text-right pt-3 tienhanhthanhtoan" style="">
-                            <button style="width: 250.7px !important;" type="submit" id="update">Cập nhật giỏ hàng</button>
                         </div>
                         <div class="text-right pt-3 pb-3 tienhanhthanhtoan">
                             <a href="<?php echo URL ?>Payment">
@@ -207,9 +200,9 @@ require_once "Header.php";
                                 </td>
                                 <td>
                                     <div class="congtru">
-                                        <button id="inc">+</button>
-                                        <input name="quantity[${item.id}]" id="quantity1" type="text" value="${item.quantity}" style="width:35px">
-                                        <button id="dec">-</button>
+                                        <button id="inc" class="${item.id}">+</button>
+                                        <input class="${item.id}" name="quantity[${item.id}]" id="quantity1" type="text" value="${item.quantity}" style="width:35px">
+                                        <button id="dec" class="${item.id}">-</button>
                                     </div>
                                 </td>
                                 <td>
@@ -228,7 +221,7 @@ require_once "Header.php";
                         <div class="d-flex justify-content-between mb-4">
                             <div class="d-flex">
                                 <div>
-                                    <img src="./mvc/public/css/img_doan/chaumatlon.jpg" alt="" width="75" height="auto">
+                                    <img src="./mvc/assets/img/${item.img}" alt="" width="75" height="auto">
                                 </div>
                                 <div class="tenvagia pl-3">
                                     <div class="mb-1">
@@ -311,12 +304,50 @@ require_once "Header.php";
             if (incs[i]) {
                 incs[i].addEventListener('click', () => {
                     updateQuantity(i, items[i].quantity + 1);
+                    var inputName = 'quantity[' + incs[i].className + ']';
+                    var value = $("[name='" + inputName + "']").val();
+                    var product_id = incs[i].className;
+                    var href = "<?php echo URL ?>Cart/update/" + product_id + "/" + value;
+
+                    var xhr = new XMLHttpRequest();
+
+                    xhr.onload = function() {
+                        if (xhr.readyState === xhr.DONE) {
+                            if (xhr.status === 200) {
+                                //Hứng dữ liệu
+                                arr = xhr.responseText.trim().split("/");
+                                $("#soluong").html(arr[1]);
+                            }
+                        }
+                    }
+
+                    xhr.open('GET', href, true);
+                    xhr.send();
                 });
             }
 
             if (decs[i]) {
                 decs[i].addEventListener('click', () => {
                     updateQuantity(i, items[i].quantity - 1);
+                    var inputName = 'quantity[' + incs[i].className + ']';
+                    var value = $("[name='" + inputName + "']").val();
+                    var product_id = incs[i].className;
+                    var href = "<?php echo URL ?>Cart/update/" + product_id + "/" + value;
+
+                    var xhr = new XMLHttpRequest();
+
+                    xhr.onload = function() {
+                        if (xhr.readyState === xhr.DONE) {
+                            if (xhr.status === 200) {
+                                //Hứng dữ liệu
+                                arr = xhr.responseText.trim().split("/");
+                                $("#soluong").html(arr[1]);
+                            }
+                        }
+                    }
+
+                    xhr.open('GET', href, true);
+                    xhr.send();
                 });
             }
 
@@ -338,6 +369,22 @@ require_once "Header.php";
                         quantitys1[i].value = 1;
                     }
                     updateQuantity(i, parseInt(quantitys1[i].value));
+                    var product_id = quantitys1[i].className;
+                    var href = "<?php echo URL ?>Cart/update/" + product_id + "/" + quantitys1[i].value;
+                    var xhr = new XMLHttpRequest();
+                    xhr.onload = function() {
+                        if (xhr.readyState === xhr.DONE) {
+                            if (xhr.status === 200) {
+                                //Hứng dữ liệu
+                                arr = xhr.responseText.trim().split("/");
+                                console.log(arr);
+                                $("#soluong").html(arr[1]);
+                            }
+                        }
+                    }
+
+                    xhr.open('GET', href, true);
+                    xhr.send();
                 });
             }
             if (quantitys2[i]) {

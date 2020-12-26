@@ -226,6 +226,12 @@
             color: #fff;
         }
 
+        .title_sidebar a:hover {
+            cursor: none;
+            text-decoration: none;
+            color: #fff;
+        }
+
         .sidebar_title {
             background: #353535;
             padding-left: 15px;
@@ -391,7 +397,6 @@
             display: block;
             text-decoration: none;
         }
-
 
         .foood_together:before {
             content: "";

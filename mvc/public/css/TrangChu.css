@@ -216,6 +216,37 @@
     display: block;
 }
 
+.item_list {
+    background: #fff !important;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 5px;
+}
+
+.image_product2 img {
+    transition: 0.2s;
+}
+
+.image_product2:hover img {
+    transform: scale(1.06);
+}
+
+.item_list:hover {
+    box-shadow: 5px 0px 40px rgba(0, 0, 0, .2);
+}
+
+@media only screen and (max-width: 1309px) {
+    #img_monan {
+        width: 177px !important;
+    }
+}
+
+@media only screen and (max-width: 991px) {
+    #img_monan {
+        width: 250px !important;
+    }
+}
+
 @media only screen and (max-width: 1200px) {
     .navbar-dark .navbar-nav .nav-item {
         padding: 10px 10px;

@@ -35,6 +35,12 @@ class CartModel extends BaseModel
         return $this->getItemById(self::TABLE, $columnsNameId, $id);
     }
 
+    public function editCartByProductId($user_id, $product_id, $new_quantity)
+    {
+        $qr = "update cart set quatity = '$new_quantity' where user_id = '$user_id' and product_id = '$product_id'";
+        $this->execute($qr);
+    }
+
     public function checkIfDuplicate($user_id, $product_id)
     {
         $qr = "Select * from cart c where c.user_id = '$user_id' and c.product_id = '$product_id'";

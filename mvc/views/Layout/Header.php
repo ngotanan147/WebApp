@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <link rel="stylesheet" href="./mvc/public/css/Header_Footer.css">
+    <link rel="stylesheet" href="<?php echo URL ?>/mvc/public/css/Header_Footer.css">
     <style>
         .rangcua {
             float: left;
@@ -53,7 +53,7 @@
                     <div class="header_search">
                         <form action="<?php echo URL ?>Search" method="POST" enctype="multipart/form-data">
                             <input name="name_search" type="text" placeholder="Tìm sản phẩm">
-                            <button name="search" class="btn" type="submit" style="top: 16px">
+                            <button name="search" class="btn_search" type="submit">
                                 <i class="fa fa-search"></i>
                             </button>
                         </form>
@@ -97,7 +97,9 @@
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-dark menu">
                 <div class="mr-5 logo">
-                    <img src="https://scontent.fsgn2-5.fna.fbcdn.net/v/t1.0-9/127914547_1774476856062536_2273316599748914912_n.jpg?_nc_cat=104&ccb=2&_nc_sid=0debeb&_nc_ohc=EDCDaNKA3ioAX_WJfhf&_nc_ht=scontent.fsgn2-5.fna&oh=29359fdd246e3b236d93769c4cb55247&oe=5FE9AA01" alt="">
+                    <a href="<?php echo URL ?>">
+                        <img src="https://scontent.fsgn2-5.fna.fbcdn.net/v/t1.0-9/127914547_1774476856062536_2273316599748914912_n.jpg?_nc_cat=104&ccb=2&_nc_sid=0debeb&_nc_ohc=EDCDaNKA3ioAX_WJfhf&_nc_ht=scontent.fsgn2-5.fna&oh=29359fdd246e3b236d93769c4cb55247&oe=5FE9AA01" alt="">
+                    </a>
                 </div>
                 <button class="navbar-toggler" type="button">
                     <span class="navbar-toggler-icon">

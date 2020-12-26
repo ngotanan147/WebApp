@@ -22,8 +22,8 @@ require_once "Header.php";
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nerko+One&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
     <link rel="stylesheet" href="<?php echo URL ?>/mvc/public/css/ProductDetail.css">
+    <link rel="stylesheet" href="<?php echo URL ?>/mvc/public/css/RatingStar.css">
     <style>
 
     </style>
@@ -32,7 +32,14 @@ require_once "Header.php";
 <body>
     <div class="Content_Detail">
         <div class="Detail_Product_All">
-            <p class="chitiet"><a href="#">Trang chủ</a> <span style="color:#000!important;">/</span> <a href="#"> Bánh <span style="color:#000!important;">/</span> </a> Sweet Potato Tart </p>
+            <div class="">
+                <p class="chitiet ml-0">
+                    <a href="<?php echo URL ?>Product">Sản phẩm</a>
+                    <span style="color:#000!important;">/</span>
+                    Sweet Potato Tart </p>
+
+            </div>
+
 
             <div class="row">
                 <div class="col-lg-9 col-md-9 col-sm-12 products">
@@ -57,23 +64,37 @@ require_once "Header.php";
                                                 <span style="color: #ef7147" id="price">Loading...</span>
                                             </p>
                                         </div>
-                                        <!-- <div class="congtru">
-                                            <button type="button" id="inc">+</button>
-                                            <input name="" id="quantity1" type="text" value="1" style="width:35px">
-                                            <button type="button" id="dec">-</button>
-                                        </div> -->
+                                        <div class="d-flex">
+                                            <div class="justify-content-center mt-3">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="card pt-2 pb-2">
+                                                            <div class="card-body text-center p-0">
+                                                                <span class="myratings"></span>
+                                                                <span>(</span><span class="totalrating"></span><span>)</span>
+                                                                <fieldset class="rating">
+                                                                    <input type="radio" id="star5" name="rating" value="5" />
+                                                                    <label class="full starr starr5" for="star5" title="Awesome - 5 stars"></label>
+                                                                    <input type="radio" id="star4" name="rating" value="4" />
+                                                                    <label class="full starr starr4" for="star4" title="Pretty good - 4 stars"></label>
+                                                                    <input type="radio" id="star3" name="rating" value="3" />
+                                                                    <label class="full starr starr3" for="star3" title="Meh - 3 stars"></label>
+                                                                    <input type="radio" id="star2" name="rating" value="2" />
+                                                                    <label class="full starr starr2" for="star2" title="Kinda bad - 2 stars"></label>
+                                                                    <input type="radio" id="star1" name="rating" value="1" />
+                                                                    <label class="full starr starr1" for="star1" title="Sucks big time - 1 star"></label>
+                                                                    <input type="radio" class="reset-option" name="rating" value="reset" />
+                                                                </fieldset>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="contact pt-3">
                                             <a class="addtocart" href="<?php echo URL ?>cart/store/<?php echo $data["product_id"] ?>">
                                                 <button style="background: #ef7147; border: 1px solid #ef7147" type="button" class=" btn-primary">Thêm vào giỏ</button>
                                             </a>
-                                        </div>
-                                        <div class="time_buy pt-4">
-                                            <div class="phone">
-                                                <div class="icon">
-                                                    <img src="img_doan/phone.png" alt="">
-                                                </div>
-                                                <p>Đặt mua qua điện thoại (8h - 22h) <br> <a href="#">0123 456 789</a></p>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -102,7 +123,6 @@ require_once "Header.php";
                             </div>
                         </div>
                     </div>
-
                     <div class="related_module">
                         <div class="row">
                             <div class="icon_banh" style="text-align: center;margin-bottom: 10px; width: 100%;">
@@ -255,8 +275,74 @@ require_once "Header.php";
             </div>
         </div>
     </div>
+    <!-- Modal -->
+    <div class="modal fade dangnhap" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header p-2">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="modalBody">
+                    <div class="text-center">
+                        <h3 class="mb-3">Đăng nhập để bình chọn</h3>
+                        <a href="<?php echo URL ?>login">
+                            <button style="padding: 5px 10px; outline:none; border: none; border-radius: 5px;" class="btn-primary">Đăng nhập</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
+<script>
+    var avg_rate = <?php echo $data["avg_rate"] ?>;
+    var total_rate = <?php echo $data["total_rate"] ?>;
 
+    $(".myratings").html(avg_rate);
+    $(".totalrating").html(total_rate);
+
+    function updateStarColor(value) {
+        if (Math.round(value) == 0) {
+            console.log("");
+        } else {
+            for (var i = 1; i <= Math.round(value); i++) {
+                $(".starr" + i).css("color", "#FFD700");
+            }
+        }
+    }
+
+    updateStarColor(avg_rate);
+
+    $(document).ready(function() {
+
+        $("input[type='radio']").click(function(event) {
+            var product_id = <?php echo $data["product_id"] ?>;
+            var href = "<?php echo URL ?>productDetail/rate/" + product_id + "/" + $(this).val();
+            var xhr = new XMLHttpRequest();
+            xhr.onload = function() {
+                if (xhr.readyState === xhr.DONE) {
+                    if (xhr.status === 200) {
+                        console.log(xhr.responseText.trim());
+                        if (xhr.responseText.trim() == "error") {
+                            $(".dangnhap").modal('show');
+                        } else {
+                            arr = xhr.responseText.trim().split("/");
+                            $(".myratings").html(arr[0]);
+                            $(".totalrating").html(arr[1]);
+                            // updateStarColor(arr[0]);
+                            swal("Bình chọn thành công!", "", "success");
+                        }
+
+                    }
+                }
+            }
+            xhr.open('GET', href, true);
+            xhr.send();
+        });
+    });
+</script>
 <script>
     $(".addtocart").click(function(event) {
         event.preventDefault();

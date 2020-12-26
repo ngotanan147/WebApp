@@ -39,8 +39,9 @@ class Cart extends Controller
 
     function test()
     {
-        $user = $this->userModel->getUserByEmail($_SESSION['email']);
-        $this->cartModel->deleteItem($user["user_id"], 33);
+        print_r($_SESSION['cart'][35]["quantity"]);
+        // $user = $this->userModel->getUserByEmail($_SESSION['email']);
+        // $this->cartModel->deleteItem($user["user_id"], 33);
     }
 
     function store($id)
@@ -98,30 +99,46 @@ class Cart extends Controller
         }
     }
 
-    function update()
+    // function update()
+    // {
+    //     if (!isset($_SESSION["email"])) {
+    //         foreach ($_POST['quantity'] as $key => $value) {
+    //             if ($value < 0 || !is_numeric($value)) {
+    //                 continue;
+    //             }
+    //             if ($value == 0) {
+    //                 unset($_SESSION['cart'][$key]);
+    //             } else {
+    //                 $_SESSION['cart'][$key]['quantity'] = $value;
+    //             }
+    //         }
+    //     } else {
+    //         $user = $this->userModel->getUserByEmail($_SESSION['email']);
+
+    //         foreach ($_POST['quantity'] as $key => $value) {
+    //             $data = $this->cartModel->checkIfDuplicate($user["user_id"], $key);
+    //             $total = intval($value) * $data[0]["product_price"];
+    //             $this->cartModel->updateQuantity($user["user_id"], $key, $value, $total);
+    //         }
+    //     }
+
+    //     Header('Location: ' . URL . 'cart');
+    // }
+    function update($product_id, $new_quantity)
     {
-        if (!isset($_SESSION["email"])) {
-            foreach ($_POST['quantity'] as $key => $value) {
-                if ($value < 0 || !is_numeric($value)) {
-                    continue;
-                }
-                if ($value == 0) {
-                    unset($_SESSION['cart'][$key]);
-                } else {
-                    $_SESSION['cart'][$key]['quantity'] = $value;
-                }
-            }
-        } else {
+        if (isset($_SESSION["email"])) {
             $user = $this->userModel->getUserByEmail($_SESSION['email']);
 
-            foreach ($_POST['quantity'] as $key => $value) {
-                $data = $this->cartModel->checkIfDuplicate($user["user_id"], $key);
-                $total = intval($value) * $data[0]["product_price"];
-                $this->cartModel->updateQuantity($user["user_id"], $key, $value, $total);
-            }
-        }
+            $this->cartModel->editCartByProductId($user["user_id"], $product_id, $new_quantity);
 
-        Header('Location: ' . URL . 'cart');
+            $quantity = $this->cartModel->sumQuantity($user["user_id"]);
+
+            echo $product_id . "/" . $quantity[0]["sum(quatity)"];
+        } else {
+            $_SESSION['cart'][$product_id]["quantity"] = $new_quantity;
+
+            echo $product_id . "/" . $_SESSION['cart'][$product_id]["quantity"];
+        }
     }
 
     function delete($id)

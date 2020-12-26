@@ -183,11 +183,11 @@ require_once "Header.php";
                         <li class="tab-link5 "><a href="javascript:;">Nước ép</a></li>
                     </ul>
                     <div class="select-container d-lg-none d-md-none">
-                        <select class="select" name="items" id="items">
-                            <option value="1">Trà</option>
-                            <option value="2">Kem tươi</option>
-                            <option value="3">Cà phê</option>
-                            <option value="4">Nước ép</option>
+                        <select class="selectProduct" name="items" id="items">
+                            <option value="2">Trà</option>
+                            <option value="3">Kem tươi</option>
+                            <option value="4">Cà phê</option>
+                            <option value="5">Nước ép</option>
                         </select>
                     </div>
                 </div>
@@ -634,7 +634,7 @@ require_once "Header.php";
         $("#" + item.id).html(format(item.price));
     })
 
-    for (let i = 1; i <= 5; i++) {
+    for (let i = 2; i <= 5; i++) {
         $(".tab-link" + i).click(function() {
             $(".tab-link" + i).addClass("current");
             $(".tab" + i).addClass("current");
@@ -646,6 +646,20 @@ require_once "Header.php";
             }
         })
     }
+
+    $(".selectProduct").change(function() {
+        var i = $(this).val();
+        console.log(i);
+        $(".tab-link" + i).addClass("current");
+        $(".tab" + i).addClass("current");
+
+        for (let j = 1; j <= 5; j++) {
+            if (i != j) {
+                $(".tab" + j).removeClass("current");
+                $(".tab-link" + j).removeClass("current");
+            }
+        }
+    })
 </script>
 
 

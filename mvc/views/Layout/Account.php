@@ -281,8 +281,6 @@ require_once "Header.php";
             if (xhr.readyState === xhr.DONE) {
                 if (xhr.status === 200) {
                     var data = JSON.parse(xhr.responseText);
-                    // console.log(data);
-
                     var dataFromJson = data.map(item => `  
                         <tbody>
                             <tr>
@@ -309,7 +307,6 @@ require_once "Header.php";
 
                     $(".modal").modal('show');
                     $("#modalBody").html(html);
-
                 }
             }
         }
