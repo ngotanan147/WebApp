@@ -12,6 +12,7 @@ class Account extends Controller
         $this->userModel = $this->getModel("UserModel");
         $this->billModel = $this->getModel("BillModel");
         $this->billDetailModel = $this->getModel("BillDetailModel");
+        $this->userModel = $this->getModel("UserModel");
     }
 
     function test()
@@ -54,5 +55,28 @@ class Account extends Controller
 
         $myJson = json_encode($data, JSON_UNESCAPED_UNICODE);
         echo $myJson;
+    }
+
+    function changeAvatar()
+    {
+        $user = $this->userModel->getUserByEmail($_SESSION['email']);
+        if (isset($_POST["changeAvatar"])) {
+            // Get image
+            $path = "./mvc/assets/avatar_img/";
+            $tmp_name = $_FILES['image']['tmp_name'];
+            $img = $_FILES['image']['name'];
+            move_uploaded_file($tmp_name, $path . $img);
+
+            // Resize image
+            include("resize-image.php");
+            $resizeObj = new resize($path . $img);
+            $resizeObj->resizeImage(200, 200, 'crop');
+            $resizeObj->saveImage($path . $img . "-resize.jpg", 1000);
+
+            // Update image
+            $this->userModel->updateAvatar($user["user_id"], $img . "-resize.jpg");
+        };
+
+        header("Location: " . URL . "Account");
     }
 }

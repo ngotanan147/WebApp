@@ -1,4 +1,3 @@
-<html>
 
 <head>
     <title>Dilicious</title>
@@ -386,5 +385,3 @@
         </div>
     </div>
 </body>
-
-</html>

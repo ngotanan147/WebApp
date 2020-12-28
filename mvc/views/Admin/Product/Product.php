@@ -44,7 +44,7 @@
 
         <!-- Sidebar -->
         <?php
-            require_once "./mvc/views/Admin/Layout/Sidebar.php";  
+        require_once "./mvc/views/Admin/Layout/Sidebar.php";
         ?>
         <!-- End of Sidebar -->
 

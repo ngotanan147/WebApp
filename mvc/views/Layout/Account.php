@@ -115,6 +115,33 @@ require_once "Header.php";
             min-width: 60px;
         }
 
+        .thaydoianh input {
+            background-color: #ef7147;
+            color: #fff;
+            border: 1px solid #ef7147;
+            border-radius: 5px;
+            transition: 0.2s;
+            padding: 5px 10px;
+        }
+
+        .thaydoianh input:hover {
+            background-color: #fff;
+            color: #ef7147;
+        }
+
+        .thaydoianh a:hover {
+            text-decoration: none;
+            color: #ef7147;
+        }
+
+        .ChangeAvatar {
+            width: 100px;
+        }
+
+        .ChangeAvatar:hover {
+            cursor: pointer;
+        }
+
         @media only screen and (max-width: 760px) {
             .tdody_content {}
 
@@ -219,20 +246,40 @@ require_once "Header.php";
                     <div class="aside_vanchuyen mb-4">
                         <div class="aside_content">
                             <div class="vanchuyen">
-                                <div class="icon" style="display: flex;">
-                                    <p style="padding-left: 5px;">TÀI KHOẢN CỦA TÔI</p>
+                                <div class="icon text-center">
+                                    <h5 style="padding-left: 5px;">Tài khoản của tôi</h5>
                                 </div>
-                                <div class="form_signup">
+                                <div class="row">
                                     <?php
                                     if (!empty($data["user"])) {
                                     ?>
-                                        <p>Tên tài khoản : <?php echo $data["user"]["user_name"] ?></p>
-                                        <p>
-                                            <i class="fa fa-envelope font_some"></i>
-                                            <span>Email: <?php echo $data["user"]["user_email"] ?></span>
-                                        </p>
-                                    <?php }
-                                    ?>
+                                        <div class="col-lg-12 col-md-12 mb-lg-0">
+                                            <div class="testimonial-card">
+                                                <div class="card-up info-color"></div>
+                                                <div class="avatar mx-auto white mt-2 text-center">
+                                                    <?php if (empty($data["user"]["user_avatar"])) {
+                                                    ?>
+                                                        <img src="<?php echo URL ?>mvc\assets\avatar_img\defaultAvatar.jpg" class="ChangeAvatar rounded-circle">
+                                                    <?php } else {
+                                                    ?>
+                                                        <img src="<?php echo URL ?>mvc\assets\avatar_img\<?php echo $data["user"]["user_avatar"] ?>" class="ChangeAvatar rounded-circle">
+                                                    <?php
+                                                    } ?>
+                                                </div>
+                                                <div class="pt-2 pb-2">
+                                                    <h4 class="text-center"><?php echo $data["user"]["user_name"] ?></h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                </div>
+
+                                <div class="form_signup">
+                                    <p>
+                                        <i class="fa fa-envelope font_some"></i>
+                                        <span>Email: <?php echo $data["user"]["user_email"] ?></span>
+                                    </p>
+                                <?php }
+                                ?>
                                 </div>
                             </div>
                         </div>
@@ -242,8 +289,8 @@ require_once "Header.php";
         </div>
     </div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <!-- Chi tiết hóa đơn modal -->
+    <div class="modal fade modal1" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -258,6 +305,48 @@ require_once "Header.php";
             </div>
         </div>
     </div>
+
+    <!-- Avatar Modal -->
+    <div class="modal fade modal2" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header p-2 pl-3">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Thay ảnh đại diện</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="modalBody">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 mb-lg-0">
+                            <form action="<?php echo URL ?>/Account/changeAvatar" method="POST" enctype="multipart/form-data">
+                                <div class="testimonial-card">
+                                    <div class="card-up info-color"></div>
+                                    <div class="avatar mx-auto white mt-2 text-center">
+                                        <?php if (empty($data["user"]["user_avatar"])) {
+                                        ?>
+                                            <img src="<?php echo URL ?>mvc\assets\avatar_img\defaultAvatar.jpg" class="rounded-circle" style="width: 200px">
+                                        <?php } else {
+                                        ?>
+                                            <img src="<?php echo URL ?>mvc\assets\avatar_img\<?php echo $data["user"]["user_avatar"] ?>" class="rounded-circle" style="width: 200px">
+                                        <?php
+                                        } ?>
+                                    </div>
+                                    <div class="pt-2 pb-2 text-center">
+                                        <input type="file" name="image">
+                                    </div>
+                                    <div class="pt-2 text-center thaydoianh">
+                                        <input name="changeAvatar" type="submit" value="Xác nhận">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 </body>
 
@@ -305,17 +394,19 @@ require_once "Header.php";
                         </thead>
                     ` + dataFromJson + `</table>`;
 
-                    $(".modal").modal('show');
+                    $(".modal1").modal('show');
                     $("#modalBody").html(html);
                 }
             }
         }
 
         xhr.open('GET', href, true);
-        xhr.send();
+        xhr.send(); 
     })
 
-
+    $(".avatar").click(function(event) {
+        $(".modal2").modal('show');
+    });
 
     array.forEach(item => {
         $("#price" + item.id).html(format(item.price));

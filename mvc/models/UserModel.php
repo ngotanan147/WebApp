@@ -25,6 +25,11 @@ class UserModel extends BaseModel
         $this->updatee(self::TABLE, $id, $data);
     }
 
+    public function updateAvatar($id, $image)
+    {
+        $qr = "Update user set user_avatar = '$image' where user_id = '$id'";
+        $this->execute($qr);
+    }
     public function getUserById($id)
     {
         $qr = "Select * from user where user_id='$id'";
@@ -60,7 +65,7 @@ class UserModel extends BaseModel
         while ($row = mysqli_fetch_assoc($query)) {
             array_push($data, $row);
         }
-        
+
         return $data;
     }
 }

@@ -22,10 +22,45 @@ require_once "Header.php";
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nerko+One&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+
     <link rel="stylesheet" href="<?php echo URL ?>/mvc/public/css/ProductDetail.css">
     <link rel="stylesheet" href="<?php echo URL ?>/mvc/public/css/RatingStar.css">
     <style>
+        .comment-box {
+            padding: 10px;
+        }
 
+        .btn-comment {
+            padding: 5px 10px;
+            border-radius: 5px;
+            background: #ef7147;
+            color: #fff;
+            border: 1px solid #ef7147;
+            transition: 0.2s;
+        }
+
+        .btn-comment:hover {
+            background: #fff;
+            color: #ef7147;
+        }
+
+        .comment-info {
+            font-size: 12px;
+            margin-left: 50px;
+            z-index: 100;
+        }
+
+        .comment-avatar {
+            position: relative;
+        }
+
+        .like-icon {
+            position: absolute;
+            top: 64%;
+            left: 92%;
+        }
     </style>
 </head>
 
@@ -186,7 +221,35 @@ require_once "Header.php";
                             </div>
                         </div>
                     </div>
+                    <div class="mb-5 mt-3" style="max-width: 100%;">
+                        <div class="title-comment mb-3">
+                            <h2>Bình luận</h2>
+                        </div>
+                        <form action="">
+                            <div>
+                                <textarea style="max-width: 100%" class="comment-box" name="" id="" cols="105" rows="3" placeholder="Viết bình luận..."></textarea>
+                            </div>
+                            <div class=" text-right mt-3">
+                                <button type="button" class="btn-comment tn-primary">Đăng bình luận</button>
+                                <input type="reset" id="resetBtn" style="display: none;">
+                            </div>
+                        </form>
 
+                        <div class="comment-empty text-center" style="display: block;">
+                            <h5>Chưa có bình luận!</h5>
+                        </div>
+
+                        <div class="comment-container mt-3">
+                            <div class="comment-avatar">
+                                <div class="d-flex">
+                                    <div class="comment mt-3 mb-2">
+                                        <!-- JS render -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
 
                 </div>
 
@@ -275,6 +338,7 @@ require_once "Header.php";
             </div>
         </div>
     </div>
+
     <!-- Modal -->
     <div class="modal fade dangnhap" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -286,7 +350,7 @@ require_once "Header.php";
                 </div>
                 <div class="modal-body" id="modalBody">
                     <div class="text-center">
-                        <h3 class="mb-3">Đăng nhập để bình chọn</h3>
+                        <h3 class="mb-3">Đăng nhập để thực hiện chức năng này</h3>
                         <a href="<?php echo URL ?>login">
                             <button style="padding: 5px 10px; outline:none; border: none; border-radius: 5px;" class="btn-primary">Đăng nhập</button>
                         </a>
@@ -295,13 +359,162 @@ require_once "Header.php";
             </div>
         </div>
     </div>
+
 </body>
 <script>
     var avg_rate = <?php echo $data["avg_rate"] ?>;
+    updateStarColor(avg_rate);
     var total_rate = <?php echo $data["total_rate"] ?>;
+    <?php
+    if (isset($data["user_name"])) {
+    ?>
+        var user_name = '<?php echo $data["user_name"] ?>';
+    <?php
+    }
+    ?>
+    <?php
+    if (isset($data["user_avatar"])) {
+    ?>
+        var user_avatar = '<?php echo $data["user_avatar"] ?>';
+    <?php
+    }
+    ?>
+    var product_id = <?php echo $data["product_id"] ?>;
+    var URL = '<?php echo URL ?>';
+
+    // Render comment in database
+    <?php if (!empty($data["comments"])) {
+        foreach ($data["comments"] as $key => $value) { ?>
+            postComment('<?php echo $value["user_name"] ?>', '<?php echo $value["user_avatar"] ?>', '<?php echo $value["content"] ?>', <?php echo $data["comments"]["comment_id"] ?>);
+            $(".comment-empty").css("display", "none");
+        <?php }
+    } else { ?>
+        $(".comment-empty").css("display", "block");
+    <?php } ?>
 
     $(".myratings").html(avg_rate);
     $(".totalrating").html(total_rate);
+    $('.comment-box').keypress(function(e) {
+        if (e.which == 13) {
+            <?php
+            if (!isset($data["user_name"])) {
+            ?>
+                $(".dangnhap").modal('show');
+                return false;
+            <?php
+            }
+            ?>
+            if ($(this).val() == "") {
+                return false;
+            }
+            var comment_id = "";
+            var content = $(".comment-box").val();
+            var href = URL + "productDetail/postComment/" + product_id + "/" + content;
+            var xhr = new XMLHttpRequest();
+            xhr.onload = function() {
+                if (xhr.readyState === xhr.DONE) {
+                    if (xhr.status === 200) {
+                        postComment(user_name, user_avatar, content);
+                        $("#resetBtn").click();
+                        if ($(".comment-empty").css("display") == "block") {
+                            $(".comment-empty").css("display", "none");
+                        }
+                        return false;
+                    }
+                }
+            }
+
+            xhr.open('GET', href, true);
+            xhr.send();
+
+        }
+    });
+
+    $(".btn-comment").click(function() {
+        <?php
+        if (!isset($data["user_name"])) {
+        ?>
+            $(".dangnhap").modal('show');
+            return;
+        <?php
+        }
+        ?>
+        if ($(".comment-box").val() == "") {
+            return;
+        }
+
+        var comment_id = "";
+        var content = $(".comment-box").val();
+        var href = URL + "productDetail/postComment/" + product_id + "/" + content;
+
+        var xhr = new XMLHttpRequest();
+        xhr.onload = function() {
+            if (xhr.readyState === xhr.DONE) {
+                if (xhr.status === 200) {
+                    var content = $(".comment-box").val();
+                    postComment(user_name, user_avatar, content);
+                    if ($(".comment-empty").css("display") == "block") {
+                        $(".comment-empty").css("display", "none");
+                    }
+                    $("#resetBtn").click();
+                }
+            }
+        }
+
+        xhr.open('GET', href, true);
+        xhr.send();
+
+
+    });
+
+    $(".click_like").click(function() {
+        var href = $(this).attr("href");
+
+        var xhr = new XMLHttpRequest();
+        xhr.onload = function() {
+            if (xhr.readyState === xhr.DONE) {
+                if (xhr.status === 200) {
+                    console.log(xhr.responseText.trim());
+                    // if (xhr.responseText.trim() == "error") {
+
+                    // }
+                }
+            }
+        }
+
+        xhr.open('GET', href, true);
+        xhr.send();
+    });
+
+    function postComment(user_name, user_image, content, comment_id) {
+        var html = `
+                        <div class="comment mt-3">
+                            <div class="comment-avatar">
+                                <div class="d-flex">
+                                    <div class="image mr-3">
+                                        <img src="${URL}mvc/assets/avatar_img/${user_image}" alt="" style="witdh: 32px; height: 32px; border-radius: 50%">
+                                    </div>
+                                    <div class="user-comment pr-2 pt-2 pl-2" style="background: #eee; border-radius: 10px">
+                                        <div>
+                                            <b style="font-size: 14px;">${user_name}</b>
+                                        </div>
+                                        <div>
+                                            <p>${content}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="comment-info d-flex  ">
+                                <a class="click_like" href="<?php echo URL ?>productDetail/likeComment/${comment_id}">Thích</a>
+                                <span style="color: #000" class="ml-1 luotthich">0</span>
+                            </div>
+                        </div>    
+        `;
+
+        $(".comment").html($(".comment").html() + html);
+    }
+
+
 
     function updateStarColor(value) {
         if (Math.round(value) == 0) {
@@ -313,10 +526,10 @@ require_once "Header.php";
         }
     }
 
-    updateStarColor(avg_rate);
+
 
     $(document).ready(function() {
-
+        var arr = [];
         $("input[type='radio']").click(function(event) {
             var product_id = <?php echo $data["product_id"] ?>;
             var href = "<?php echo URL ?>productDetail/rate/" + product_id + "/" + $(this).val();
@@ -331,6 +544,7 @@ require_once "Header.php";
                             arr = xhr.responseText.trim().split("/");
                             $(".myratings").html(arr[0]);
                             $(".totalrating").html(arr[1]);
+
                             // updateStarColor(arr[0]);
                             swal("Bình chọn thành công!", "", "success");
                         }
@@ -341,6 +555,7 @@ require_once "Header.php";
             xhr.open('GET', href, true);
             xhr.send();
         });
+        updateStarColor(arr[0]);
     });
 </script>
 <script>

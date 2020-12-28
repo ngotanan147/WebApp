@@ -546,50 +546,6 @@ require_once "Header.php";
 </script>
 
 <script>
-    var xhr = new XMLHttpRequest();
-
-    xhr.onload = function() {
-        if (xhr.readyState === xhr.DONE) {
-            if (xhr.status === 200) {
-                array = JSON.parse(xhr.responseText);
-                const html = array.map(item => `
-                                    <div class="swiper-slide" style="max-height: 480px; width: 447.667px; margin-right: 40px;">
-                                        <div class="image">
-                                            <a class="image_product" href="<?php echo URL ?>Product/productDetail/${item.product_id}">
-                                                <img src="./mvc/assets/img/${item.product_image}" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="info">
-                                            <div class="infoLeft">
-                                                <h3 class=title>
-                                                    <a href="">
-                                                        ${item.product_name}
-                                                    </a>
-                                                </h3>
-                                                <div class="box_price">
-                                                    <span class="special_price">
-                                                        <span id="${item.product_id}" class="price product-price">${format(item.product_price)}</span>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                            <div class="infoRight">
-                                                <a href="<?php echo URL ?>Cart/store/${item.product_id}">
-                                                    <button>Thêm vào giỏ</button>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                `).join('');
-                // $("#noibac").html(html);
-            }
-        }
-    }
-
-    xhr.open('GET', '<?php echo URL ?>Product/productAPI/1', true);
-    xhr.send();
-</script>
-
-<script>
     var swiper = new Swiper('.swiper-container', {
         slidesPerView: 5,
         spaceBetween: 30,

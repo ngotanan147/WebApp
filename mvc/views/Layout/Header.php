@@ -2,7 +2,6 @@
 
 ?>
 
-<html>
 
 <head>
     <title>Dilicious</title>
@@ -172,7 +171,6 @@
     <div class="rangcua"></div>
 </body>
 
-</html>
 
 <script>
     $(".navbar-toggler").click(function() {
