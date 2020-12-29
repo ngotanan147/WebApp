@@ -22,9 +22,22 @@ class ProductDetail extends Controller
         // $this->productCommentModel->updateLike(11, 0);
         // $like = $this->productCommentModel->getLikeByCommentId(11);
         // print_r($like[0]["comment_like"]);
-        $isLiked = $this->commentLikeModel->checkIfUserLiked(1, 2);
 
-        print_r($isLiked);
+        // $isLiked = $this->commentLikeModel->checkIfUserLiked(1, 2);
+        // print_r($isLiked);
+
+        // if (empty($isLiked)) {
+        //     echo "empty";
+        // } else {
+        //     echo "not empty";
+        // }
+        $data_commmentLike = [
+            "comment_id" => 10,
+            "user_id" => 10,
+        ];
+        $this->commentLikeModel->createCommentLike($data_commmentLike);
+
+        echo $this->commentLikeModel->getLastInsertId();
     }
 
     function index()
@@ -123,7 +136,10 @@ class ProductDetail extends Controller
         ];
 
         $this->productCommentModel->addProductComment($comment_data);
-        echo "success";
+
+        $last_id = $this->productCommentModel->getLastInsertId();
+
+        echo $last_id;
     }
 
     function likeComment($comment_id)
@@ -138,18 +154,20 @@ class ProductDetail extends Controller
                     "comment_id" => $comment_id,
                     "user_id" => $user["user_id"],
                 ];
+
+
                 $this->commentLikeModel->createCommentLike($data_commmentLike);
                 $totalLike = $this->commentLikeModel->getTotalLike($comment_id);
 
                 echo $totalLike[0]["count(*)"];
+                return;
             } else {
                 $this->commentLikeModel->deleteByCommentIdAndUserId($comment_id, $user["user_id"]);
-
                 $totalLike = $this->commentLikeModel->getTotalLike($comment_id);
                 echo $totalLike[0]["count(*)"];
             }
         } else {
             echo "error";
         }
-    }   
+    }
 }

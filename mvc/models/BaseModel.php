@@ -87,4 +87,9 @@
             // die();
             $this->execute($sql);
         }
+
+        public function getLastInsertId()
+        {
+            return  $this->con->insert_id;
+        }
     }

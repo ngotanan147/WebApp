@@ -385,7 +385,7 @@ require_once "Header.php";
     // Render comment in database
     <?php if (!empty($data["comments"])) {
         foreach ($data["comments"] as $key => $value) { ?>
-            postComment('<?php echo $value["user_name"] ?>', '<?php echo $value["user_avatar"] ?>', '<?php echo $value["content"] ?>', <?php echo $data["comments"]["comment_id"] ?>);
+            postComment('<?php echo $value["user_name"] ?>', '<?php echo $value["user_avatar"] ?>', '<?php echo $value["content"] ?>', <?php echo $data["comments"][0]["comment_id"] ?>);
             $(".comment-empty").css("display", "none");
         <?php }
     } else { ?>
@@ -414,7 +414,7 @@ require_once "Header.php";
             xhr.onload = function() {
                 if (xhr.readyState === xhr.DONE) {
                     if (xhr.status === 200) {
-                        postComment(user_name, user_avatar, content);
+                        postComment(user_name, user_avatar, content, xhr.responseText.trim());
                         $("#resetBtn").click();
                         if ($(".comment-empty").css("display") == "block") {
                             $(".comment-empty").css("display", "none");
@@ -452,7 +452,7 @@ require_once "Header.php";
             if (xhr.readyState === xhr.DONE) {
                 if (xhr.status === 200) {
                     var content = $(".comment-box").val();
-                    postComment(user_name, user_avatar, content);
+                    postComment(user_name, user_avatar, content, xhr.responseText.trim());
                     if ($(".comment-empty").css("display") == "block") {
                         $(".comment-empty").css("display", "none");
                     }
@@ -468,6 +468,7 @@ require_once "Header.php";
     });
 
     $(".click_like").click(function() {
+        // var arr = $(this).attr("id");
         var href = $(this).attr("href");
 
         var xhr = new XMLHttpRequest();
@@ -475,9 +476,7 @@ require_once "Header.php";
             if (xhr.readyState === xhr.DONE) {
                 if (xhr.status === 200) {
                     console.log(xhr.responseText.trim());
-                    // if (xhr.responseText.trim() == "error") {
-
-                    // }
+                    console.log(arr[1]);
                 }
             }
         }
@@ -505,8 +504,8 @@ require_once "Header.php";
                                 </div>
                             </div>
                             <div class="comment-info d-flex  ">
-                                <a class="click_like" href="<?php echo URL ?>productDetail/likeComment/${comment_id}">Thích</a>
-                                <span style="color: #000" class="ml-1 luotthich">0</span>
+                                <a class="click_like" id="click_like/${comment_id}" href="<?php echo URL ?>productDetail/likeComment/${comment_id}">Thích</a>
+                                <span style="color: #000" id="luotthich${comment_id}" class="ml-1 luotthich">0</span>
                             </div>
                         </div>    
         `;

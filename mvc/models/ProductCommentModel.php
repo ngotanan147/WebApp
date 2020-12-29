@@ -61,4 +61,9 @@ class ProductCommentModel extends BaseModel
 
         return $data;
     }
+
+    public function getLastInsertId()
+    {
+        return $this->getLastInsertId();
+    }
 }
