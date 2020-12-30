@@ -121,7 +121,6 @@ require_once "Header.php";
                 img: "<?php echo $value['product_image'] ?>",
                 name: "<?php echo $value['product_name'] ?>",
                 price: <?php echo $value['product_price'] ?>,
-                quantity: <?php echo $value['quantity'] ?>,
             },
         <?php
         };
@@ -136,9 +135,9 @@ require_once "Header.php";
         })
     }
 
-    array.forEach(item => {
-        $(".price" + item.id).html(format(item.price));
-    })
+    // array.forEach(item => {
+    //     $(".price" + item.id).html(format(item.price));
+    // })
 </script>
 
 <?php

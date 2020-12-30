@@ -118,18 +118,6 @@ require_once "Header.php";
                             <label for="">Bạn chưa có tài khoản, hãy Đăng ký <a href="<?php echo URL ?>Register" style="color:#ef7147;">tại
                                     đây</a> </label>
                         </div>
-
-                        <div class="social-network">
-                            <p>Hoặc đăng nhập bằng</p>
-                            <div class="social text-center">
-                                <div class="fb" style="margin-left: 10px;">
-                                    <img width="40px" height="40px" src="https://img.icons8.com/fluent/48/000000/facebook-new.png" />
-                                </div>
-                                <div class="gg" style="margin-left: 10px;">
-                                    <img width="40px" height="40px" src="https://img.icons8.com/fluent/48/000000/google-logo.png" />
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <!-- <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">

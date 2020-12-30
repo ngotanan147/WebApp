@@ -350,7 +350,7 @@ require_once "Header.php";
                 </div>
                 <div class="modal-body" id="modalBody">
                     <div class="text-center">
-                        <h3 class="mb-3">Đăng nhập để thực hiện chức năng này</h3>
+                        <h4 class="mb-3">Đăng nhập để thực hiện chức năng này</h4>
                         <a href="<?php echo URL ?>login">
                             <button style="padding: 5px 10px; outline:none; border: none; border-radius: 5px;" class="btn-primary">Đăng nhập</button>
                         </a>
@@ -359,7 +359,6 @@ require_once "Header.php";
             </div>
         </div>
     </div>
-
 </body>
 <script>
     var avg_rate = <?php echo $data["avg_rate"] ?>;
@@ -385,7 +384,8 @@ require_once "Header.php";
     // Render comment in database
     <?php if (!empty($data["comments"])) {
         foreach ($data["comments"] as $key => $value) { ?>
-            postComment('<?php echo $value["user_name"] ?>', '<?php echo $value["user_avatar"] ?>', '<?php echo $value["content"] ?>', <?php echo $data["comments"][0]["comment_id"] ?>);
+            postComment('<?php echo $value["user_name"] ?>', '<?php echo $value["user_avatar"] ?>', '<?php echo $value["content"] ?>', <?php echo $value["comment_id"] ?>);
+            $("#luotthich<?php echo $value["comment_id"] ?>").html(<?php echo $value["comment_like"] ?>);
             $(".comment-empty").css("display", "none");
         <?php }
     } else { ?>
@@ -467,16 +467,26 @@ require_once "Header.php";
 
     });
 
-    $(".click_like").click(function() {
-        // var arr = $(this).attr("id");
-        var href = $(this).attr("href");
+    $(".sdsdsd").click(function(event) {
+        event.preventDefault();
 
+    })
+
+    $(".click_like").click(function(event) {
+        event.preventDefault();
+        var href = $(this).attr("href");
+        var arr = $(this).attr("id");
         var xhr = new XMLHttpRequest();
         xhr.onload = function() {
             if (xhr.readyState === xhr.DONE) {
+                if (xhr.responseText.trim() == "error") {
+                    $(".dangnhap").modal('show');
+                    return;
+                }
                 if (xhr.status === 200) {
-                    console.log(xhr.responseText.trim());
-                    console.log(arr[1]);
+                    var totalLike = xhr.responseText.trim();
+                    arr = arr.split("/");
+                    $("#luotthich" + arr[1]).html(totalLike);
                 }
             }
         }
@@ -484,6 +494,8 @@ require_once "Header.php";
         xhr.open('GET', href, true);
         xhr.send();
     });
+
+
 
     function postComment(user_name, user_image, content, comment_id) {
         var html = `
@@ -504,7 +516,7 @@ require_once "Header.php";
                                 </div>
                             </div>
                             <div class="comment-info d-flex  ">
-                                <a class="click_like" id="click_like/${comment_id}" href="<?php echo URL ?>productDetail/likeComment/${comment_id}">Thích</a>
+                                <a class="click_like" onclick="click_like()" id="click_like/${comment_id}" href="<?php echo URL ?>productDetail/likeComment/${comment_id}">Thích</a>
                                 <span style="color: #000" id="luotthich${comment_id}" class="ml-1 luotthich">0</span>
                             </div>
                         </div>    
@@ -524,8 +536,6 @@ require_once "Header.php";
             }
         }
     }
-
-
 
     $(document).ready(function() {
         var arr = [];
@@ -556,7 +566,7 @@ require_once "Header.php";
         });
         updateStarColor(arr[0]);
     });
-</script>
+</script>S
 <script>
     $(".addtocart").click(function(event) {
         event.preventDefault();

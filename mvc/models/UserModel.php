@@ -43,6 +43,20 @@ class UserModel extends BaseModel
         return $row;
     }
 
+    public function countUser()
+    {
+        $qr = "Select count(*) from user";
+
+        $query = $this->execute($qr);
+
+        $data = [];
+        while ($row = mysqli_fetch_assoc($query)) {
+            array_push($data, $row);
+        }
+
+        return $data;
+    }
+
     public function getUserByEmail($email)
     {
         $qr = "Select * from user where user_email='$email'";

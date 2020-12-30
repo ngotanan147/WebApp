@@ -34,9 +34,9 @@ class AdminLogin extends Controller
             $login = $this->model->login($email, $password);
             $user = $this->model->getUserByEmail($email);
 
-            if (!empty($login) || $user['user_role'] != 0) {
+            if (!empty($login) && $user['user_role'] == 0) {
                 $_SESSION['adminEmail'] = $email;
-                Header("Location:" . URL . "Admin");
+                Header("Location:" . URL . "AdminLogin");
             } else {
                 Header("Location:" . URL . "Admin/Login");
             }

@@ -3,7 +3,7 @@ class Product extends Controller
 {
     private $productModel;
     private $item_data;
-    
+
     function __construct()
     {
         $this->productModel = $this->getModel("ProductModel");
@@ -12,8 +12,6 @@ class Product extends Controller
     function index()
     {
         $data = $this->productModel->getAll();
-        // print_r($data);
-        // die();
         $this->getView("Product", [
             'product' => $data
         ]);

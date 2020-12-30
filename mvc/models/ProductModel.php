@@ -50,6 +50,19 @@ class ProductModel extends BaseModel
         return $data;
     }
 
+    public function countProduct()
+    {
+        $qr = "Select count(*) from product";
+        $query = $this->execute($qr);
+
+        $data = [];
+        while ($row = mysqli_fetch_assoc($query)) {
+            array_push($data, $row);
+        }
+
+        return $data;
+    }
+
     public function searchByName($name_search)
     {
         $qr = "select * from product where product_name like '%$name_search%'";

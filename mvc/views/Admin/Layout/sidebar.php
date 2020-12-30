@@ -8,6 +8,12 @@
     <!-- Divider -->
     <hr class="sidebar-divider">
 
+    <li class="nav-item active mt-2 mb-2">
+        <a class="nav-link" href="<?php echo URL ?>AdminChart">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>Statistics</span></a>
+    </li>
+
     <!-- Heading -->
     <div class="sidebar-heading">
         Tables

@@ -45,11 +45,12 @@
                                         </div>
                                         <div class="form-group">
                                             <input name="password" type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
+                                            <span class="ml-2 error" style="color: red; font-size: 14px; display: none">Tài khoản hoặc mật khẩu không đúng!</span>
                                         </div>
-                                        <button name="adminLogin" type="submit" class="btn btn-primary btn-user btn-block">Login</button>
+                                        <button name="adminLogin" type="submit" class="btn button-login btn-primary btn-user btn-block">Login</button>
+
                                         <hr>
                                     </form>
-                                    <hr>
                                     <div class="text-center">
                                         <a class="small" href="<?php echo URL ?>Admin/register">Create an Account!</a>
                                     </div>
@@ -78,3 +79,22 @@
 </body>
 
 </html>
+
+<script>
+    // $(".button-login").click(function(event) {
+    //     event.preventDefault();
+    //     var href = "<?php echo URL ?>AdminLogin/LoginAction";
+    //     var xhr = new XMLHttpRequest();
+
+    //     xhr.onload = function() {
+    //         if (xhr.readyState === xhr.DONE) {
+    //             if (xhr.status === 200) {
+    //                 console.log(xhr.responseText.trim());
+
+    //             }
+    //         }
+    //     }
+    //     xhr.open('GET', href, true);
+    //     xhr.send();
+    // })
+</script>

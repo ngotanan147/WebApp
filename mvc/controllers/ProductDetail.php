@@ -31,13 +31,16 @@ class ProductDetail extends Controller
         // } else {
         //     echo "not empty";
         // }
-        $data_commmentLike = [
-            "comment_id" => 10,
-            "user_id" => 10,
-        ];
-        $this->commentLikeModel->createCommentLike($data_commmentLike);
+        // $data_commmentLike = [
+        //     "comment_id" => 28,
+        //     "user_id" => 10,
+        // ];
+        // $this->commentLikeModel->createCommentLike($data_commmentLike);
 
-        echo $this->commentLikeModel->getLastInsertId();
+        $data = $this->commentLikeModel->checkIfUserLiked(28, 10);
+        $this->commentLikeModel->createCommentLike(1, 1);
+        $id = $this->commentLikeModel->getIdJustInserted();
+        print_r($id);
     }
 
     function index()
@@ -137,9 +140,9 @@ class ProductDetail extends Controller
 
         $this->productCommentModel->addProductComment($comment_data);
 
-        $last_id = $this->productCommentModel->getLastInsertId();
+        $last_id = $this->productCommentModel->getIdJustInserted();
 
-        echo $last_id;
+        print_r($last_id[0]["max(comment_id)"]);
     }
 
     function likeComment($comment_id)
@@ -155,15 +158,18 @@ class ProductDetail extends Controller
                     "user_id" => $user["user_id"],
                 ];
 
-
                 $this->commentLikeModel->createCommentLike($data_commmentLike);
+
                 $totalLike = $this->commentLikeModel->getTotalLike($comment_id);
+                $this->productCommentModel->updateLike($comment_id, $totalLike[0]["count(*)"]);
 
                 echo $totalLike[0]["count(*)"];
                 return;
             } else {
                 $this->commentLikeModel->deleteByCommentIdAndUserId($comment_id, $user["user_id"]);
                 $totalLike = $this->commentLikeModel->getTotalLike($comment_id);
+                $this->productCommentModel->updateLike($comment_id, $totalLike[0]["count(*)"]);
+
                 echo $totalLike[0]["count(*)"];
             }
         } else {

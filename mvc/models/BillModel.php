@@ -42,9 +42,36 @@ class BillModel extends BaseModel
         return $data;
     }
 
+    public function countBill()
+    {
+        $qr = "Select count(*) from bill";
+
+        $query = $this->execute($qr);
+
+        $data = [];
+        while ($row = mysqli_fetch_assoc($query)) {
+            array_push($data, $row);
+        }
+
+        return $data;
+    }
+
     public function getBillIdByDate($date)
     {
         $qr = "select * from bill where bill.date = '$date'";
+
+        $query = $this->execute($qr);
+        $data = [];
+        while ($row = mysqli_fetch_assoc($query)) {
+            array_push($data, $row);
+        }
+
+        return $data;
+    }
+
+    public function revenue()
+    {
+        $qr = "select sum(total) from bill";
 
         $query = $this->execute($qr);
         $data = [];

@@ -66,4 +66,17 @@ class ProductCommentModel extends BaseModel
     {
         return $this->getLastInsertId();
     }
+
+    public function getIdJustInserted()
+    {
+        $qr = "SELECT max(comment_id) from product_comment";
+
+        $query = $this->execute($qr);
+        $data = [];
+        while ($row = mysqli_fetch_assoc($query)) {
+            array_push($data, $row);
+        }
+
+        return $data;
+    }
 }
