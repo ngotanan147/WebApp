@@ -24,8 +24,10 @@ require_once "Header.php";
         /**/
 
         .text_center {
-            background-image: url("/img_doan/bg_all.png");
-            padding-bottom: 10px;
+            width: 100%;
+            padding-top: 10px;
+            background-image: url("https://scontent.fsgn2-4.fna.fbcdn.net/v/t1.0-9/cp0/127218423_1774477042729184_7805387329735874085_n.jpg?_nc_cat=101&ccb=2&_nc_sid=0debeb&_nc_ohc=uheyKVoZiuEAX9g_TMO&_nc_ht=scontent.fsgn2-4.fna&oh=2d91fb696031735be6460ee3e2dfbf75&oe=5FEF35C2");
+            background-repeat: repeat;
         }
 
         .rang_cua {
@@ -89,7 +91,7 @@ require_once "Header.php";
 
 <body>
 
-    <div class="text_center pb-0" style="height:auto">
+    <div class="text_center pb-0" style="height:auto;">
         <div class="container">
             <div class="content">
                 <div class="head_content">
@@ -136,6 +138,7 @@ require_once "Header.php";
                 </div>
             </div>
         </div>
+    </div>
 
 
 </body>

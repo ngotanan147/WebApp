@@ -227,9 +227,9 @@ require_once "Header.php";
                         </div>
                         <form action="">
                             <div>
-                                <textarea style="max-width: 100%" class="comment-box" name="" id="" cols="105" rows="3" placeholder="Viết bình luận..."></textarea>
+                                <textarea style="max-width: 100%" class="comment-box" name="" id="" cols="105" rows="3" placeholder="Viết bình luận... (200 từ)"></textarea>
                             </div>
-                            <div class=" text-right mt-3">
+                            <div class=" text-right mt-2">
                                 <button type="button" class="btn-comment tn-primary">Đăng bình luận</button>
                                 <input type="reset" id="resetBtn" style="display: none;">
                             </div>
@@ -239,10 +239,10 @@ require_once "Header.php";
                             <h5>Chưa có bình luận!</h5>
                         </div>
 
-                        <div class="comment-container mt-3">
+                        <div class="comment-container">
                             <div class="comment-avatar">
                                 <div class="d-flex">
-                                    <div class="comment mt-3 mb-2">
+                                    <div class="comment mb-2">
                                         <!-- JS render -->
                                     </div>
                                 </div>
@@ -359,6 +359,7 @@ require_once "Header.php";
             </div>
         </div>
     </div>
+
 </body>
 <script>
     var avg_rate = <?php echo $data["avg_rate"] ?>;
@@ -394,6 +395,8 @@ require_once "Header.php";
 
     $(".myratings").html(avg_rate);
     $(".totalrating").html(total_rate);
+
+    //comment key press enter
     $('.comment-box').keypress(function(e) {
         if (e.which == 13) {
             <?php
@@ -404,11 +407,15 @@ require_once "Header.php";
             <?php
             }
             ?>
-            if ($(this).val() == "") {
+            if ($(this).val().trim() == "") {
+                return false;
+            }
+            var content = $(".comment-box").val();
+            if (content.length > 200) {
+                swal("Vượt quá giới hạn từ cho phép!", "", "warning");
                 return false;
             }
             var comment_id = "";
-            var content = $(".comment-box").val();
             var href = URL + "productDetail/postComment/" + product_id + "/" + content;
             var xhr = new XMLHttpRequest();
             xhr.onload = function() {
@@ -430,6 +437,7 @@ require_once "Header.php";
         }
     });
 
+    //comment click button
     $(".btn-comment").click(function() {
         <?php
         if (!isset($data["user_name"])) {
@@ -439,12 +447,16 @@ require_once "Header.php";
         <?php
         }
         ?>
-        if ($(".comment-box").val() == "") {
+        if ($(".comment-box").val().trim() == "") {
             return;
+        }
+        var content = $(".comment-box").val();
+        if (content.length > 200) {
+            swal("Vượt quá giới hạn từ cho phép!", "", "warning");
+            return false;
         }
 
         var comment_id = "";
-        var content = $(".comment-box").val();
         var href = URL + "productDetail/postComment/" + product_id + "/" + content;
 
         var xhr = new XMLHttpRequest();
@@ -467,36 +479,7 @@ require_once "Header.php";
 
     });
 
-    $(".sdsdsd").click(function(event) {
-        event.preventDefault();
-
-    })
-
-    $(".click_like").click(function(event) {
-        event.preventDefault();
-        var href = $(this).attr("href");
-        var arr = $(this).attr("id");
-        var xhr = new XMLHttpRequest();
-        xhr.onload = function() {
-            if (xhr.readyState === xhr.DONE) {
-                if (xhr.responseText.trim() == "error") {
-                    $(".dangnhap").modal('show');
-                    return;
-                }
-                if (xhr.status === 200) {
-                    var totalLike = xhr.responseText.trim();
-                    arr = arr.split("/");
-                    $("#luotthich" + arr[1]).html(totalLike);
-                }
-            }
-        }
-
-        xhr.open('GET', href, true);
-        xhr.send();
-    });
-
-
-
+    //Comment function
     function postComment(user_name, user_image, content, comment_id) {
         var html = `
                         <div class="comment mt-3">
@@ -505,7 +488,7 @@ require_once "Header.php";
                                     <div class="image mr-3">
                                         <img src="${URL}mvc/assets/avatar_img/${user_image}" alt="" style="witdh: 32px; height: 32px; border-radius: 50%">
                                     </div>
-                                    <div class="user-comment pr-2 pt-2 pl-2" style="background: #eee; border-radius: 10px">
+                                    <div class="user-comment pr-2 pt-2 pl-2" style="background: #eee; border-radius: 10px; min-width: 95px">
                                         <div>
                                             <b style="font-size: 14px;">${user_name}</b>
                                         </div>
@@ -518,13 +501,37 @@ require_once "Header.php";
                             <div class="comment-info d-flex  ">
                                 <a class="click_like" onclick="click_like()" id="click_like/${comment_id}" href="<?php echo URL ?>productDetail/likeComment/${comment_id}">Thích</a>
                                 <span style="color: #000" id="luotthich${comment_id}" class="ml-1 luotthich">0</span>
+                                <span class="ml-4">3 giờ</span>
                             </div>
                         </div>    
         `;
 
         $(".comment").html($(".comment").html() + html);
-    }
 
+        //Click like function
+        $(".click_like").click(function(event) {
+            event.preventDefault();
+            var href = $(this).attr("href");
+            var arr = $(this).attr("id");
+            var xhr = new XMLHttpRequest();
+            xhr.onload = function() {
+                if (xhr.readyState === xhr.DONE) {
+                    if (xhr.responseText.trim() == "error") {
+                        $(".dangnhap").modal('show');
+                        return;
+                    }
+                    if (xhr.status === 200) {
+                        var totalLike = xhr.responseText.trim();
+                        arr = arr.split("/");
+                        $("#luotthich" + arr[1]).html(totalLike);
+                    }
+                }
+            }
+
+            xhr.open('GET', href, true);
+            xhr.send();
+        });
+    }
 
 
     function updateStarColor(value) {
