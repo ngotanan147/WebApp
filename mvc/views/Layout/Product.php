@@ -20,6 +20,8 @@ require_once "Header.php";
     <link rel="stylesheet" href="./style.css">
     <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
     <link rel="stylesheet" href="<?php echo URL ?>/mvc/public/css/Product.css">
     <style>
         h2.title_sidebar:before {
@@ -31,49 +33,19 @@ require_once "Header.php";
                 min-height: 400px;
             }
         }
+
+        .picture:hover {
+            cursor: pointer;
+        }
     </style>
 </head>
 
 <body>
-
     <!-- --------------------------------------------------------------------------------------sanpham -->
     <div class="product">
         <div class="container">
             <div class="row">
-                <!-- ----------------------------------------------------left(Danh mục) -->
-                <div class="col-sm-12 tool-bar mt-3">
-                    <a href="">Trang Chủ</a>
-                    <span>/</span>
-                    <a href="" style="color: #ef7147">Tất cả sản phẩm</a>
-                </div>
-                <div class="col-xs-12 col-lg-3 col-sm-12 left">
-                    <aside class="aside-item collection-category margin-bottom-30">
-                        <div class="title_module_arrow">
-                            <div class="title">
-                                <h2 class="title_sidebar">
-                                    <a href="">
-                                        Danh Mục
-                                    </a>
-                                </h2>
-                            </div>
-                        </div>
-                        <div class="aside-content">
-                            <nav class="cate_padding nav-category navbar-toggleable-md">
-                                <ul class="nav navbar-pills">
-                                    <li class="nav-item">Trang chủ</li>
-                                    <li class="nav-item">Sản phẩm
-                                        <i class="fa fa-angle-right"></i>
-                                    </li>
-                                    <li class="nav-item">Giới thiệu</li>
-                                    <li class="nav-item">Blog</li>
-                                    <li class="nav-item">Liên hệ</li>
-                                </ul>
-                            </nav>
-                        </div>
-                    </aside>
-                </div>
-                <!-- ----------------------------------------------------right(sản phẩm chính) -->
-                <section class="col-lg-9 col-md-9 col-sm-12 mt-3">
+                <section class="col-lg-12 col-md-12 col-sm-12 mt-3">
                     <div class="h1">
                         <h1>SẢN PHẨM</h1>
                     </div>
@@ -81,7 +53,7 @@ require_once "Header.php";
                         <div>
                             <p>Tìm kiếm theo danh mục: </p>
                         </div>
-                        <select name="" id="selector" class="mb-3 ml-3">
+                        <select name="" id="selector" class="mb-3 ml-3 select_category">
                             <option value="0">Tất cả sản phẩm</option>
                             <option value="1">Món ăn nổi bật</option>
                             <option value="2">Trà</option>
@@ -93,19 +65,13 @@ require_once "Header.php";
 
                     <div class="category-products">
                         <section class="products-view">
-                            <div class="row">
-
+                            <div class="row product_render">
+                                <!-- JS render -->
                             </div>
                         </section>
                     </div>
                 </section>
             </div>
-            <ul class="pagination">
-                <li class="page-item active"><a class="page-link" id="active" href="#">1</a></li>
-                <li class="page-item ml-1"><a class="page-link" href="./product2.html">2</a></li>
-                <li class="page-item ml-1"><a class="page-link" href="./product2.html
-                        "><i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
-            </ul>
         </div>
     </div>
 </body>
@@ -113,6 +79,13 @@ require_once "Header.php";
 </html>
 
 <script>
+    function format(n) {
+        return (n * 1000).toLocaleString('vi', {
+            style: 'currency',
+            currency: 'VND'
+        })
+    }
+
     const items = [
         <?php
         foreach ($data["product"] as $key => $value) {
@@ -126,18 +99,83 @@ require_once "Header.php";
         };
         ?>
     ];
-    console.log(items);
 
-    function format(n) {
-        return (n * 1000).toLocaleString('vi', {
-            style: 'currency',
-            currency: 'VND'
-        })
+
+    $(".select_category").change(function() {
+        render($(this).val());
+    });
+
+    function render(category_value) {
+        var array = [];
+        var xhr = new XMLHttpRequest();
+        var href = "<?php echo URL ?>Product/getCategory/" + category_value;
+        xhr.onload = function() {
+            if (xhr.readyState === xhr.DONE) {
+                if (xhr.status === 200) {
+                    array = JSON.parse(xhr.responseText.trim());
+                    var html = array.map(item => `
+                        <div class="col-sm-12 col-md-12 col-lg-4 product-col mb-5">
+                            <div class="items">
+                                <div class="picture">
+                                    <a href="<?php echo URL ?>productDetail/detail/${item.product_id}">
+                                        <img src="./mvc/assets/img/${item.product_image}" alt="" style="max-width: 100%; height: 273px">
+                                    </a>
+                                </div>
+                                <div class="info">
+                                    <h3 class="title" style="margin-top:10px;">
+                                        ${item.product_name}
+                                    </h3>
+                                    <div class="price">
+                                        <p class="price${item.product_id}"></p>
+                                    </div>
+                                    <div class="btn2">
+                                        <a class="addtocart" href="<?php echo URL ?>cart/store/${item.product_id}">
+                                            <button>Thêm vào giỏ</button>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `).join("");
+
+                    $(".product_render").html(html);
+
+                    $(".addtocart").click(function(event) {
+                        event.preventDefault();
+                        var href = $(this).attr("href");
+                        var xhr = new XMLHttpRequest();
+
+                        xhr.onload = function() {
+                            if (xhr.readyState === xhr.DONE) {
+                                if (xhr.status === 200) {
+                                    arr = xhr.responseText.trim().split("/");
+                                    console.log(arr);
+
+                                    if (arr[0] == "Success") {
+                                        swal("Đã thêm vào giỏ hàng!", "", "success");
+                                    } else {
+                                        swal("Hết hàng!", "", "warning");
+                                    }
+                                }
+                                $("#soluong").html(arr[1]);
+                            }
+                        }
+
+                        xhr.open('GET', href, true);
+                        xhr.send();
+                    })
+
+                    array.map(item => {
+                        $(".price" + item.product_id).html(format(item.product_price));
+                    });
+                }
+            }
+        }
+        xhr.open('GET', href, true);
+        xhr.send();
     }
 
-    // array.forEach(item => {
-    //     $(".price" + item.id).html(format(item.price));
-    // })
+    render(0);
 </script>
 
 <?php

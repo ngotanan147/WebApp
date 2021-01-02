@@ -129,7 +129,7 @@ require_once "Header.php";
 <body>
 
     <div class="Content_Register">
-        <p class="trangchu"><a href="#">Trang chủ</a> <span style="color:#000!important;">/</span> Đăng ký tài khoản</p>
+        <p class="trangchu"><a href="<?php echo URL ?>">Trang chủ</a> <span style="color:#000!important;">/</span> Đăng ký tài khoản</p>
         <h1 class="register_account">ĐĂNG KÝ TÀI KHOẢN</h1>
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form">
@@ -167,15 +167,12 @@ require_once "Header.php";
                             <br><label style="display: none; display: <?php echo $data['display'] ?> !important">
                                 Email đã tồn tại!
                             </label>
-                            <!-- <br><label style="display: none; display: <?php echo $data['display'] ?> !important">
-                                Độ dài mật khẩu phải lớn hơn 5!
-                            </label> -->
                         </form>
                         <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12  mt-4 ">
 
                                 <div class="register_ex">
-                                    <p class="login_here mt-2">Bạn đã có tài khoản, hãy Đăng nhập <a href="" style="color:#ef7147; text-decoration: none;">tại đây</a></p>
+                                    <p class="login_here mt-2">Bạn đã có tài khoản, hãy Đăng nhập <a href="<?php echo URL ?>Login" style="color:#ef7147; text-decoration: none;">tại đây</a></p>
                                 </div>
                                 <!-- <div class="block">
                                     <p class="text-center" style="font-size: 13px;">Hoặc đăng nhập bằng</p>

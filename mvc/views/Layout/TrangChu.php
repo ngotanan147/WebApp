@@ -91,7 +91,7 @@ require_once "Header.php";
     <!-- Món ăn nổi bật -->
     <div class="monannoibat">
         <div class="icon_cupcake text-center">
-            <img src="./mvc/public/css/img_doan/cupcake.png" alt="" style="max-width: 100%;height: auto;">
+            <img src="./mvc/public/img_doan/cupcake.png" alt="" style="max-width: 100%;height: auto;">
         </div>
         <div class="monannoibat_title text-center">
             <h2 style="display:inline-block;">
@@ -111,7 +111,6 @@ require_once "Header.php";
                                         currency: 'VND'
                                     })
                                 }
-
                                 var array = [];
                             </script>
 
@@ -166,7 +165,7 @@ require_once "Header.php";
         <!-- Món ăn được ưa chuộng -->
         <div class="danhsachmonan">
             <div class="icon_cupcake text-center">
-                <img src="./mvc/public/css/img_doan/cupcake.png" alt="" style="max-width: 100%;height: auto;">
+                <img src="./mvc/public/img_doan/cupcake.png" alt="" style="max-width: 100%;height: auto;">
             </div>
             <div class="monannoibat_title text-center">
                 <h2 style="display:inline-block;">
@@ -374,147 +373,10 @@ require_once "Header.php";
 
         </div>
 
-        <div class="text-center">
+        <!-- <div class="text-center">
             <h1>Blog updating...</h1>
-        </div>
-        <!-- <div style="background-img: url('https://scontent.fsgn2-4.fna.fbcdn.net/v/t1.0-9/cp0/127243818_1774477089395846_1556559475064294708_n.jpg?_nc_cat=109&ccb=2&_nc_sid=0debeb&_nc_ohc=cSecq6N2ccwAX8-SQV2&_nc_ht=scontent.fsgn2-4.fna&oh=0c58f35c01385ae8ce27458b39bb289a&oe=5FEE4B84')">
-            <div class="monannoibat_title text-center ">
-                <div class="icon_cupcake text-center">
-                    <img class="pt-5" src="./mvc/public/css/img_doan/cupcake.png" alt="" style="max-width: 100%;height: auto;">
-                </div>
-                <h2 style="display:inline-block;">
-                    <a href="">Blog</a>
-                </h2>
-                <div class="slider" style="">
-                    <div class="slider-sub">
-                        <div class="container-fluid p-5">
-                            <div class="swiper-container">
-                                <div class="swiper-wrapper" style="height:auto">
-                                    <div class="swiper-slide" style="max-height: 480px;">
-                                        <div class="image">
-                                            <a class="image_product" href="">
-                                                <img src="./mvc/public/css/img_doan/monannoibat (1).jpg" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="info">
-                                            <div class="infoLeft">
-                                                <h3 class=title>
-                                                    <a href="">
-                                                        Title of blog
-                                                    </a>
-                                                </h3>
-                                            </div>
-                                            <div class="infoRight">
-                                                <button>Xem chi tiết</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide" style="max-height: 480px;">
-                                        <div class="image">
-                                            <a class="image_product" href="">
-                                                <img src="./mvc/public/css/img_doan/monannoibat (2).jpg" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="info">
-                                            <div class="infoLeft">
-                                                <h3 class=title>
-                                                    <a href="">
-                                                        Title of blog
-                                                    </a>
-                                                </h3>
-                                            </div>
-                                            <div class="infoRight">
-                                                <button>Xem chi tiết</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide" style="max-height: 480px;">
-                                        <div class="image">
-                                            <a class="image_product" href="">
-                                                <img src="./mvc/public/css/img_doan/monannoibat (3).jpg" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="info">
-                                            <div class="infoLeft">
-                                                <h3 class=title>
-                                                    <a href="">
-                                                        Title of blog
-                                                    </a>
-                                                </h3>
-                                            </div>
-                                            <div class="infoRight">
-                                                <button>Xem chi tiết</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide" style="max-height: 480px;">
-                                        <div class="image">
-                                            <a class="image_product" href="">
-                                                <img src="./mvc/public/css/img_doan/monannoibat (5).jpg" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="info">
-                                            <div class="infoLeft">
-                                                <h3 class=title>
-                                                    <a href="">
-                                                        Title of blog
-                                                    </a>
-                                                </h3>
-                                            </div>
-                                            <div class="infoRight">
-                                                <button>Xem chi tiết</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide" style="max-height: 480px;">
-                                        <div class="image">
-                                            <a class="image_product" href="">
-                                                <img src="./mvc/public/css/img_doan/monannoibat (6).jpg" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="info">
-                                            <div class="infoLeft">
-                                                <h3 class=title>
-                                                    <a href="">
-                                                        Title of blog
-                                                    </a>
-                                                </h3>
-                                            </div>
-                                            <div class="infoRight">
-                                                <button>Xem chi tiết</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide" style="max-height: 480px;">
-                                        <div class="image">
-                                            <a class="image_product" href="">
-                                                <img src="./mvc/public/css/img_doan/monannoibat (7).jpg" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="info">
-                                            <div class="infoLeft">
-                                                <h3 class=title>
-                                                    <a href="">
-                                                        Title of blog
-                                                    </a>
-                                                </h3>
-                                            </div>
-                                            <div class="infoRight">
-                                                <button>Xem chi tiết</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Add Pagination -->
-        <div class="swiper-pagination"></div>
+        </div> -->
     </div>
-    </div>
-    </div>
-
-    </div>
-    </div>
-    </div> -->
-
 </body>
 
 </html>

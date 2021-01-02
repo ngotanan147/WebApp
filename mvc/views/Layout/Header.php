@@ -125,12 +125,12 @@
                                 Giới thiệu
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a href="<?php echo URL ?>blog" class="nav-link">
                                 <i class="fa fa-pencil-square-o"></i>
                                 Blog
                             </a>
-                        </li>
+                        </li> -->
                         <li class="nav-item">
                             <a href="<?php echo URL ?>Contact" class="nav-link">
                                 <i class="fa fa-phone"></i>

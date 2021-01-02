@@ -61,13 +61,14 @@
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
-                        <button data-toggle="modal" data-target="#exampleModal" type="button" class="btn btn-primary" style="width: 100%;">Add item</button>
+                        <!-- <button data-toggle="modal" data-target="#exampleModal" type="button" class="btn btn-primary" style="width: 100%;">Add item</button> -->
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>ID</th>
+                                            <th>STT</th>
+                                            <th>Cart ID</th>
                                             <th>User ID</th>
                                             <th>User name</th>
                                             <th>Product name</th>
@@ -80,35 +81,37 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-
-
                                         <?php
                                         // print_r($data['cart']);
                                         // die();
-                                        if (isset($data['cart'])){
-                                        foreach ($data['cart'] as $key => $value){
+                                        $stt = 1;
+                                        if (isset($data['cart'])) {
+                                            foreach ($data['cart'] as $key => $value) {
                                         ?>
-                                            <tr>
-                                                <td><?php echo $value["cart_id"] ?></td>
-                                                <td><?php echo $value["user_id"] ?></td>
-                                                <td><?php echo $value["user_name"] ?></td>
-                                                <td><?php echo $value["product_name"] ?></td>
-                                                <td><?php echo $value["product_id"] ?></td>
-                                                <td><?php echo $value["product_image"] ?></td>
-                                                <td><?php echo $value["product_price"] ?></td>
-                                                <td><?php echo $value["quatity"] ?></td>
-                                                <td><?php echo $value["total"] ?></td>
-                                                <td class="d-flex justify-content-around">
-                                                    <a href="<?php echo URL ?>AdminCart/showEditData/<?php echo $value["user_id"] ?>">
-                                                        <i style="color:#999" class="fa fa-wrench fa-lg function" aria-hidden="true"></i>
+                                                <tr>
+                                                    <td><?php echo $stt ?></td>
+                                                    <td><?php echo $value["cart_id"] ?></td>
+                                                    <td><?php echo $value["user_id"] ?></td>
+                                                    <td><?php echo $value["user_name"] ?></td>
+                                                    <td><?php echo $value["product_name"] ?></td>
+                                                    <td><?php echo $value["product_id"] ?></td>
+                                                    <td class="text-center"><img style="width: 75px; height: 75px" src="./mvc/assets/img/<?php echo $value["product_image"] ?>" alt=""></td>
+                                                    <td><?php echo $value["product_price"] ?></td>
+                                                    <td><?php echo $value["quatity"] ?></td>
+                                                    <td><?php echo $value["total"] ?></td>
+                                                    <td class="d-flex justify-content-around">
+                                                        <a href="<?php echo URL ?>AdminCart/showEditData/<?php echo $value["user_id"] ?>">
+                                                            <i style="color:#999" class="fa fa-wrench fa-lg function" aria-hidden="true"></i>
 
-                                                    </a>
-                                                    <a href="AdminCart/delete/<?php echo $value["user_id"] ?>">
-                                                        <i style="color:#999" class="fa fa-trash fa-lg function" aria-hidden="true"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                        <?php }}?>
+                                                        </a>
+                                                        <a href="AdminCart/delete/<?php echo $value["user_id"] ?>">
+                                                            <i style="color:#999" class="fa fa-trash fa-lg function" aria-hidden="true"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                        <?php $stt++;
+                                            }
+                                        } ?>
                                     </tbody>
                                 </table>
                             </div>

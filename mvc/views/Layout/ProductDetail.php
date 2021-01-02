@@ -573,7 +573,7 @@ require_once "Header.php";
         });
         updateStarColor(arr[0]);
     });
-</script>S
+</script>
 <script>
     $(".addtocart").click(function(event) {
         event.preventDefault();

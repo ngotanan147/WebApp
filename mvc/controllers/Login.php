@@ -9,7 +9,7 @@ class Login extends Controller
     function index()
     {
         if (isset($_SESSION["email"])) {
-            header("Location:" . URL . "Doanweb/");
+            header("Location:" . URL);
         } else {
             $this->getView("Login");
         }
